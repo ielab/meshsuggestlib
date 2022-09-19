@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa5699c6-15a7-4919-be2b-79de687eed28" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/meshsuggestlib/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/meshsuggestlib/__main__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/meshsuggestlib/arguments.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/meshsuggestlib/arguments.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/meshsuggestlib/submission.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/meshsuggestlib/submission.py" afterDir="false" />
-    </list>
+    <list default="true" id="fa5699c6-15a7-4919-be2b-79de687eed28" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +100,7 @@
       <workItem from="1662938388646" duration="13491000" />
       <workItem from="1663486565236" duration="4813000" />
       <workItem from="1663503544603" duration="1000" />
-      <workItem from="1663503818931" duration="17626000" />
+      <workItem from="1663503818931" duration="17944000" />
     </task>
     <servers />
   </component>
