@@ -18,6 +18,7 @@ from tqdm import tqdm
 def suggest_mesh_terms(input_dict, model, tokenizer, retriever, look_up, mesh_dict, model_w2v, interpolation_depth, depth, hf_args, device):
     type = input_dict["Type"]
     keywords = input_dict["Keywords"]
+
     if len(keywords) > 0:
         return_list = []
         if len(keywords) == 1:
@@ -86,7 +87,7 @@ def prepare_model(model_dir, mesh_dir, tokenizer_path, cache_path, semantic_mode
     model = DenseModel(
         ckpt_path=model_dir,
         mesh_args=mesh_args,
-    )
+    ).eval()
 
     model = model.to(mesh_args.device)
 
@@ -129,6 +130,7 @@ def search_queries_multiple(retriever, q_reps, lookup, interpolation_depth, dept
         all_scores, all_indices = retriever.search(q_rep, interpolation_depth)
         all_scores = all_scores[0]
         psg_indices = [str(lookup[x]) for x in all_indices[0]]
+
         min_score = min(all_scores)
         diff_score = max(all_scores) - min(all_scores)
         if diff_score == 0:
@@ -213,7 +215,7 @@ def keyword_suggestion_method(keyword, model, tokenizer, retriever, look_up, dep
     query = keyword.lower()
     query_tokenised = tokenizer.encode_plus(
         query,
-        add_special_tokens=False,
+        add_special_tokens=True,
         max_length=32,
         truncation=True,
         padding='max_length',
@@ -237,7 +239,7 @@ def semantic_suggestion_method(keywords, model, tokenizer, retriever, look_up, i
         query = keyword.lower()
         query_tokenised = tokenizer.encode_plus(
             query,
-            add_special_tokens=False,
+            add_special_tokens=True,
             max_length=32,
             truncation=True,
             padding='max_length',
@@ -264,12 +266,11 @@ def fragment_suggestion_method(keywords, model, tokenizer, retriever, look_up, i
         query = keyword.lower()
         query_tokenised = tokenizer.encode_plus(
             query,
-            add_special_tokens=False,
+            add_special_tokens=True,
             max_length=32,
-            truncation=True,
-            padding='max_length',
+            truncation='only_first',
+            padding=False,
             return_token_type_ids=False,
-            return_attention_mask=True,
             return_tensors='pt'
         )
         with torch.cuda.amp.autocast() if hf_args.fp16 else nullcontext():
