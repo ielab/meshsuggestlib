@@ -16,7 +16,7 @@ class MeSHSuggestLibArguments:
     )
 
     mesh_file: str = field(
-        default="data/mesh_sample.json", metadata={
+        default="data/mesh.json", metadata={
             "help": "Used dataset, currently supported options are 'CLEF-2017', 'CLEF-2018', 'CLEF-2019-dta' and ', 'CLEF-2019-intervention' or dataset FOLDER-NAME"}
     )
 

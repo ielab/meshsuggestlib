@@ -8,5 +8,8 @@ python3 -m meshsuggestlib \
   --cache_dir cache/ \
   --output_file result/out.tsv \
   --evaluate_run \
-  --qrel_file data/clef-tar-processed/CLEF-2017/testing/data/qrels \
-  --email wshuai190@gmail.com
+  --qrel_file /scratch/itee/uqswan37/meshsuggestlib/data/clef-tar-processed/CLEF-2017/testing/data.qrels \
+  --email wshuai190@gmail.com \
+  --interpolation_depth 20 \
+  --depth 1
+
