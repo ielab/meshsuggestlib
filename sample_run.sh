@@ -6,7 +6,7 @@ python3 -m meshsuggestlib \
   --dataset CLEF-2017 \
   --semantic_model_path model/PubMed-w2v.bin \
   --cache_dir cache/ \
-  --output_file result/out.tsv \
+  --output_file result/sem_bert_2017.tsv \
   --evaluate_run \
   --qrel_file /scratch/itee/uqswan37/meshsuggestlib/data/clef-tar-processed/CLEF-2017/testing/data.qrels \
   --email wshuai190@gmail.com \

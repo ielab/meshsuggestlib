@@ -73,7 +73,7 @@ def load_mesh_dict(path):
     return mesh_dict
 
 
-def prepare_model(model_dir, mesh_dir, num_labels, tokenizer_path, cache_path, semantic_model_path, mesh_args):
+def prepare_model(model_dir, mesh_dir, tokenizer_path, cache_path, semantic_model_path, mesh_args):
     os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
     # load mesh_dict
     logger.info("loading mesh terms from Path %s", mesh_dir)

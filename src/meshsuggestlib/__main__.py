@@ -159,7 +159,7 @@ def main():
         a = 0 #need to add code here
 
     if method in pre_methods_bert:
-        mesh_dict, tokenizer, model, model_w2v = prepare_model(mesh_args.model_dir, mesh_file, 1, mesh_args.tokenizer_name_or_path, mesh_args.cache_dir, mesh_args.semantic_model_path, mesh_args)
+        mesh_dict, tokenizer, model, model_w2v = prepare_model(mesh_args.model_dir, mesh_file, mesh_args.tokenizer_name_or_path, mesh_args.cache_dir, mesh_args.semantic_model_path, mesh_args)
         candidate_dataset = EncodeDataset(mesh_file,
                                           tokenizer,
                                           max_len=mesh_args.p_max_len,
@@ -191,6 +191,7 @@ def main():
             output = open(mesh_args.output_file, 'w')
         except:
             raise Exception("can not create output file at Path %s", mesh_args.output_file)
+
         for topic_id in final_query_dict:
             mesh_query = " AND ".join(final_query_dict[topic_id])
             current_d = ('01/01/1946', '31/12/2021')
@@ -200,6 +201,7 @@ def main():
             logger.info("topic %s retrieve %s pubmed articles", topic_id, len(final_result))
             write_ranking(topic_id, final_result, output)
         if mesh_args.evaluate_run:
+            time.sleep(5)
             if mesh_args.qrel_file != None:
                 evaluator = Evaluator(mesh_args.qrel_file, ["SetP", "SetR", "SetF"], mesh_args.output_file)
                 evaluator.compute_metrics()
