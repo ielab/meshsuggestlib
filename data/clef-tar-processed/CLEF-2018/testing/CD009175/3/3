@@ -1,0 +1,14 @@
+exp Infant/
+(infant* or infancy or newborn* or baby* or babies or neonat* or preterm* or prematur*).tw.
+exp Child/
+(child* or schoolchild* or school age* or preschool* or kid or kids or toddler*).tw.
+Adolescent/
+(adoles* or teen* or boy* or girl*).tw.
+Minors/
+Puberty/
+(minor* or pubert* or pubescen*).tw.
+exp Pediatrics/
+(pediatric* or paediatric*).tw.
+exp Schools/
+(nursery school* or kindergar* or primary school* or secondary school* or elementary school* or high school* or highschool*).tw.
+or/1-13

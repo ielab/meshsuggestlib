@@ -1,0 +1,1 @@
+(dialysis OR (kidney AND pancreas AND (transplant OR graft)) OR (endstage kidney OR endstage renal) OR (hemodialysis OR haemodialysis) OR (hemodiafiltaration OR haemodiafilter) OR (PD OR CAPD OR CCPD OR APD) OR (chronic kidney OR chronic renal) OR (ESRD OR ESKD OR ESRF OR ESKF) OR (end stage kidney OR end stage renal) OR (hemofiltation OR haemofilte))

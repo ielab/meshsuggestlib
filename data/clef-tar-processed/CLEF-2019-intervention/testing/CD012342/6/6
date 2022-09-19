@@ -1,0 +1,7 @@
+exp CLINICAL TRIALS AS TOPIC/
+selection criteria.ti,ab. or critical appraisal.ti.
+(data adj2 (extract* or analys*)).ti,ab.
+Randomized Controlled Trials as Topic/
+OBSERVATIONAL STUDY/
+((cohort* or observational or retrospective*) adj1 (trial* or stud*)).tw,kf.
+or/1-6

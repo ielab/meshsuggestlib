@@ -1,0 +1,1 @@
+(Pain[mesh:noexp] OR Pain, Postoperative[mesh] OR Postoperative Care[mesh] OR Postoperative Complications[mesh:noexp] OR ((post operative[Title/Abstract] OR postoperative[Title/Abstract]) AND (pain*[Title/Abstract] OR recovery[Title/Abstract])))

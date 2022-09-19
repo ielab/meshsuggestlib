@@ -1,0 +1,5 @@
+exp Ovarian Neoplasms/
+Fallopian Tube Neoplasms/
+((ovar* or fallopian tube*) adj5 (cancer* or tumor* or tumour* or adenocarcinoma* or carcino* or cystadenocarcinoma* or choriocarcinoma* or malignan* or neoplas* or metasta* or mass or masses)).tw,ot.
+(thecoma* or luteoma*).tw,ot.
+or/1-4

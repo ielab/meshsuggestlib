@@ -1,0 +1,9 @@
+exp Aortic Aneurysm/
+Aorta, Abdominal/
+(abdom* adj3 aneurysm?).tw,kf.
+(aort* adj3 aneurysm?).tw,kf.
+(abdom* adj3 aort*).tw,kf.
+(aort* adj3 morphol*).tw,kf.
+(EVAR or TEVAR or EVRAR).tw,kf.
+AAA*.tw,kf.
+or/1-8

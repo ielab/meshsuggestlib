@@ -1,0 +1,20 @@
+exp Abdominal Injuries/
+exp Thoracic Injuries/
+((chest or torso) adj3 (injur* or trauma*)).ti,ab,kf.
+((injur* or ruptur* or bleed* or trauma*) adj3 (abdom* or thorax or thoracic or thoracoabdom* or thoraco-abdom* or stomach or gastric*)).ti,ab,kf.
+(free fluid adj3 (abdom* or thorax or thoracic or thoracoabdom* or thoraco-abdom*)).ti,ab,kf.
+pneumothorax/
+hemopneumothorax/
+hemothorax/
+(pneumothor* or h?emopneumothor* or h?emothor*).ti,ab,kf.
+(retroperitoneal or retro-peritoneal or intraperitoneal or intra-peritoneal or mediastinum or pericardium).ti,ab,kf,hw.
+*"Wounds and Injuries"/
+"Wounds and Injuries"/
+Wounds, Nonpenetrating/
+rupture/
+exp splenic rupture/
+stomach rupture/
+((injur* or ruptur* or bleed* or trauma* or lacerat* or tear? or contusion*) adj3 (spleen* or splenic or hepatic or visceral or liver* or kidney* or pancrea* or renal* or lungs or heart)).ti,ab,kf.
+((blunt* or non-penetrat* or nonpenetrat*) adj trauma*).ti,ab,kf.
+(polytrauma* or poly trauma* or multiple trauma* or mass casualt*).ti,ab,kf,hw.
+or/1-17

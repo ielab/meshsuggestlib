@@ -1,0 +1,5 @@
+exp Carcinoma, squamous cell/
+exp Precancerous conditions/
+(tumor$ or tumour$ or cancer$ or carcinoma$ or carcinogen$ or neoplas$ or malignan$ or metasta$ or dysplas$ or lesion$ or ulcer$).tw,ot.
+(pre-cancer$ or precancer$ or premalignan$ or precursor$ or "lichen planus" or leukoplakia or "submucous fibrosis" or (actinic adj2 keratosis) or candidiasis or erythroplakia or erythroplas$ or erythroleukoplakia or hyperplas$ or hyperkeratos$).tw,ot.
+or/1-4

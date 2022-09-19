@@ -1,0 +1,10 @@
+exp Amylases/
+exp Lipase/
+exp Trypsinogen/
+(amylase or lipase or trypsinogen or hyperamylasaemia or hyperamylasemia).mp.
+exp C-Reactive Protein/
+("c-reactive protein" or "c reactive protein" or CRP).mp.
+procalcitonin.mp.
+exp L-Lactate Dehydrogenase/
+("lactate dehydrogenase" or LDH).mp.
+or/1-9

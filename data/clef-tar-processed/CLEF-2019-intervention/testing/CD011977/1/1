@@ -1,0 +1,15 @@
+exp cataract/
+cataract extraction/
+cataract$.tw.
+exp Lens, Crystalline/
+exp Lenses, Intraocular/
+Lens Implantation, Intraocular/
+(intraocular lens$ or intra ocular lens$ or IOL$).tw.
+phacoemulsification/
+pha?oemulsif$.tw.
+(phaco or phako).tw.
+ECCE.tw.
+(MISICS or SICS).tw.
+capsulorhexis/
+capsulor?hexis.tw.
+or/1-14

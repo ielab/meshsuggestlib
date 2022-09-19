@@ -1,0 +1,17 @@
+us.fs.
+ultrasonics/
+ultrasonography/
+ultrasonography, Doppler/
+ultrasonography, Doppler, color/
+ultrasonography, Doppler, duplex/
+ultrasonography, Doppler, pulsed/
+ultrasound.tw,kf.
+ultrasonic imaging.tw,kf.
+ultrasonogra*.tw,kf.
+echograph*.tw,kf.
+(USS or DUS or CDUS or CEUS).tw,kf.
+(doppler or duplex).tw,kf.
+sonograph*.tw,kf.
+sonogram*.tw,kf.
+(contrast adj4 US).tw,kf.
+or/1-16

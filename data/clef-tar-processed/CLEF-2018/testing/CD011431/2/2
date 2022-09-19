@@ -1,0 +1,20 @@
+exp Reagent kits, diagnostic/
+rapid diagnos* test*.ti,ab.
+RDT.ti,ab.
+Dipstick*.ti,ab.
+Rapid diagnos* device*.ti,ab.
+MRDD.ti,ab.
+OptiMal.ti,ab.
+Binax NOW.ti,ab.
+ParaSight.ti,ab.
+Immunochromatograph*.ti,ab.
+Antigen detection method*.ti,ab.
+Rapid malaria antigen test*.ti,ab.
+Combo card test*.ti,ab.
+Immunoassay/
+Chromatography/
+Enzyme-linked immunosorbent assay/
+Rapid test*.ti,ab.
+Card test*.ti,ab.
+Rapid and (detection* or diagnos*).ti,ab.
+or/1-19

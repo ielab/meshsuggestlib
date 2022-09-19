@@ -1,0 +1,10 @@
+exp "sensitivity and specificity"/
+(sensitiv$ or specificity).tw.
+(predictive adj5 value$).tw.
+exp diagnostic errors/
+((false adj positive$) or (false adj negative$)).tw.
+(observer adj variation$).tw.
+(roc adj curve$).tw.
+(likelihood adj3 ratio$).tw.
+likelihood function/
+or/1-9

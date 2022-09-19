@@ -1,0 +1,6 @@
+exp child/
+exp infant/
+exp perinatal care/
+exp parents/
+(child* or infan* or toddler* or newborn or neonat* or baby or babies or preschool* or pre-school* or kindergarten* or boy* or girl* or schoolchild* or pediatric* or paediatric* or parent* or mother* or father* or maternal or paternal).mp.
+or/1-5

@@ -1,0 +1,4 @@
+exp Lung Neoplasms/
+((lung or lungs or pulmonary) adj3 (neoplasm$ or cancer$ or carcinoma$ or adenocarcinoma$ or angiosarcoma$ or chrondosarcoma$ or sarcoma$ or teratoma$ or lymphoma$ or blastoma$ or microcytic$ or tumour$ or tumor$)).ti,ab.
+NSCLC.ti,ab.
+or/1-3

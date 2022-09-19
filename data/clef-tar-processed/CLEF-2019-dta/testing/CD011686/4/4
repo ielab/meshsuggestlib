@@ -1,0 +1,10 @@
+(Pediatric* or paediatric* or peadiatric*).mp.
+(Child*).mp.
+(neonate* or newborn* or new-born*).mp.
+(infant* or baby or babies or toddler*).mp.
+(adolescen* or juvenile* or youth* or teen* or preteen*).mp.
+exp Pediatrics/
+exp Child/
+exp Infant/
+Adolescent/
+or/1-9

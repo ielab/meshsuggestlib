@@ -1,0 +1,1 @@
+((FDG[Text Word] OR Fludeoxyglucose[Text Word] OR fluorodeoxyglucose[Text Word] OR depreotide[Text Word]) OR ((positron[Text Word] OR photon[Text Word] OR scintillation[Text Word]) AND (emission[Text Word] OR tomograph*[Text Word])) OR (CGC[Text Word] OR PET[Text Word] OR SPECT[Text Word] OR NEOTECT[Text Word] OR NEOSPECT[Text Word] OR NEOTEC[Text Word]))

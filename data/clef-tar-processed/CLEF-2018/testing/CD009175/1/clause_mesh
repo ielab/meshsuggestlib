@@ -1,0 +1,1 @@
+(Pneumonia[mesh:noexp] OR Pneumonia, Bacterial[mesh:noexp] OR Pneumonia, Mycoplasma[mesh:noexp] OR "m. pneumoniae"[Text Word] OR mycoplasma pneumon*[Text Word] OR (community-acquired pneumon*[Text Word] OR community acquired pneumon*[Text Word]))

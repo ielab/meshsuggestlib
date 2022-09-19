@@ -1,0 +1,15 @@
+Neoplasm Recurrence, Local/
+Recurrence/
+recur*.ti,ab.
+relaps*.ti,ab.
+treatment failure/
+Reoperation/
+Follow-Up Studies/ and Postoperative Care/
+reoperat*.ti,ab.
+((local or distant) adj2 failure).ti,ab.
+((therap* or treatment or surg*) adj3 fail*).ti,ab.
+((therap* or treatment or surg*) adj3 (respond* or response*)).ti,ab.
+((postoperat* or post-operat* or postsurg* or post-surg* or posttreat* or post-treat* or posttherap* or post-therap*) adj5 follow up).ti,ab.
+((postoperat* or post-operat* or postsurg* or post-surg* or posttreat* or post-treat* or posttherap* or post-therap*) adj5 surveillance).ti,ab.
+((postoperat* or post-operat* or postsurg* or post-surg* or posttreat* or post-treat* or posttherap* or post-therap*) adj5 monitor*).ti,ab.
+or/1-14

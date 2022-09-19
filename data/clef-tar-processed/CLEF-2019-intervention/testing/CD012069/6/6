@@ -1,0 +1,20 @@
+exp mood disorders/
+(depression or depressive).ti,ab.
+exp psychotic disorders/
+(psychosis or (psychotic adj4 symptom*)).ti,ab.
+exp Body Weight/
+anorexia/
+((loss or lose or losing or reduc*) adj3 (weight or appetite)).ti,ab.
+((reduc* or retard* or inhibit* or deficit*) adj4 growth).ti,ab.
+exp Hypertension/
+Heart Rate/
+exp tachycardia/
+(increas* adj4 (heart rate or pulse or blood pressure)).ti,ab.
+exp Death, Sudden/
+death.ti,ab.
+exp Infertility/
+(((loss or reduc*) adj4 fertility) or infertility).ti,ab.
+exp Carcinogens/
+exp neoplasms/
+((risk adj2 cancer) or (cytogenetic adj2 effect*)).ti,ab.
+or/1-18

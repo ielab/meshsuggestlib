@@ -1,0 +1,7 @@
+exp Pulmonary Embolism/
+(pulmonary adj embol$).ti,ab.
+(pulmonary adj thrombo$).ti,ab.
+(lung adj embol$).ti,ab.
+(lung adj thrombo$).ti,ab.
+(PE or PTE).ti,ab.
+or/1-6

@@ -1,0 +1,10 @@
+Tongue/
+Axilla/
+Skin/
+Mucous Membrane/
+Mouth Mucosa/
+Respiratory Mucosa/
+exp Nasal Mucosa/
+(mucous membrane* or mucosal tissue* or mucosa).tw.
+(tongue* or axilla* or armpit* or skin).tw.
+or/1-9

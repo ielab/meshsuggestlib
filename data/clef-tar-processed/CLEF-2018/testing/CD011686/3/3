@@ -1,0 +1,9 @@
+((Cervical spine or c-spine) adj5 clear*).mp.
+(cervical adj5 (trauma* or injur* or fracture* or sublux* or dislocat* or avuls* or instab*)).mp.
+(Spinal cord injury without radiographic abnormality or SCIWORA).mp.
+exp Cervical Vertebrae/
+exp Neck Injuries/
+exp Spinal Injuries/
+exp Spinal Cord Injuries/
+spinal fractures/
+or/1-8

@@ -1,0 +1,1 @@
+(drug therapy[mesh:noexp] OR trial[Title/Abstract] OR groups[Title/Abstract] OR Randomized Controlled Trial[Publication Type] OR Controlled Clinical Trial[Publication Type] OR placebo[Title/Abstract] OR randomly[Title/Abstract] OR (randomized[Title/Abstract] OR randomised[Title/Abstract]))

@@ -1,0 +1,3 @@
+exp Leg Ulcer/
+((varicose adj ulcer*) or (venous adj ulcer*) or (leg adj ulcer*) or (foot adj ulcer*) or (stasis adj ulcer*) or (lower adj extremit* adj2 ulcer*) or (crural adj ulcer*) or "ulcus cruris" or "ulcer cruris").tw.
+or/1-2

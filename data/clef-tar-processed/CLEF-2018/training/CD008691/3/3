@@ -1,0 +1,59 @@
+exp Echocardiography/
+echocardiogr$.tw.
+echo.tw.
+Dipyridamole/
+Dobutamine/
+Adenosine/
+Imaging, Three Dimensional/
+exp Tomography, Emission-Computed/
+exp Tomography, X-ray Computed/
+SPECT.tw.
+Thallium Radioisotopes/
+Nucleosides/
+Technetium Tc 99m Sestamibi/
+((sestamibi or cardiolite or dipyridamole or persantin) adj3 (scan$ or stud$)).tw.
+(thallium adj3 (scan$ or stud$)).tw.
+electron beam tomograph$.tw.
+EBT.tw.
+(comput$ adj2 tomograph$).tw.
+ct scan$.tw.
+cat scan$.tw.
+Magnetic Resonance Imaging/
+Magnetic Resonance Angiography/
+Diffusion Magnetic Resonance Imaging/
+Echo-Planar Imaging/
+(echo-planar or echoplanar).tw.
+Coronary Angiography/
+Angiography/
+MRI.tw.
+magnetic resonance.tw.
+MRA.tw.
+angiogr$.tw.
+coronary catheteri?ation.tw.
+(CA or CC).tw.
+(Fluoroscopy/ or fluoroscopy.tw.) and (Angiography, Digital Subtraction/ or Subtraction Technique/ or digital subtraction.tw.)
+exp Troponin/
+calcium scor$.tw.
+Clinical Enzyme Tests/
+cardiac enzyme$.tw.
+exp Perfusion Imaging/
+perfusion imaging.tw.
+perfusion stud$.tw.
+perfusion scintigra$.tw.
+Exercise Test/
+Radionuclide Ventriculography/
+Physical Exertion/
+stress test$.tw.
+exercise.tw.
+ventriculogra$.tw.
+treadmill.tw.
+bicycle.tw.
+Risk Assessment/
+risk stratification.tw.
+risk algorithm.tw.
+exp Carotid Arteries/ and exp Ultrasonography/
+exp Carotid Arteries/
+(carotid adj2 (ultrasound or ultrasonogra$)).tw.
+Carotid Arteries/ and (Tunica Intima/ and Tunica Media/)
+(carotid media$ intima$ thickness or carotid intima$ media$ thickness).tw.
+or/1-58

@@ -1,0 +1,30 @@
+(anodic adj3 antigen*).ti,ab.
+(cathodic adj3 antigen*).ti,ab.
+exp Enzyme-Linked Immunosorbent Assay/
+exp Immunoenzyme Techniques/
+hematuria/
+exp proteinuria/
+leukocyturia.ti,ab.
+leucocyturia.ti,ab.
+h?ematuria.ti,ab.
+proteinuria.ti,ab.
+albuminuria.ti,ab.
+CCA.ti,ab.
+CAA.ti,ab.
+urinalysis.ti,ab.
+elisa.ti,ab.
+eia.ti,ab.
+exp Reagent Strips/
+dipstick.mp.
+(reagent adj3 strip*).ti,ab.
+(test adj3 strip*).ti,ab.
+haemastix.ti,ab.
+"schistosoma mansoni".ti,ab.
+"schistosoma haematobium".ti,ab.
+exp Glycoproteins/
+exp Antigens, Helminth/
+exp Helminth Proteins/
+exp Schistosoma haematobium/
+exp Antibodies, Monoclonal/
+exp Schistosoma mansoni/
+or/1-29

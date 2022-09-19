@@ -1,0 +1,8 @@
+typhoid fever/
+exp Salmonella enterica/
+exp paratyphoid fever/
+"typhoid fever".mp.
+"paratyphoid fever".mp.
+"enteric fever".mp.
+(typhi or paratyphi or "salmonella enterica").ab. or (typhi or paratyphi or "salmonella enterica").ti.
+or/1-7

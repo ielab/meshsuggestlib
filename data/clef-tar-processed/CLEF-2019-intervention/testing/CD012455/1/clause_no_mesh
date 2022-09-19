@@ -1,0 +1,1 @@
+((ICU[All Fields] OR ((intensive[All Fields] OR critical[All Fields]) AND (care[All Fields] OR unit*[All Fields])) OR (critical*[All Fields] AND ill*[All Fields])) OR (mechanical*[All Fields] AND ventilat*[All Fields]) OR (artificial*[All Fields] AND respiration*[All Fields]))

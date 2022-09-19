@@ -1,0 +1,9 @@
+exp "SLEEP INITIATION AND MAINTENANCE DISORDERS"/
+insomni*.tw.
+SLEEP/
+exp SLEEP STAGES/
+WAKEFULNESS/
+(sleep impact scale or sleep questionnaire or sleep scale or sleep evaluation questionnaire or sleep quality index or PSQI or sleep impairment index or sleepiness scale or sleep log or sleep diar*).tw.
+(sleep adj3 (initiation or onset or maintenance)).tw.
+(nocturnal adj (wake* or awake*)).tw.
+or/1-8

@@ -1,0 +1,11 @@
+colorectal neoplasms/
+exp adenomatous polyposis coli/
+exp colonic neoplasms/
+colorectal neoplasms, hereditary nonpolyposis/
+exp rectal neoplasms/
+(colorectal adj3 (neoplas* or cancer? or tumour? or tumor? or carcinoma?)).ti,ab.
+(colon* adj3 (neoplas* or cancer? or tumour? or tumor? or carcinoma?)).ti,ab.
+(bowel adj3 (neoplas* or cancer? or tumour? or tumor? or carcinoma?)).ti,ab.
+(rectal adj3 (neoplas* or cancer? or tumour? or tumor? or carcinoma?)).ti,ab.
+(rectum adj3 (neoplas* or cancer? or tumour? or tumor? or carcinoma?)).ti,ab.
+or/1-10

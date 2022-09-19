@@ -1,0 +1,6 @@
+exp Mouth neoplasms/
+Lichen Planus, Oral/
+Oral submucous fibrosis/
+Oral candidiasis/
+((oral$ or mouth$ or bucca$ or "oral cavit$" or (oral adj mucosa$) or (mouth adj mucosa$) or lip or lips or tongue$ or gingiv$ or palat$ or cheek$ or "intra oral$" or intraoral$ or gum or gums or labial$) adj3 (tumor$ or tumour$ or cancer$ or carcinoma$ or carcinogen$ or neoplas$ or malignan$ or metasta$ or dysplas$ or lesion$ or ulcer$ or pre-cancer$ or precancer$ or premalignan$ or precursor$ or "lichen planus" or leukoplakia or "submucous fibrosis" or (actinic adj2 keratosis) or candidiasis or erythroplakia or erythroplas$ or erythroleukoplakia or hyperplas$ or hyperkerato$)).tw,ot.
+or/1-5

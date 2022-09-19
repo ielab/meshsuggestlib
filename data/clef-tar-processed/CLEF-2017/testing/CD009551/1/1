@@ -1,0 +1,5 @@
+exp Aspergillosis/
+exp Pulmonary Aspergillosis/
+exp Aspergillus/
+(aspergillosis or aspergillus or aspergilloma or "A.fumigatus" or "A. flavus" or "A. clavatus" or "A. terreus" or "A. niger").ti,ab.
+or/1-4

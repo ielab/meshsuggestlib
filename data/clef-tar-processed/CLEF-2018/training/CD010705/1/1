@@ -1,0 +1,8 @@
+exp Tuberculosis, Pulmonary/
+exp Tuberculosis, Multidrug-Resistant/
+MDR-TB.ti,ab.
+XDR-TB.ti,ab.
+Mycobacterium tuberculosis/
+TB.ti,ab.
+tuberculosis.ti,ab.
+or/1-7

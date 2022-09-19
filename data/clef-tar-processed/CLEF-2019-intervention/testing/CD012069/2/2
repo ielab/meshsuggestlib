@@ -1,0 +1,20 @@
+randomized controlled trial.pt.
+controlled clinical trial.pt.
+Randomized Controlled Trials as Topic.mp.
+random allocation.mp.
+double blind method.mp.
+single blind method.mp.
+clinical trial.pt.
+(clin$ adj25 trial$).ti,ab.
+((singl$ or doubl$ or tripl$ or trebl$) adj25 (blind$ or mask$ or dummy$)).mp.
+exp clinical trial/
+placebos.mp.
+placebo$.ti,ab.
+random$.ti,ab.
+comparative study.mp.
+evaluation studies as topic/
+exp clinical trials as topic/
+follow up studies.mp.
+prospective studies.mp.
+(control$ or prospectiv$ or volunteer$).ti,ab.
+or/1-19

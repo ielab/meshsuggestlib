@@ -1,0 +1,27 @@
+exp communication/
+(communicat* or messag* or face to face or verbal* or nonverbal* or written or writing or reading or language* or speech* or speak* or spoken or talk* or conversation* or listen* or negotiat* or narrat* or dialog* or question* or promot* or marketing or adverti* or persua* or signage* or cartoon* or humo?r* or music* or interpreter* or translator*).mp.
+(readability or intelligibility or credibility).mp.
+(trust* or truth* or deceiv* or deception or misinform*).mp.
+exp interpersonal relations/
+hospital patient relations/
+community institutional relations/
+((professional or physician or doctor or clinician or nurse or provider) adj1 (patient or client or family)).mp.
+((improv* or increas* or enhanc* or rais*) adj3 (knowledge or understanding or comprehension or aware*)).ti,ab,kf.
+((health or patient* or client*) adj2 knowledge).mp.
+(educat* or teach* or instruct* or train* or coach* or learn*).mp.
+((community or family or office or work* or school or faith or church) adj based).ti,ab,kf.
+(information* adj (service* or disseminat* or seek* or transfer* or campaign* or provid* or provision or aid or material* or sheet* or pack*)).mp.
+((patient or client or health or medical or written or print* or visual* or provid* or present* or vaccin* or immuni*) adj2 inform*).mp.
+((oral or text* or data or numerical or statistical or visual or graphic*) adj (format* or presentation* or display*)).mp.
+(counsel* or advis* or advice* or social support or psychosocial or ((social or pastoral or spiritual) adj care)).mp.
+((support or peer) adj2 (intervention* or group* or program*)).mp.
+((social or community) adj2 network*).mp.
+((print* adj (material* or based or media)) or paper-based or (paper adj1 pen*) or publication* or newsletter* or brochure* or booklet* or pamphlet* or leaflet* or flyer* or handout* or poster* or illustrat* or picture* or pictogram*).mp.
+((home* adj3 visit*) or interview* or session* or lecture* or meeting* or presentation*).mp.
+(cultural* adj3 (service* or care or intervention* or appropriate* or sensitiv*)).mp.
+choice behavior/
+(decision adj (making or support or aid*)).mp.
+exp informed consent/
+(informed adj (consent or choice* or decision*)).ti,ab,kf.
+((patient or person or family or client) adj (cent*red or focus*ed or oriented)).mp.
+or/1-26

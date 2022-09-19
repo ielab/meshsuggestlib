@@ -1,0 +1,3 @@
+exp Intubation, Gastrointestinal/
+((stomach or gastric or gastro* or nasogastric or feeding or fine bore or Ryles) adj3 (tube* or intubat*)).ti,ab,kw.
+or/1-2

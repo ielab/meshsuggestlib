@@ -1,0 +1,1 @@
+(death OR ((loss OR lose OR losing OR reduc) AND (weight OR appetite)) OR (depression OR depressive) OR (growth AND (reduc OR retard OR inhibit OR deficit)) OR (increas AND (heart rate OR pulse OR blood pressure)) OR (infertility OR (fertility AND (loss OR reduc))) OR (psychosis OR (psychotic AND symptom)))

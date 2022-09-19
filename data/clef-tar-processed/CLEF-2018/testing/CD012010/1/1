@@ -1,0 +1,8 @@
+Pancreatitis, Acute Necrotizing/
+Pancreatitis/
+Pancreas/
+(acute adj3 pancrea*).mp.
+(necro* adj3 pancrea*).mp.
+(inflam* adj3 pancrea*).mp.
+((interstitial or edema* or oedema*) adj2 pancrea*).mp.
+or/1-7

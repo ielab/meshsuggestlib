@@ -1,0 +1,5 @@
+exp Ovarian Neoplasms/
+Fallopian Tube Neoplasms/
+Peritoneal Neoplasms/
+((ovar* or fallopian* or peritone*) adj5 (cancer* or neoplasm* or carcin* or cystadenocarcinoma* or malign* or tumo?r*)).ti,ab,kw,kf.
+or/1-4

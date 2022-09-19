@@ -1,0 +1,6 @@
+exp Pain, Postoperative/
+exp Postoperative Care/
+Postoperative Complications/
+Pain/
+((post operative or postoperative) adj6 (pain* or recovery)).ti,ab.
+or/1-5

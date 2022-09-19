@@ -1,0 +1,5 @@
+(pancreatect* or pancreaticojejunost* or pancreaticogastros* or pancreaticoduodenect* or duodenopancreatectom*).ti,ab.
+exp Pancreatectomy/
+exp Pancreaticojejunostomy/
+exp Pancreaticoduodenectomy/
+or/1-4

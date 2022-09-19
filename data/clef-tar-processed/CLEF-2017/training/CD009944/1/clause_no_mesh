@@ -1,0 +1,1 @@
+(t-stag*[Text Word] OR (gastric[Text Word] AND staging[Text Word]) OR (lymph[Text Word] AND node[Text Word] AND metastasis[Text Word]))

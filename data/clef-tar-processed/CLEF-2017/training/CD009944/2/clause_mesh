@@ -1,0 +1,1 @@
+(*Diagnostic Imaging[mesh:noexp] OR Neoplasm Invasiveness[mesh:noexp] OR Peritoneal Neoplasms[mesh:noexp] OR Abdominal Neoplasms[mesh:noexp] OR Stomach Neoplasms[mesh:noexp] OR Endosonography[mesh:noexp] OR EUS[Title/Abstract] OR (endoscop*[Text Word] AND (ultrasound[Text Word] OR ultrasonograph*[Text Word] OR ultrasonic[Text Word])))

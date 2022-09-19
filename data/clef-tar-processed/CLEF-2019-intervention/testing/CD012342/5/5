@@ -1,0 +1,9 @@
+(meta analy* or metaanaly*).ti.
+(systematic* adj2 (review* or overview*)).tw,kf.
+(cochrane or medline or pubmed or embase or cinahl or cinhal or lilacs or "web of science" or science citationindex or search terms or published articles or search strateg* or reference list* or bibliograph* or handsearch* or hand search* or manual* search*).ti,ab.
+(additional adj (papers or articles or sources)).ti,ab.
+(electronic adj (sources or resources or databases)).ti,ab.
+(relevant adj (journals or articles)).ti,ab.
+"REVIEW LITERATURE AS TOPIC"/
+META-ANALYSIS AS TOPIC/
+or/1-8

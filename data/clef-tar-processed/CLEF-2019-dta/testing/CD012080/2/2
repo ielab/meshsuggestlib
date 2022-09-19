@@ -1,0 +1,10 @@
+exp Breath Tests/
+(breath adj3 test).mp.
+exp Enzyme-Linked Immunosorbent Assay/
+(Enzyme-Linked Immunosorbent Assay or ELISA).mp.
+exp Blotting, Western/
+(Western adj1 (blot or blotting or immunoblot or immunoblotting)).mp.
+Latex Fixation Tests/
+("latex agglutination test" or "latex fixation test" or LAT).mp.
+((stool or "stool antigen" or feces or faeces or fecal or faecal) adj3 test).mp.
+or/1-9

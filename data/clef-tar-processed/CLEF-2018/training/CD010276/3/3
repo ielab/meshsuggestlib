@@ -1,0 +1,37 @@
+Cytodiagnosis/
+Cytological techniques/
+Cytophotometry/
+(brush adj3 biops$).tw,ot.
+("oral cdx" or oralcdx).tw,ot.
+("modified liquid based cytology" or (exfoliat$ adj3 cytolog$)).tw,ot.
+(brush$ and (cytodiagnosis or cytopathology)).tw,ot.
+Tolonium chloride/
+Coloring agents/
+("tolonium chloride" or "tolu?dine blue" or "tolu?dine b" or tblue or t-blue).tw,ot.
+(tolu?dine adj6 (dye$ or rins$ or stain$ or wash$)).tw,ot.
+exp Luminescence/
+Fluorescence/
+Spectrometry, fluorescence/
+exp Luminescent Agents/
+Light/
+Tomography, Optical Coherence/
+(visual$ adj5 ("light emitting diode" or "blue spectrum" or LED or luminous$)).tw,ot.
+(visuali?ation adj3 adjunct$).tw,ot.
+(vizilite or microlux$ or orascoptic or velscope).tw,ot.
+lumenoscop$.tw,ot.
+((tumor$ or tumour$ or cancer$ or carcinoma$ or neoplas$ or carcinogen$ or malignan$ or metata$ or lesion$ or ulcer$) adj5 (fluorescen$ or autofluorescen$ or luminescen$ or chemiluminescen$)).tw,ot.
+(tissue adj3 reflect$).tw,ot.
+Spectrophotometry/
+Acetic acid/
+(acetic acid adj3 (wash$ or rins$)).tw,ot.
+acetowhite.tw,ot.
+Saliva/
+Tumor Markers, Biological/
+(("tumo?r marker$" or "neoplas$ marker$") adj3 (blood or saliva)).tw,ot.
+((analy$ or screen$ or test$ or examin$) adj3 (blood or saliva)).tw,ot.
+Diagnosis, Oral/
+Mass screening/
+Physical examination/
+((oral$ or mouth$) adj5 (exam$ or histolog$ or check$ or inspect$)).tw,ot.
+(visual$ adj3 (exam$ or inspect$ or screen$)).tw,ot.
+or/1-36

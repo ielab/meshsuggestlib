@@ -1,0 +1,1 @@
+(Skin[mesh:noexp] OR Mucous Membrane[mesh:noexp] OR Nasal Mucosa[mesh] OR Respiratory Mucosa[mesh:noexp] OR Tongue[mesh:noexp] OR Axilla[mesh:noexp] OR Mouth Mucosa[mesh:noexp] OR (tongue*[Text Word] OR axilla*[Text Word] OR armpit*[Text Word] OR skin[Text Word]) OR (mucous membrane*[Text Word] OR mucosal tissue*[Text Word] OR mucosa[Text Word]))

@@ -1,0 +1,20 @@
+exp Dementia/
+Delirium/
+Delirium, Dementia, Amnestic, Cognitive Disorders/
+dement*.ti,ab.
+alzheimer*.ti,ab.
+(lewy* adj2 bod*).ti,ab.
+(chronic adj2 cerebrovascular).ti,ab.
+("organic brain disease" or "organic brain syndrome").ti,ab.
+"benign senescent forgetfulness".ti,ab.
+(cerebr* adj2 deteriorat*).ti,ab.
+(cerebral* adj2 insufficient*).ti,ab.
+(pick* adj2 disease).ti,ab.
+"Frontotemporal lobar degeneration".ti,ab.
+"progressive non-fluent aphasia".ti,ab.
+"primary progressive aphasia".ti,ab.
+(FTD or FTLD).ti,ab.
+Frontotemporal Lobar Degeneration/
+Primary Progressive Nonfluent Aphasia/
+Aphasia, Primary Progressive/
+or/1-19

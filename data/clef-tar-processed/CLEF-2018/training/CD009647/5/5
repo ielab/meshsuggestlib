@@ -1,0 +1,10 @@
+Urine/
+(urin* adj3 (volume* or colo?r or dark* or gravit* or concentration)).tw.
+Heart Rate/
+Pulse/
+((pulse or heart) adj3 (rapid* or change* or fast)).tw.
+exp Blood Pressure/
+((systolic or diastolic) adj3 pressure*).tw.
+Dizziness/
+(dizz* or lightheaded* or orthostasis).tw.
+or/1-9

@@ -1,0 +1,11 @@
+exp "Asymptomatic Diseases"/
+asymptom*.ti,ab,kf.
+nonsymptom*.ti,ab,kf.
+non symptom*.ti,ab,kf.
+abacterial*.ti,ab,kf.
+nonbacterial*.ti,ab,kf.
+non bacterial*.ti,ab,kf.
+aseptic*.ti,ab,kf.
+nonseptic*.ti,ab,kf.
+non septic*.ti,ab,kf.
+or/1-10

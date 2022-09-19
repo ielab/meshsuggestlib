@@ -1,0 +1,50 @@
+diagnostic imaging/
+exp Lung/
+Pulmonary Artery/
+Angiography/
+(pulmonary adj3 angiogr$).ti,ab.
+(lung adj3 angiogr$).ti,ab.
+magnetic resonance imaging/
+magnetic resonance angiography/
+Diffusion Magnetic Resonance Imaging/
+((magnetic resonance or MR or MRI or NMR) adj5 (angiogra$ or arteriogra$)).ti,ab.
+MRA.ti,ab.
+tomography/
+exp tomography, emission-computed/
+exp tomography, x-ray/
+tomography scanners, x-ray computed/
+((CT or CAT) adj5 (angiogra$ or arteriogra$ or tomograph$)).ti,ab.
+(comput$ adj3 tomogra$).ti,ab.
+tomodensitometry.ti,ab.
+(cat adj4 scan$).ti,ab.
+(ct adj4 scan$).ti,ab.
+(CTA or CTPA).ti,ab.
+three dimensional-ct.ti,ab.
+(MDCT or MSCT).ti,ab.
+multislice.ti,ab.
+multi-slice.ti,ab.
+(multi-row or multirow).ti,ab.
+(single-slice or singleslice).ti,ab.
+3d-cta.ti,ab.
+exp ultrasonography, doppler/
+ultrasonography/
+exp ultrasonography, prenatal/
+ultrasonics/
+ultrasound.ti,ab.
+ultrasonogra$.ti,ab.
+ultrasonic$.ti,ab.
+echograph$.ti,ab.
+(USS or DUS or CDUS or CEUS).ti,ab.
+(doppler or duplex).ti,ab.
+sonograph$.ti,ab.
+sonogram$.ti,ab.
+(contrast adj4 US).ti,ab.
+Phlebography/
+radionuclide imaging/
+perfusion imaging/
+Ventilation-Perfusion Ratio/
+(VQ or V?Q or V?P).ti,ab.
+SPECT.ti,ab.
+perfusion.ti,ab.
+scintigraph$.ti,ab.
+or/1-49

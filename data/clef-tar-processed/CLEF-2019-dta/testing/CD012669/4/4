@@ -1,0 +1,5 @@
+exp Tomography, X-Ray Computed/
+(CT scan or cat scan or (xray* adj1 ct) or xrayct or (compute* adj2 tomograph*)).ti,ab,kf.
+(MDCT or pan scan or panscan).ti,ab,kf.
+(laparotom* or laparoscop* or thoracotom* or sternotom* or thoracoscop* or autops*).ti,ab,kf,hw.
+or/1-4

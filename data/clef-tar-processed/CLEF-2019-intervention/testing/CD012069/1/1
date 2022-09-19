@@ -1,0 +1,15 @@
+exp "Attention Deficit and Disruptive Behavior Disorders"/
+adhd.ti,ab.
+addh.ti,ab.
+adhs.ti,ab.
+(ad adj hd).ti,ab.
+((attention$ or behav$) adj3 (defic$ or dysfunc$ or disorder$)).ti,ab.
+((disrupt$ adj3 disorder$) or (disrupt$ adj3 behav$) or (defian$ adj3 disorder$) or (defian$ adj3 behav$)).ti,ab.
+(impulsiv$ or inattentiv$ or inattention$).ti,ab.
+hyperactiv$.ti,ab.
+hyperkinesis$.ti,ab.
+exp Hyperkinesis/
+(minimal adj brain adj3 disorder$).ti,ab.
+(minimal adj brain adj3 dysfunction$).ti,ab.
+(minimal adj brain adj3 damage$).ti,ab.
+or/1-14

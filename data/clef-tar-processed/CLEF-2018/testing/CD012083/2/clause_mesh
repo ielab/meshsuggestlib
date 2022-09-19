@@ -1,0 +1,1 @@
+(Intubation, Gastrointestinal[mesh] OR (stomach[All Fields] OR gastric[All Fields] OR gastro*[All Fields] OR nasogastric[All Fields] OR feeding[All Fields] OR fine bore[All Fields] OR Ryles[All Fields]) AND (tube*[All Fields] OR intubat*[All Fields]))

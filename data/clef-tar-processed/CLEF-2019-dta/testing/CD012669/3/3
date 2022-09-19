@@ -1,0 +1,7 @@
+point of care.ti,ab,kf.
+Point-of-Care Systems/
+(POCUS or POC US or POC USG).ti,ab,kf.
+((focused adj2 assessment adj2 sonogra* adj2 trauma) or extended-FAST or (FAST adj (ultrasonography or ultrasound))).ti,ab,kf.
+((portable or hand-held or handheld or mobile or emergency) adj (sonogra* or ultraso*)).ti,ab,kf.
+bedside.ti,ab,kf.
+or/1-6

@@ -1,0 +1,1 @@
+(clinical trials as topic[mesh:noexp] OR controlled clinical trial[Publication Type] OR randomized[Title/Abstract] OR placebo[Title/Abstract] OR randomly[Title/Abstract] OR trial[Title] OR randomized controlled trial[Publication Type])

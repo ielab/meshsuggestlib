@@ -1,0 +1,1 @@
+("Aspergillus"[mesh] OR "Aspergillosis"[mesh] OR "Pulmonary Aspergillosis"[mesh] OR aspergill*[Title/Abstract] OR fungal infection[Text Word] OR (invasive[Title/Abstract] AND fungal[Title/Abstract]))

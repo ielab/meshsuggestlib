@@ -1,0 +1,1 @@
+(Aortic Aneurysm[mesh] OR Aorta, Abdominal[mesh:noexp] OR AAA*[All Fields] OR (EVAR[All Fields] OR TEVAR[All Fields] OR EVRAR[All Fields]) OR (abdom*[All Fields] AND aneurysm*[All Fields]) OR (aort*[All Fields] AND aneurysm*[All Fields]) OR (abdom*[All Fields] AND aort*[All Fields]) OR (aort*[All Fields] AND morphol*[All Fields]))

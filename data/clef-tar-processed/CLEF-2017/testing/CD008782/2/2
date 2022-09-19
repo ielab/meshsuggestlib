@@ -1,0 +1,11 @@
+exp Amyloid Beta-Protein/
+Peptide Fragments/
+ABPP.ti,ab.
+APP.ti,ab.
+beta?A4.ti,ab.
+(beta adj3 A4).ti,ab.
+Abeta$.ti,ab.
+amyloid.ti,ab.
+(amyloidogenic adj3 (peptide$ or protein$)).ti,ab.
+(Innotest or Inno-bia or Alzbio3).ti,ab.
+or/1-10

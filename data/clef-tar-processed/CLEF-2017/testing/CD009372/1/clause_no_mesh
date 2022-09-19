@@ -1,0 +1,1 @@
+(MRA[Text Word] AND ((magnetic resonance[Text Word] OR MR[Text Word] OR MRI[Text Word] OR NMR[Text Word]) AND (angiogra*[Text Word] OR arteriogra*[Text Word])) AND ((Compute*[Text Word] OR CT[Text Word] OR CAT[Text Word]) AND (angiogra*[Text Word] OR arteriogra*[Text Word])))

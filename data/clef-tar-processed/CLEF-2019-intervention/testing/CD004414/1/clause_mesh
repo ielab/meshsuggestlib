@@ -1,0 +1,1 @@
+(((dermat*[Title/Abstract] OR eczema[Title/Abstract]) AND (occupation*[Title/Abstract] OR irritant*[Title/Abstract] OR contact[Title/Abstract]) AND (hand*[Title/Abstract] OR finger*[Title/Abstract] OR palm*[Title/Abstract])) OR Hand Dermatoses[mesh:noexp])

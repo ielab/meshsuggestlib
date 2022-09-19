@@ -1,0 +1,17 @@
+Pharyngitis/
+pharyngitis.tw.
+Tonsillitis/
+tonsillitis.tw.
+(tonsillopharyngitis or pharyngotonsillitis).tw.
+sore throat*.tw.
+((throat* or pharyn* or tonsil*) adj5 (infect* or inflam*)).tw.
+Pharynx/
+Streptococcal Infections/
+(strep* adj5 (throat* or pharyn* or tonsil*)).tw.
+("group a" adj5 streptococc*).tw.
+gabhs.tw.
+(beta-hemoly* or beta-haemoly*).tw.
+lancefield group a.tw.
+Streptococcus pyogenes/
+(streptococcus pyogenes or "s. pyogenes" or "s.pyogenes").tw.
+or/1-16

@@ -1,0 +1,3 @@
+exp Splenomegaly/
+(((splenic* or spleen*) adj3 (enlarg* or hypertroph or length or palpable or size or diamet* or index or examin*)) or splenomegal*).mp.
+or/1-2

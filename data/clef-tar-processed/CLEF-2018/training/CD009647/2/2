@@ -1,0 +1,17 @@
+Dehydration/
+Water-electrolyte Imbalance/
+Water-electrolyte Balance/
+Hyperkalemia/
+Hypokalemia/
+Hypernatremia/
+Hyponatremia/
+Osmolar Concentration/
+Hypovolemia/
+(dehydrat* or hydrat*).tw.
+((fluid* or water) adj3 (balance* or imbalance* or status or body or extracellular or intracellular)).tw.
+(hypokal* or hyperkal* or hyponatr* or hypernatr*).tw.
+(plasma* adj3 (tonicit* or hypertonic* or hypotonic*)).tw.
+h?emoconcentrat*.tw.
+osmolalit*.tw.
+hypovol?emi*.tw.
+or/1-16

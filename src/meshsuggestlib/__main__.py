@@ -15,6 +15,8 @@ from meshsuggestlib.data import EncodeDataset
 from meshsuggestlib.retriever import BaseFaissIPRetriever
 from meshsuggestlib.evaluation import Evaluator
 from meshsuggestlib.data import EncodeCollator
+from meshsuggestlib.suggestion import suggest_mesh_terms,prepare_model
+from meshsuggestlib.submission import combine_query, submit_result
 from tqdm import tqdm
 import torch
 from contextlib import nullcontext
@@ -23,14 +25,9 @@ import gc
 logger = logging.getLogger(__name__)
 
 
-def write_ranking(corpus_indices, corpus_scores, q_lookup, ranking_save_file):
-    with open(ranking_save_file, 'w') as f:
-        for qid, q_doc_scores, q_doc_indices in zip(q_lookup, corpus_scores, corpus_indices):
-            score_list = [(s, idx) for s, idx in zip(q_doc_scores, q_doc_indices)]
-            score_list = sorted(score_list, key=lambda x: x[0], reverse=True)
-            for rank, (s, idx) in enumerate(score_list):
-                f.write(f'{qid}\t{idx}\t{rank + 1}\n')
-
+def write_ranking(topic, final_result, output):
+    for rank, r in enumerate(final_result):
+        output.write(f'{topic}\t{r}\t{rank + 1}\n')
 
 def encoding(dataset, model, tokenizer, max_length, hf_args, async_args, encode_is_qry=False):
     encode_loader = DataLoader(
@@ -96,12 +93,6 @@ def main():
     logger.info("HuggingFace parameters %s", hf_args)
     logger.info("MeSHSuggestLib parameters %s", mesh_args)
 
-    tokenizer = AutoTokenizer.from_pretrained(
-        mesh_args.tokenizer_name_or_path,
-        cache_dir=mesh_args.cache_dir,
-        use_fast=True,
-    )
-
     deploy_dataset = mesh_args.dataset
     method = mesh_args.method
 
@@ -132,97 +123,60 @@ def main():
                 raise Exception("keyword file for topic %s clause num %s does not exist", topic, str(clause_num))
             if not os.path.exists(clause_no_mesh):
                 raise Exception("original no mesh clause file for topic %s clause num %s does not exist", topic, str(clause_num))
+            current_keywords = []
+            with open(clause_no_mesh) as f:
+                input_clause_dict[index] = f.read().strip()
+
             with open(keyword_file, 'r') as f:
                 for l in f:
-
-
+                    k = l.strip()
+                    if k not in current_keywords:
+                        current_keywords.append(k)
+            if len(current_keywords)>0:
+                input_keywords_dict[index] = current_keywords
+            else:
+                raise Exception("no keyword existed for topic %s clause num %s", topic, str(clause_num))
 
     if method in pre_methods_base:
         a = 0 #need to add code here
 
     if method in pre_methods_bert:
-        model = DenseModel(
-            model_path=model_dir,
-            mesh_args=mesh_args,
-        ).eval()
-        model = model.to(mesh_args.device)
-        p_lookup, p_reps = encoding(candidate_dataset, model, tokenizer, async_args.p_max_len, hf_args, async_args)
+        mesh_dict, tokenizer, model, model_w2v = prepare_model(mesh_args.model_dir, mesh_file, 1, mesh_args.tokenizer_name_or_path, mesh_args.cache_dir, mesh_args.semantic_model_path)
+        candidate_dataset = EncodeDataset(mesh_file,
+                                          tokenizer,
+                                          max_len=mesh_args.p_max_len,
+                                          cache_dir=mesh_args.cache_dir)
+        p_lookup, p_reps = encoding(candidate_dataset, model, tokenizer, mesh_args.p_max_len, hf_args, mesh_args)
+        retriever = BaseFaissIPRetriever(p_reps.float().numpy())
 
+        logger.info("Starts Retrieval")
+        try:
+            output = open(mesh_args.output_file, 'w')
+        except:
+            raise Exception("can not create output file at Path %s", mesh_args.output_file)
+        final_query_dict = {}
+        for topic_index in tqdm(input_keywords_dict):
+            input_keywords = input_keywords_dict[topic_index]
+            no_mesh_clause = input_keywords[topic_index]
+            input_dict = {
+                "Keywords": input_keywords,
+                "Type": method,
+            }
+            suggestion_results = suggest_mesh_terms(input_dict, model, tokenizer, retriever, p_lookup, mesh_dict, model_w2v, mesh_args.interpolation_depth, mesh_args.depth)["MeSH_Terms"]
+            suggested_mesh_terms = []
+            for r in suggestion_results:
+                suggested_mesh_terms += r["MeSH_Terms"]
+            suggested_mesh_terms = list(set(suggested_mesh_terms))
+            new_query = combine_query(no_mesh_clause, suggested_mesh_terms)
+            topic_parent = topic_index.split('_')[0]
+            if topic_parent not in final_query_dict:
+                final_query_dict[topic_parent] = []
+            final_query_dict[topic_parent].append(new_query)
 
-    for query_file in async_args.query_files:
-        query_dataset = EncodeDataset(query_file,
-                                      tokenizer,
-                                      max_len=async_args.q_max_len,
-                                      cache_dir=async_args.cache_dir)
-        query_datasets.append(query_dataset)
-
-    files = os.listdir(async_args.candidate_dir)
-    candidate_files = [
-        os.path.join(async_args.candidate_dir, f) for f in files if f.endswith('json')
-    ]
-    candidate_dataset = EncodeDataset(candidate_files,
-                                      tokenizer,
-                                      max_len=async_args.p_max_len,
-                                      cache_dir=async_args.cache_dir)
-
-    evaluator = Evaluator(async_args.qrel_file, async_args.metrics)
-
-    finished_ckpts = set()
-    last_change = os.stat(async_args.ckpts_dir).st_mtime
-
-    hit_max = False
-    logger.info(f"Listening to {async_args.ckpts_dir}")
-    # Validation loop
-    while not hit_max:
-        current_change = os.stat(async_args.ckpts_dir).st_mtime
-        if current_change != last_change or len(os.listdir(async_args.ckpts_dir)) != 0:
-            time.sleep(5)
-            last_change = current_change
-            ckpt_time = [(ckpt, os.stat(os.path.join(async_args.ckpts_dir, ckpt)).st_mtime)
-                         for ckpt in os.listdir(async_args.ckpts_dir)]
-            ckpt_time = sorted(ckpt_time, key=lambda x: x[1])
-
-            # validation loop
-            for ckpt, _ in ckpt_time:
-                ckpt_path = os.path.join(async_args.ckpts_dir, ckpt)
-                if ckpt_path in finished_ckpts:
-                    continue
-                logger.info(f"Evaluating {ckpt_path}")
-
-                model = DenseModel(
-                    ckpt_path=ckpt_path,
-                    async_args=async_args,
-                ).eval()
-                model = model.to(async_args.device)
-
-                p_lookup, p_reps = encoding(candidate_dataset, model, tokenizer, async_args.p_max_len, hf_args, async_args)
-
-                q_lookup_list = []
-                q_reps_list = []
-                for query_dataset in query_datasets:
-                    q_lookup, q_reps = encoding(query_dataset, model, tokenizer, async_args.q_max_len,
-                                                hf_args, async_args, encode_is_qry=True)
-                    q_lookup_list.append(q_lookup)
-                    q_reps_list.append(q_reps)
-
-                retriever = BaseFaissIPRetriever(p_reps.float().numpy())
-
-                all_scores_list = []
-                psg_indices_list = []
-                for q_reps in q_reps_list:
-                    all_scores, psg_indices = search_queries(retriever, q_reps.float().numpy(), p_lookup, async_args)
-                    all_scores_list.append(all_scores)
-                    psg_indices_list.append(psg_indices)
-
-                for i, (all_scores, psg_indices, q_lookup) in enumerate(zip(all_scores_list,
-                                                                        psg_indices_list,
-                                                                        q_lookup_list)):
-                    if async_args.write_run:
-                        if not os.path.exists(hf_args.output_dir):
-                            os.makedirs(hf_args.output_dir)
-                        write_ranking(psg_indices, all_scores, q_lookup, os.path.join(hf_args.output_dir, f'set_{i}_{ckpt}.tsv'))
-
-
+        for topic_id in final_query_dict:
+            mesh_query = " AND ".join(final_query_dict[topic_id])
+            final_result = submit_result(mesh_query, mesh_args.email)
+            write_ranking(topic_id, final_result, output)
 
 if __name__ == "__main__":
     main()

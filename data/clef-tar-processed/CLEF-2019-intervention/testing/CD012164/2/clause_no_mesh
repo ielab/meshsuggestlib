@@ -1,0 +1,1 @@
+(SEPS[Title/Abstract] OR (endoscop*[Title/Abstract] AND (surger*[Title/Abstract] OR surgic*[Title/Abstract] OR ligation*[Title/Abstract] OR ligatur*[Title/Abstract] OR ablation*[Title/Abstract])) OR (perforat*[Title/Abstract] AND (endoscop*[Title/Abstract] OR subfascial[Title/Abstract])))

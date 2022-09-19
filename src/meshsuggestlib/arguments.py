@@ -24,6 +24,10 @@ class MeSHSuggestLibArguments:
         default=None, metadata={"help": "Used dataset, currently supported options are 'CLEF-2017', 'CLEF-2018', 'CLEF-2019-dta' and ', 'CLEF-2019-intervention' or dataset FOLDER-NAME"}
     )
 
+    semantic_model_path: str = field(
+        default=None, metadata={"help": "Cache folder."}
+    )
+
     cache_dir: str = field(
         default=None, metadata={"help": "Cache folder."}
     )
@@ -61,6 +65,10 @@ class MeSHSuggestLibArguments:
     output_file: str = field(
         default=None, metadata={"help": "Path to the output file of query"}
     )
+    device: str = field(
+        default='email', metadata={"help": "The GPU device uses for encoding"}
+    )
+
 
     device: str = field(
         default='cuda:0', metadata={"help": "The GPU device uses for encoding"}

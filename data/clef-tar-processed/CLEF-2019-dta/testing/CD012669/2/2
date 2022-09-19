@@ -1,0 +1,7 @@
+exp Ultrasonography/
+Diagnostic Imaging/
+(ultraso* or sonogra*).ti,ab,kf.
+(diagnos* adj2 (screen* or scan* or imag*)).ti,ab,kf.
+diagnostic imaging.fs.
+(advanced trauma life support or atls).ti,ab,kf.
+or/1-6

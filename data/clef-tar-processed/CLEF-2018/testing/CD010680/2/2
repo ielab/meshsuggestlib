@@ -1,0 +1,21 @@
+exp Peripheral Vascular Diseases/
+Arterial Occlusive Diseases/
+exp Arteriosclerosis/
+exp Atherosclerosis/
+exp Peripheral Arterial Disease/
+Intermittent Claudication/
+(atherosclero* or arteriosclero* or PVD or PAOD or PAD).ti,ab.
+(arter$ adj4 ($occlus$ or steno$ or obstruct$ or lesio$ or block$ or obliter$)).ti,ab.
+(vascular adj4 (occlus* or steno* or obstruct* or lesio* or block* or obliter*)).ti,ab.
+(vein* adj4 (occlus* or steno* or obstruct* or lesio* or block* or obliter*)).ti,ab.
+(veno* adj4 (occlus* or steno* or obstruct* or lesio* or block* or obliter*)).ti,ab.
+(peripher* adj4 (occlus* or steno* or obstruct* or lesio* or block* or obliter*)).ti,ab.
+(peripheral adj3 dis*).ti,ab.
+arteriopathic.ti,ab.
+(claudic* or hinken* or IC).ti,ab.
+CLI.ti,ab.
+dysvascular*.ti,ab.
+(leg adj4 (obstruct* or occlus* or steno* or block* or obliter*)).ti,ab.
+(limb adj4 (obstruct* or occlus* or steno* or block* or obliter*)).ti,ab.
+(lower adj3 extrem* adj4 (obstruct* or occlus* or steno* or block* or obliter*)).ti,ab.
+or/1-20

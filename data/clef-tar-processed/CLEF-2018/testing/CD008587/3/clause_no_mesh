@@ -1,0 +1,1 @@
+((pap[Text Word] OR papanicolaou[Text Word] OR vagina*[Text Word] OR cervical[Text Word] OR cervix[Text Word] OR cervico*[Text Word] OR cytolog*[Text Word]) AND (smear*[All Fields] OR test[Text Word] OR tests[Text Word] OR testing[Text Word] OR tested[Text Word] OR swab*[All Fields] OR scrap*[All Fields]))

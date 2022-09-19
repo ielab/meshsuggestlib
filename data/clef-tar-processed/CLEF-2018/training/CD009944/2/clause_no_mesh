@@ -1,0 +1,1 @@
+(EUS[Title/Abstract] OR (endoscop*[Text Word] AND (ultrasound[Text Word] OR ultrasonograph*[Text Word] OR ultrasonic[Text Word])))

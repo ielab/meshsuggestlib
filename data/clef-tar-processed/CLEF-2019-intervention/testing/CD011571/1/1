@@ -1,0 +1,9 @@
+Streptococcal Infections/
+exp Streptococcus/
+exp Streptococcal Vaccines/
+streptococc$.ti,ab.
+tonsillectomy.ti,ab.
+Tonsillectomy/
+exp Anti-Bacterial Agents/
+antibiotic$.ti,ab.
+or/1-8

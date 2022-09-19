@@ -1,0 +1,15 @@
+exp Clinical Trials as Topic/
+exp Cohort Studies/
+exp Case-Control Studies/
+"case report*".pt.
+case control.tw.
+(cohort adj (study or studies)).tw.
+"cohort analy*".tw.
+(observational adj (study or studies)).tw.
+cross sectional.tw.
+(follow up adj (study or studies)).tw.
+(case* adj report*).tw.
+(case* adj stud*).tw.
+case reports.pt.
+Cross-Sectional Studies/
+or/1-14

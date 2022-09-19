@@ -1,0 +1,1 @@
+(Pancreatitis, Acute Necrotizing[mesh:noexp] OR Pancreatitis[mesh:noexp] OR Pancreas[mesh:noexp] OR (acute[All Fields] AND pancrea*[All Fields]) OR (necro*[All Fields] AND pancrea*[All Fields]) OR (inflam*[All Fields] AND pancrea*[All Fields]) OR (pancrea*[All Fields] AND (interstitial[All Fields] OR edema*[All Fields] OR oedema*[All Fields])))

@@ -1,0 +1,1 @@
+((acute[All Fields] AND pancrea*[All Fields]) OR (necro*[All Fields] AND pancrea*[All Fields]) OR (inflam*[All Fields] AND pancrea*[All Fields]) OR (pancrea*[All Fields] AND (interstitial[All Fields] OR edema*[All Fields] OR oedema*[All Fields])))

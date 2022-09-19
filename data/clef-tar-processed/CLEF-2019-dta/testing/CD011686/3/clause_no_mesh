@@ -1,0 +1,1 @@
+((clear*[All Fields] AND (Cervical spine[All Fields] OR c-spine[All Fields])) OR (cervical[All Fields] AND (trauma*[All Fields] OR injur*[All Fields] OR fracture*[All Fields] OR sublux*[All Fields] OR dislocat*[All Fields] OR avuls*[All Fields] OR instab*[All Fields])) OR (Spinal cord injury without radiographic abnormality[All Fields] OR SCIWORA[All Fields]))

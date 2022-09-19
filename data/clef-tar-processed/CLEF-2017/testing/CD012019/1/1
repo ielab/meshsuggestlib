@@ -1,0 +1,115 @@
+(biomarker$ or marker$).tw.
+Laboratory Test$.tw.
+growth factor$.tw.
+scatter factor$.tw.
+cytokine$.tw.
+hepatocyte growth factor.tw.
+(FGF or fibroblast growth factor$).tw.
+(PDGF or platelet derived growth factor$).tw.
+(EGF or epidermal growth factor$).tw.
+(IGF-I or insulin-like growth factor$ or IGF1).tw.
+(TGF-a or transforming growth factor alfa or TGFa).tw.
+(TGF-b or transforming growth factor beta or TGFb).tw.
+(EGFR or epidermal growth factor receptor$).tw.
+(VEGF or vascular endothelial growth factor$).tw.
+exp Luteinizing Hormone/
+leptin$.tw.
+exp Progesterone/
+Proteolytic enzyme$.tw.
+exp matrix metalloproteinase 1/
+exp matrix metalloproteinase 2/
+exp matrix metalloproteinase 3/
+exp matrix metalloproteinase 9/
+matrix metalloproteinase$.tw.
+MMP$.tw.
+TIMP$.tw.
+exp "tissue inhibitor of metalloproteinase-1"/
+exp "tissue inhibitor of metalloproteinase-2"/
+exp Glycoproteins/
+(Ca-125 or Ca125 or cancer antigen 125).tw.
+(Ca-19-9 or Ca19-9 or cancer antigen 19-9).tw.
+(PP 14 or PP14).tw.
+serum placental protein$.tw.
+exp Follistatin/
+Osteopontin$.tw.
+exp intercellular adhesion molecule-1/
+exp selectins/
+soluble intercellular adhesion.tw.
+Soluble adhesion molecule$.tw.
+sICAM.tw.
+sVCAM$.tw.
+(sEcadherin or soluble E-cadherin).tw.
+(sEselectin or soluble E-selectin).tw.
+exp t-lymphocytes/
+exp natural killer t-cells/
+Immune cells alteration$.tw.
+(T helper$ or T supressor$ or T helper$ T supressor$ ratio).tw.
+Total complement level$.tw.
+Autoantibodies.tw.
+exp Antibodies, Antiphospholipid/
+Anti-endometrial.tw.
+Antiphospholipid$.tw.
+exp hla antigens/
+exp hla-a1 antigen/
+exp hla-a2 antigen/
+(HLA or human leucocyte antigen$).tw.
+Anti-laminin-1.tw.
+Anti-thyroid.tw.
+Anti-Thomsen Friedenreich antigen$.tw.
+Anti-transferrin.tw.
+Anti-LDL.tw.
+(Anti-2HSG or Heremans-Schmidt glycoprotein).tw.
+interleukin$.tw.
+(MCP-I or monocyte chemoattractant protein-I).tw.
+(MIF or migration inhibitory factor$).tw.
+(TNF-a or tumour necrosis factor$ alfa).tw.
+Fas ligand$.tw.
+Endometrial marker$.tw.
+CAMs.tw.
+cell adhesion molecule$.tw.
+exp Integrins/
+Integrin$.tw.
+Selectin$.tw.
+Cadherin$.tw.
+Aromatase P450.tw.
+estrogen receptor$.tw.
+progesterone receptor$.tw.
+MTMMP$.tw.
+cyr61.tw.
+exp Cysteine-Rich Protein 61/
+cysteine-rich heparin-binding protein$.tw.
+(ANXA 1 or ANXA1).tw.
+(Annexin 1 or Annexin1).tw.
+(PGP 9?5 or PGP9?5 or protein gene product$).tw.
+serum marker$.tw.
+neural marker$.tw.
+cell surface marker$.tw.
+inflammatory marker$.tw.
+microarray$.tw.
+microRNA$.tw.
+proteomic$.tw.
+genomic$.tw.
+(endometri$ adj2 biops$).tw.
+Follistatin$.tw.
+Vascular Endothelial Growth Factor A/
+Vitamin D-Binding Protein/
+exp Cytokines/
+exp interleukins/
+exp interleukin-1/
+exp interleukin-6/
+exp interleukin-8/
+exp interleukin-12/
+exp interleukin-13/
+exp Epidermal Growth Factor/
+exp Fibroblast Growth Factors/
+Platelet-Derived Growth Factor/
+Keratin-19/
+exp Clinical Laboratory Techniques/
+(Luteinizing Hormone$ or LH).tw.
+cytokeratin-19.tw.
+(VDBP or vitamin D-binding protein$).tw.
+urinary peptide$.tw.
+VDBP-Cr.tw.
+urinary VDBP corrected for creatinine expression.tw.
+urinary marker$.tw.
+or/1-114

@@ -1,0 +1,7 @@
+exp macular edema/
+(macula$ adj3 oedema).tw.
+(macula$ adj3 edema).tw.
+maculopath$.tw.
+(CME or CSME or CMO or CSMO).tw.
+(DMO or DME).tw.
+or/1-6

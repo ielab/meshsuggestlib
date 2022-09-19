@@ -1,0 +1,1 @@
+((blue[Text Word] AND light*[Text Word]) OR (blue[Text Word] AND filter*[Text Word]) OR (blue[Text Word] AND block*[Text Word]) OR (OptiBlue[Text Word] OR AcrySof Natural[Text Word]) OR (AF-1[Text Word] OR PC 440Y[Text Word] OR SN60AT[Text Word] OR SN6OAT[Text Word] OR YA60BB[Text Word]) OR (yellow[Text Word] AND (intraocular[Text Word] OR IOL*[Text Word])))

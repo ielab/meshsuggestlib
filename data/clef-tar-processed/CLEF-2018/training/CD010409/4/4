@@ -1,0 +1,34 @@
+Lymph Nodes/
+Sentinel Lymph Node Biopsy/
+((groin or inguin*) adj3 (dissect* or status or node*1)).tw,ot.
+Coloring Agents/
+Technetium Tc 99m Sulfur Colloid/
+Technetium Tc 99m Aggregated Albumin/
+Radiopharmaceuticals/
+Rosaniline Dyes/
+Methylene Blue/
+(technetium or tc 99m* or 99mtc* or blue dye*1 or patent blue or methylene blue or isosulfan or iso sulfan or lymphazurin blue or radiocolloid*).tw,ot,nm.
+(sentin?l adj3 node*1).tw,ot.
+(lymphoscintigraph* or lymphoscintigram*).tw,ot.
+Lymphography/
+(scintiphotograph* or scintigraph* or scintigram*).tw,ot.
+(gamma adj3 (camera*1 or counter*1 or probe*1)).tw,ot.
+radioisotope*.tw,ot.
+(tracer or tracers).tw,ot.
+((trace or tracing or traceable) adj agent*1).tw,ot.
+radiotracer*.tw,ot.
+Fluorescence/
+fluorescen*.tw,ot.
+(microbubble or micro-bubble).tw,ot.
+paraffin.tw,ot.
+frozen section*.tw,ot.
+(ultrastaging or ultra staging).tw,ot.
+(microsection* or micro section*).tw,ot.
+cytokeratin.tw,ot.
+((haematoxylin adj2 eosin) or (hematoxylin adj2 eosin)).tw,ot.
+Gamma Cameras/
+Frozen Sections/
+(immuno-histo-chemistry or immunohistochemistry or immunohistochemical or immuno-histo-chemical).tw,ot.
+(localisation or localization).tw,ot.
+((lymph node*1 or lymph nodal) adj3 (assess* or evaluat* or observ* or involve* or biopsy or biopsies)).tw,ot.
+or/1-33

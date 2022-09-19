@@ -1,0 +1,3 @@
+exp Platelet Count/
+(((platelet* or thrombocyt*) adj (count or distribution or volume)) or PLT or PDW or MPV).mp.
+or/1-2

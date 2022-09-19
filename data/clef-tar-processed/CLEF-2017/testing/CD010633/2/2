@@ -1,0 +1,23 @@
+DAT scan*.ti,ab.
+Dopamine Plasma Membrane Transport Proteins/
+"dopamine transporter".ti,ab.
+Dopaminergic Neurons/
+FP-CIT.ti,ab.
+DaTSCAN.ti,ab.
+("123I-β-CIT" or "[123I]β-CIT" or "[123I]beta-CIT").ti,ab.
+"123I-FP-CIT".ti,ab.
+SPECT.ti,ab.
+"[99mTc]TRODAT-1".ti,ab.
+"[123I]PE2I".ti,ab.
+"[123I]altropane".ti,ab.
+"[11C]cocaine".ti,ab.
+"[3H]WIN".ti,ab.
+"[11C]altropane".ti,ab.
+("[11C]/[18F]beta-CFT" or "[11C]/[18F]β-CFT").ti,ab.
+"[11C]FE-CIT".ti,ab.
+"[11C]dMP".ti,ab.
+Tomography, Emission-Computed, Single-Photon/
+SPET.ti,ab.
+"single photon emission tomography".ti,ab.
+"single photon emission computed tomography".ti,ab.
+or/1-22

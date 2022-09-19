@@ -1,0 +1,11 @@
+Minimally Invasive Surgical Procedures/
+Endovascular Procedures/
+exp Endoscopy/
+exp Angioscopy/
+Vascular Surgical Procedures/
+Saphenous Vein/
+Veins/ and Leg/
+(endoscop* and (surger* or surgic* or ligation* or ligatur* or ablation*)).ti,ab.
+((endoscop* or subfascial) and perforat*).ti,ab.
+SEPS.ti,ab.
+or/1-10

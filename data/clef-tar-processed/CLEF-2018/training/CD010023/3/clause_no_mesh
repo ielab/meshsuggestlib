@@ -1,0 +1,1 @@
+(scintiscan*[Text Word] OR (scintigra*[Text Word] OR radioscintigra*[Text Word]) OR (bone[Text Word] AND scan[Text Word]))

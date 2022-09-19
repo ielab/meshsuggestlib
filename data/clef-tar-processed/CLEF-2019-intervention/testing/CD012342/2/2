@@ -1,0 +1,6 @@
+Platelet Transfusion/
+Plateletpheresis/
+(thrombocytopheres* or plateletpheres*).tw,kf.
+((platelet* or thrombocyte*) adj5 (prophyla* or transfus* or infus* or administ* or requir* or need* or product* or component* or concentrate* or apheres* or pooled or single donor* or random donor* or unit* or protocol* or trigger* or threshold* or schedul* or dose* or dosing or usage or utili?ation)).tw,kf.
+platelets.ti.
+or/1-5

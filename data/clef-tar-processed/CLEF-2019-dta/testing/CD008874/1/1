@@ -1,0 +1,13 @@
+exp Laryngoscopy/
+exp Intubation, Intratracheal/
+exp Bronchoscopy/
+exp Laryngeal Masks/
+Anesthesia/
+Laryngoscopes/
+(difficult* adj5 (airway or face mask or ventilation or laryngoscopy or intubation or tracheal)).mp.
+(intubat* adj5 (fiberoptic or stylet* or retrograde or failed)).mp.
+(laryngeal mask* or airway access).ti,ab.
+((styletted or unstyletted) adj3 tube*).ti,ab.
+((laryngoscope* or Macintosh) adj3 blade*).ti,ab.
+airway management.ti,ab.
+or/1-12

@@ -1,0 +1,21 @@
+(alzheimer* or dement* or AD or lewy* or DLB or LBD).ti,ab.
+exp dementia/
+((cognit* or memory or cerebr* or mental*) adj3 (declin* or impair* or los* or deteriorat* or degenerat* or complain* or disturb* or disorder*)).ti,ab.
+MCI.ti,ab.
+ACMI.ti,ab.
+ARCD.ti,ab.
+SMC.ti,ab.
+CIND.ti,ab.
+BSF.ti,ab.
+AAMI.ti,ab.
+LCD.ti,ab.
+QD.ti,ab.
+AACD.ti,ab.
+MNCD.ti,ab.
+MCD.ti,ab.
+(nMCI or aMCI or mMCI).ti,ab.
+("N-MCI" or "A-MCI" or "M-MCI").ti,ab.
+("CDR 0.5" or "clinical dementia rating scale 0.5" or "0.5 CDR").ti,ab.
+("GDS 3" or "3 GDS").ti,ab.
+("global deterioration scale" and "stage 3").ti,ab.
+or/1-20

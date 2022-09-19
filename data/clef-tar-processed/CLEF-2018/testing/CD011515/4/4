@@ -1,0 +1,4 @@
+(PET or MRI or NMRI or zeugmatogra* or ((emission or positron or magneti* or MR or NMR or proton or acoustic or ARFI) and (tomogra* or scan or scans or imaging))).ti,ab.
+Positron-Emission Tomography/
+exp Magnetic Resonance Imaging/
+or/1-3

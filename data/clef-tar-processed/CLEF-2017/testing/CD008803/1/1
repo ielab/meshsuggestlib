@@ -1,0 +1,17 @@
+exp glaucoma/
+glaucoma$.tw.
+exp ocular hypertension/
+(OHT or IOP).tw.
+exp intraocular pressure/
+(((increas$ or elevat$ or high$ or raise$) adj3 (ocular or intraocular or intra-ocular)) and pressure).tw.
+optic nerve diseases/
+(optic adj2 nerve$ adj2 head).tw.
+ONH.tw.
+optic disk/
+optic dis$.tw.
+retinal ganglion cells/
+retinal ganglion cell$.tw.
+(retinal adj2 nerve adj2 fiber adj2 layer).tw.
+(retinal adj2 nerve adj2 fibre adj2 layer).tw.
+RNFL.tw.
+or/1-16

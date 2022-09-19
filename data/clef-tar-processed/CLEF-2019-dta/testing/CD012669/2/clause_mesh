@@ -1,0 +1,1 @@
+(Ultrasonography[mesh] OR Diagnostic Imaging[mesh:noexp] OR diagnostic imaging[mesh:noexp] OR (diagnos*[All Fields] AND (screen*[All Fields] OR scan*[All Fields] OR imag*[All Fields])) OR (advanced trauma life support[All Fields] OR atls[All Fields]) OR (ultraso*[All Fields] OR sonogra*[All Fields]))

@@ -1,0 +1,1 @@
+(maculopathia OR (retina AND (damage OR phototoxic OR photoprotect)) OR (degener AND (macul OR retina OR choroid)) OR (neovasc AND (macul OR retina OR choroid)) OR (AMD OR ARMD OR CNV) OR (photochemical AND damage))

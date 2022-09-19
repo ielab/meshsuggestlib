@@ -1,0 +1,27 @@
+exp Dementia/
+Cognition Disorders/
+exp Neurofibrils/
+Neurofilament Proteins/
+Senile Plaques/
+Neuropil Threads/
+(alzheimer$ or dement$).ti,ab.
+((cognit$ or memory or cerebr$ or mental$) adj3 (declin$ or impair$ or los$ or deteriorat$ or degenerat$ or complain$ or disturb$ or disorder$)).ti,ab.
+(forgetful$ or confused or confusion).ti,ab.
+MCI.ti,ab.
+ACMI.ti,ab.
+ARCD.ti,ab.
+SMC.ti,ab.
+CIND.ti,ab.
+BSF.ti,ab.
+AAMI.ti,ab.
+MD.ti,ab.
+LCD.ti,ab.
+QD.ti,ab.
+AACD.ti,ab.
+MNCD.ti,ab.
+MCD.ti,ab.
+(neurofibril$ adj3 tangle$).ti,ab.
+(neurofilament adj3 protein$).ti,ab.
+((senile or amyloid or neuritic) adj3 plaque$).ti,ab.
+(neuropil adj3 thread$).ti,ab.
+or/1-26

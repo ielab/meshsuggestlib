@@ -1,0 +1,15 @@
+exp Macular Degeneration/
+exp Retinal Degeneration/
+exp Retinal Neovascularization/
+exp Choroidal Neovascularization/
+exp Macula Lutea/
+((macul* or retina* or choroid*) adj4 degener*).tw.
+((macul* or retina* or choroid*) adj4 neovasc*).tw.
+Maculopath*.tw.
+(macul* adj2 lutea*).tw.
+(macul* adj3 dystroph*).tw.
+(macul* adj2 syndrome).tw.
+((macul* or geographic) adj2 atroph*).tw.
+((macul* or retina*) adj2 edema*).tw.
+(AMD or ARMD or CNV).tw.
+or/1-14

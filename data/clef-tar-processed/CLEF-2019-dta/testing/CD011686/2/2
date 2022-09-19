@@ -1,0 +1,16 @@
+((neurolog* or physical* or clinical*) adj3 (exam* or assess* or sign*)).mp.
+MRI*.mp.
+(CT* or Computed Tomography or CAT scan*).mp.
+(X ray* or x-ray* or xray* or radiogra* or roentgenogra*).mp.
+Imaging.mp.
+exp physical examination/
+exp neurologic examination/
+exp trauma severity indices/
+"Severity of Illness Index"/
+X-Rays/
+Tomography/
+exp Tomography, Emission-Computed/
+exp Tomography, X-Ray/
+exp Magnetic Resonance Imaging/
+Radiography/
+or/1-15

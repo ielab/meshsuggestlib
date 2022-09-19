@@ -1,0 +1,17 @@
+Ankle Brachial Index/
+Oscillometry/
+Blood Pressure Determination/
+Laser-Doppler Flowmetry/
+oscillometr$.ti,ab.
+(doppler adj2 (ultrasound or flow$ or method or device)).ti,ab.
+ABI.ti,ab.
+ABPI.ti,ab.
+AAI.ti,ab.
+(ankle adj4 index).ti,ab.
+(arm adj4 index).ti,ab.
+(brachial adj4 (index or pressure)).ti,ab.
+(systolic adj5 ratio).ti,ab.
+(pressure adj5 ratio).ti,ab.
+(BP adj5 ratio).ti,ab.
+(four and limbs and pressure).ti,ab.
+or/1-16

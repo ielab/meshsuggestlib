@@ -1,0 +1,6 @@
+exp Pancreas/
+exp Pancreatic Neoplasms/
+exp Pancreatitis, Chronic/
+exp Pancreatic Cyst/
+(pancreas or pancreatic).ti,ab.
+or/1-5

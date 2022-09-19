@@ -1,0 +1,16 @@
+Kidney Transplantation/
+Pancreas Transplantation/
+(kidney and pancreas and (transplant$ or graft$)).tw.
+Kidney Failure/
+Kidney Failure, Chronic/
+(chronic kidney or chronic renal).tw.
+(endstage kidney or endstage renal).tw.
+(end stage kidney or end stage renal).tw.
+(ESRD or ESKD or ESRF or ESKF).tw.
+exp Renal Dialysis/
+dialysis.tw.
+(hemodialysis or haemodialysis).tw.
+(hemodiafilt$ or haemodiafilt$).tw.
+(hemofilt$ or haemofilt$).tw.
+(PD or CAPD or CCPD or APD).tw.
+or/1-15

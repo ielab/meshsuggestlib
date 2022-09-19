@@ -1,0 +1,43 @@
+exp Prenatal Diagnosis/
+nuchal translucency.mp.
+exp Pregnancy-Associated Plasma Protein-A/
+pregnancy associated plasma protein a.mp.
+papp-a.mp.
+exp Chorionic Gonadotropin, beta Subunit, Human/
+(b-hcg or bhcg).mp.
+human chorionic gonadotropin.mp.
+exp alpha-Fetoproteins/
+alphafetoprotein$.mp.
+alpha-fetoprotein$.mp.
+afp.mp.
+(unconjugated estriol or unconjugated oestriol).mp.
+ue3.mp.
+exp INHIBINS/
+inhibin a.mp.
+ultrasound.mp.
+amniocentesis/
+chorion$ vill$ sampling.mp.
+chorionic villi sampling/
+nasal bone.mp.
+tricuspid regurgitation.mp.
+ductus venosus.mp
+marker$.mp.
+screen$.mp.
+detect$.mp.
+accura$.mp.
+predict$.mp.
+ROC.mp.
+ROC curve/
+AUC.mp.
+Area under curve/
+exp false negative reactions/
+exp false positive reactions/
+(false positive$ or false negative$).mp.
+likelihood ratio$.mp.
+sensitiv$.mp.
+specific$.mp.
+diagnos$.ti,ab.
+"reproducibility of results".mp.
+reference value$.mp.
+reference standard$.mp.
+or/1-42

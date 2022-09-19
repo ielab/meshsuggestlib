@@ -1,0 +1,21 @@
+Cough/
+cough*.tw.
+wheez*.tw.
+"shortness of breath".tw.
+sore throat*.tw.
+coryza.tw.
+"chest pain".tw.
+crepitation*.tw.
+Fever/
+fever*.tw.
+Exanthema/
+(rash or rashes).tw.
+exp Diarrhea/
+(diarrhoea or diarrhea).tw.
+myalgia.tw.
+Headache/
+headache*.tw.
+clinical assessment*.tw.
+clinical feature*.tw.
+(symptom* or sign* or characteristic* or manifestation*).tw.
+or/1-20

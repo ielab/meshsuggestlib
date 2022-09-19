@@ -1,0 +1,5 @@
+exp Magnetic Resonance Imaging/
+((magnetic resonance or MR or NMR) adj2 (imag* or tomograph* or scan*)).tw.
+(MRI or MRIs or NMRI).tw.
+(diffusion weighted imag* or DWI or T2-weighted imag*).tw.
+or/1-4

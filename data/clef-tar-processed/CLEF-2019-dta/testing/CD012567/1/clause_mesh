@@ -1,0 +1,1 @@
+(Ovarian Neoplasms[mesh] OR Fallopian Tube Neoplasms[mesh:noexp] OR Peritoneal Neoplasms[mesh:noexp] OR (ovar*[All Fields] OR fallopian*[All Fields] OR peritone*[All Fields]) AND (cancer*[All Fields] OR neoplasm*[All Fields] OR carcin*[All Fields] OR cystadenocarcinoma*[All Fields] OR malign*[All Fields] OR tumo*[All Fields]))

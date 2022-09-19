@@ -1,0 +1,10 @@
+Neoplasm Invasiveness/
+Lymphatic Metastasis/
+Neoplasm Micrometastasis/
+Neoplasm Recurrence, Local/
+Neoplasm, Residual/
+Neoplasm Staging/
+Carcinoma, Squamous Cell/
+((lymphovascular or lympho-vascular) adj4 invasiv*).tw,ot.
+(lymph* adj4 metasta*) or (detect* adj4 metasta*).tw,ot.
+or/1-9

@@ -1,0 +1,10 @@
+randomized controlled trial.pt.
+exp randomized controlled trial/
+exp Randomized Controlled Trials as Topic/
+controlled clinical trial.pt.
+(RCT or randomi#ed or at random or (random* adj3 (assign* or allocat* or divide* or division or number*))).ti,ab,kf.
+((placebo or sham or mock or fake or dummy) and (control* or group?)).ti,ab,kf.
+double-blind*.ti,ab,kf,hw.
+trial.ti.
+((cluster or crossover* or cross-over*) adj3 (random* or trial or study or control* or group?)).ti,ab,kf.
+or/1-9

@@ -1,0 +1,17 @@
+(NEXUS or CCR).mp.
+National Emergency X-Radiography.mp.
+(Canadian c-spine or Canadian cervical spine).mp.
+((Clinical or critical or treatment) adj3 (pathway* or protocol*)).mp.
+(algorithm* or guideline*).mp.
+(decision adj3 (tree* or rule* or tool*)).mp.
+(triage or protocol*).mp.
+exp Guideline/
+Guideline Adherence/
+exp guidelines as topic/
+exp algorithms/
+exp Clinical Protocols/
+Decision Trees/
+exp decision support techniques/
+Critical Pathways/
+triage/
+or/1-16

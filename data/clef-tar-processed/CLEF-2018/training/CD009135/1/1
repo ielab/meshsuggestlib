@@ -1,0 +1,7 @@
+exp Leishmaniasis, visceral/
+exp Leishmania donovani/
+exp Leishmania infantum/
+kala-azar.ti,ab.
+Leishmania chagasi.ti,ab.
+Visceral leishmania*.ti,ab.
+or/1-6

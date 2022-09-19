@@ -1,0 +1,1 @@
+(Coronary Disease[mesh:noexp] OR Coronary Artery Disease[mesh:noexp] OR Coronary Stenosis[mesh:noexp] OR coronary atheroscleros*[Text Word] OR coronary arterioscleros*[Text Word] OR coronary stenos*[Text Word] OR CAD[Text Word] OR (coronary arter*[Text Word] AND stenos*[Text Word]) OR (coronary[Text Word] AND disease[Text Word]))

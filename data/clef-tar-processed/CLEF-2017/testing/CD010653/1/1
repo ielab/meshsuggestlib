@@ -1,0 +1,21 @@
+exp "International Classification of Diseases"/
+exp "Diagnostic and Statistical Manual of Mental Disorders"/
+"Research Diagnostic Criteria".mp.
+Feighner.mp.
+ICD.mp.
+DSM.mp.
+RDC.mp.
+schneider.mp.
+bleuler.mp.
+kraepelin.mp.
+"international pilot study of schizophrenia".mp.
+IPSS.mp.
+"new haven schizophrenia index".mp.
+NHSI.mp.
+"present state examination".mp.
+PSE.mp.
+"operational criteria".mp.
+(operation$ adj3 criteri$).mp. [mp=protocol supplementary concept, rare disease supplementary concept, title, original title, abstract, name of substance word, subject heading word, unique identifier]
+"Sensitivity and Specificity"/
+Diagnosis/
+or/1-20

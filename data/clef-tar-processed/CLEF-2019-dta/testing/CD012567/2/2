@@ -1,0 +1,16 @@
+exp MAGNETIC RESONANCE IMAGING/
+(MRI or MRi or NMRI or NMRi).ti,ab,kw,kf.
+((magn*or MR or MTC or MT or NMR or spin or chemical shift or diffus*) adj3 (imag* or scan* or resonance* or tomogra$)).ti,ab,kw,kf.
+Diffusion-weighted.ti,ab,kw,kf.
+exp POSITRON-EMISSION TOMOGRAPHY/
+(pet adj3 scan*).ti,ab,kw,kf.
+(positr* adj4 tomogr*).ti,ab,kw,kf.
+(pet-ct or petct or fdg-pet).ti,ab,kw,kf.
+(CT adj3 (cine or scan* or x-ray* or xray*)).ab,ti,kw,kf.
+(ct or mdct).ti.
+((electron beam* or comput* or axial) adj3 tomography).ab,ti,kw,kf.
+tomodensitometry.ab,ti,kw,kf.
+exp TOMOGRAPHY, X-RAY COMPUTED/
+radiography.fs.
+radionuclide imaging.fs.
+or/1-15

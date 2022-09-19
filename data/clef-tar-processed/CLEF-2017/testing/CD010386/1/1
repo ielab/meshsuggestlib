@@ -1,0 +1,10 @@
+Positron-Emission Tomography/
+(PiB or PIB).ti,ab.
+"Pittsburgh compound B".ti,ab.
+"C Pittsburgh".ti,ab.
+(PIB-PET or PET-PIB).ti,ab.
+"amyloid deposition".ti,ab.
+"[11C]PIB".ti,ab.
+"amyloid ligand*".ti,ab.
+((PET and (scan* or imag*)) or "positron emission tomography").ti,ab.
+or/1-9

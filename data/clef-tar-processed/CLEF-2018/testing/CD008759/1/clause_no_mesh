@@ -1,0 +1,1 @@
+(PLT[All Fields] OR PDW[All Fields] OR MPV[All Fields] OR ((platelet*[All Fields] OR thrombocyt*[All Fields]) AND (count[All Fields] OR distribution[All Fields] OR volume[All Fields])))

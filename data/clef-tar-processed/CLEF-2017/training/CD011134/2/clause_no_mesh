@@ -1,0 +1,1 @@
+(cea[Title/Abstract] OR (carcinoembryonic[Title/Abstract] AND antibod*[Title/Abstract]) OR (carcino-embryonic[Title/Abstract] AND antigen*[Title/Abstract]) OR (carcino-embryonic[Title/Abstract] AND antibod*[Title/Abstract]) OR (carcinoembryonic[Title/Abstract] AND antigen*[Title/Abstract]))

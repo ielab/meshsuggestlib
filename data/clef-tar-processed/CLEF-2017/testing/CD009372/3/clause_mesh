@@ -1,0 +1,1 @@
+(angiography[mesh:noexp] AND (subtraction technique[mesh:noexp] OR subtraction[Text Word]) OR ((digital subtract*[Text Word] OR catheter[Text Word] OR cerebral[Text Word] OR brain[Text Word]) AND (angiogra*[Text Word] OR arteriogra*[Text Word])) OR (DSA[Text Word] OR IADSA[Text Word]))

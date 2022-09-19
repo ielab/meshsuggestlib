@@ -1,0 +1,7 @@
+Depressive Disorder, Treatment-Resistant/
+(depress* and ((antidepress* or SSRI* or SNRI* or (serotonin adj3 (uptake or reuptake or re-uptake)) or medication* or psychotropic or treatment* or respon*) adj2 fail*)).ti,ab,kf.
+(depress* and ((antidepress* or SSRI* or SNRI* or (serotonin adj3 (uptake or reuptake or re-uptake)) or psychotropic medication* or treatment*) adj2 ("no respon*" or "not respon*" or nonrespon* or non-respon* or unrespon*))).ti,ab,kf.
+(depress* adj3 (refractor* or resistan* or chronic* or persist*)).ti,ab,kf.
+(depress* adj3 (relaps* or recurr*)).ti,kf.
+(depress* and (augment* or potentiat*)).mp.
+or/1-6

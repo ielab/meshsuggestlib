@@ -1,0 +1,25 @@
+(gilliam$ adj5 autis$).tw.
+GARS.tw.
+DISCO.tw.
+(diagnos$ interview$ adj5 communic$ disorder$).tw.
+ADI-R.tw.
+autis$ diagnos$ interview$.tw.
+3di.tw.
+(development$ adj3 dimension$ adj3 diagnos$).tw.
+child$ autis$ rating.tw.
+CARS.tw.
+autis$ diagnos$ observ$.tw.
+ADOS.tw.
+Psychiatric Status Rating Scales/
+Psychometrics/
+neuropsychological tests/
+psychological tests/
+Interview, Psychological/
+Interviews as Topic/
+Personality Assessment/
+observation/
+Questionnaires/
+rating scale$.tw.
+((diagnos$ or screen$) adj3 (algorithm$ or assess$ or interview$ or instrument$ or observation$ or questionnaire$ or schedule$ or test$ or tool$)).tw.
+((parent$ or carer$ or caregiver$) adj3 (interview$ or questionnaire$ or report$)).tw.
+or/1-24

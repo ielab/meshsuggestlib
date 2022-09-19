@@ -1,0 +1,6 @@
+immunotherapy/
+exp immunization/
+Immunization Programs/
+exp vaccines/
+(vaccin* or revaccinat* or immuniz* or immunis* or immunother* or inoculat* or innoculat* or prophyla* or immunoprophyla*).ti,ab,kf.
+or/1-5

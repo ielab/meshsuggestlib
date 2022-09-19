@@ -1,0 +1,1 @@
+(Neoplasms[mesh:noexp] OR malignan*[Text Word] OR neoplasm*[Text Word] OR cancer[Text Word] OR carcinoma*[Text Word] OR adenocarcinoma[Text Word] OR tumor[Text Word] OR tumor[Text Word])

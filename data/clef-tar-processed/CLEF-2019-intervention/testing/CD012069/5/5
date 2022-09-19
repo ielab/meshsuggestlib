@@ -1,0 +1,5 @@
+exp child/
+exp adolescent/
+exp infant/
+(child* or boy* or girl* or adolescen* or teen* or preschool or pre school or infant* or baby or babies or toddler* or school child* or youth*).mp.
+or/1-4

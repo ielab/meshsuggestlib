@@ -1,0 +1,14 @@
+"rapid diagnostic test*".ti,ab.
+RDT*.ti,ab.
+"serodiagnostic test*".ti,ab.
+(Widal or "DOT enzyme immunoassay" or typhiDOT or TUBEX).ti,ab.
+("solid-phase" or "DOT blot").ti,ab.
+serodiagnosis/
+immunoblotting/
+"immunochromatographic lateral flow assay*".ti,ab.
+(typhirapid or "latex agglutination" or "test-it-typhoid" or enterocheck or "SD bioline" or "dip-s-tick" or panbio or "mega salmonella" or naats or "nucleid acid amplication test*").ti,ab.
+("antigen detection" or "antibody detection").ti,ab.
+("blood culture*" or "bone marrow culture*").ti,ab.
+Reagent Kits, Diagnostic/
+Serologic Tests/
+or/1-13

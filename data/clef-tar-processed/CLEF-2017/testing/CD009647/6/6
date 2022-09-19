@@ -1,0 +1,22 @@
+Upper Extremity/ or Arm/ and Muscle Weakness/
+((weak or weakness) adj3 (arm* or upper limb* or upper extremit*)).tw.
+((fluid* or water) adj3 (balance or chart* or record* or diary or diaries)).tw.
+Body Weight Changes/
+Weight Loss/
+((weight or BMI or body mass index) adj3 (loss or lost or lose or losing or fall* or reduc* or chang*)).tw.
+(capillar* adj3 refill*).tw.
+Electric Impedance/
+Plethysmography, Impedance/
+(impedance* or bioimpedance or BIA).tw.
+Physical Examination/
+((clinical* or physical) adj3 (sign* or symptom* or exam* or finding* or assess*)).tw.
+Water Loss, Insensible/
+((epiderm* or skin* or transepiderm* or transderm*) adj3 (water* or fluid* or temperature)).tw.
+Body Temperature Regulation/
+Sweating/
+Thermogenesis/
+Skin Temperature/
+(thermoregulat* or thermogenesis or sweating).tw.
+((thermal or temperature*) adj3 (regulat* or control*)).tw.
+(blood flow* adj3 (skin or epiderm* or dermal)).tw.
+or/1-21

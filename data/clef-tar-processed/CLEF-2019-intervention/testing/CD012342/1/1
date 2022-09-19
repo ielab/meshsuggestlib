@@ -1,0 +1,18 @@
+exp Hematologic Neoplasms/
+Hematologic Diseases/
+exp Leukemia/
+Preleukemia/
+exp Bone Marrow Diseases/
+Bone Marrow/
+exp Thrombocytopenia/
+(bone marrow adj3 (fail* or disease* or disorder* or aplasia or hypoplasia or dysplasia)).tw,kf.
+(thrombocytop?eni* or thrombop?en* or leuk?emi* or myeloproliferat* or shwachman diamond or (dyskeratosis adj1 congenita*) or AML).tw,kf.
+(myelodysplas* or myeloid dysplasia or preleukemi* or preleukaemi* or dysmyelopoie* or 5Q syndrome).tw,kf.
+((aplast* or hypoplast* or refractory or aregenerative or sideroblastic or sideroachrestic or chronic*) adj2 an?emia).tw,kf.
+(erythroid aplasia or erythrodysplas* or hematopoietic aplasia or haematopoietic aplasia or pancytopen*).tw,kf.
+(fanconi* adj (an?emia or panmyelopathy or syndrome*)).tw,kf.
+((myelos* adj2 (nonleuk?emic or non-leuk?emic or aleuk?emic)) or (myeloid adj2 metaplasia*) or myelofibros* or (bone marrow adj5 fibros*) or myeloscleros*).tw,kf.
+(IMF or PMF or MDS).ti.
+((haematolog* or hematolog* or blood or red cell* or white cell* or lymph* or marrow or platelet*) adj3 (malignan* or oncolog* or cancer* or neoplasm*)).tw,kf.
+((haematolog* or hematolog* or haemato-oncolog* or hemato-oncolog*) adj2 patients).tw,kf.
+or/1-17

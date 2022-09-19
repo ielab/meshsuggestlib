@@ -1,0 +1,1 @@
+(Stomach Neoplasms[mesh:noexp] OR Neoplasm Staging[mesh:noexp] OR *Lymphatic Metastasis[mesh:noexp] OR disease progression[mesh:noexp] OR t-stag*[Text Word] OR (gastric[Text Word] AND staging[Text Word]) OR (lymph[Text Word] AND node[Text Word] AND metastasis[Text Word]))

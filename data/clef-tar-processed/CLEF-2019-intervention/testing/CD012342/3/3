@@ -1,0 +1,11 @@
+exp COHORT STUDIES/
+(cohort* or controlled trial or controlled study or comparative trial or comparative study or comparison group or comparator group).tw,kf.
+((follow up or observational) adj (study or studies)).tw,kf.
+(longitudinal* or retrospective* or cross sectional*).tw,kf.
+CROSS-SECTIONAL STUDIES/
+CONTROLLED BEFORE-AFTER STUDIES/
+HISTORICALLY CONTROLLED STUDY/
+INTERRUPTED TIME SERIES ANALYSIS/
+(nonrandomi* or non randomi*).tw,kf.
+"before and after study".tw,kf.
+or/1-10

@@ -1,0 +1,26 @@
+Immunoassay/
+exp Immunoenzyme Techniques/
+(enzyme adj2 (immunoassay* or immuno-assay* or immunosorbent)).tw.
+Immunochromatography/
+immunochromatograph*.tw.
+Immunosorbent Techniques/
+exp Enzyme-Linked Immunosorbent Assay/
+(elisa or elisas or eia or eias).tw.
+(sandwich* adj2 assay*).tw.
+(lateral flow adj2 assay).tw.
+(optical adj2 (immunoassay* or immuno-assay*)).tw.
+(oia or oias).tw.
+Antigens, Bacterial/
+Reagent Kits, Diagnostic/
+Point-of-Care Systems/
+((rapid or "point of care" or "near patient" or poc or poct or bedside) adj5 (test or tests or testing or detect* or diagnos* or screen* or kit or kits or assay*)).tw.
+(radt or radts or rdt or rdts).tw.
+(antigen* adj3 detect*).tw.
+test pack strep a.tw.
+icon strep a.tw.
+link 2 strep a rapid test.tw.
+acceava strep a.tw.
+osom strep a.tw.
+poly stat strep a.tw.
+quickvue strep a.tw.
+or/1-25

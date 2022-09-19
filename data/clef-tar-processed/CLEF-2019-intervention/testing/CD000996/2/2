@@ -1,0 +1,10 @@
+exp Adrenal Cortex Hormones/
+steroid*.ti,ab.
+corticosteroid*.ti,ab.
+glucocorticoid*.ti,ab.
+beclomet*.ti,ab.
+fluticasone.ti,ab.
+ciclesonide.ti,ab.
+flunisolide.ti,ab.
+triamcinolone.ti,ab.
+or/1-9

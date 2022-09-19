@@ -1,0 +1,8 @@
+Critical Illness/
+Critical Care/
+exp Intensive Care Units/
+(ICU or ((intensive or critical) adj3 (care or unit*)) or (critical* adj3 ill*)).mp.
+Respiration, Artificial/
+(mechanical* adj3 ventilat*).mp.
+(artificial* adj3 respiration*).mp.
+or/1-7

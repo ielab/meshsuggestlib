@@ -1,0 +1,13 @@
+exp Retina/
+exp Retinal Pigments/
+(retina$ adj3 (damage$ or phototoxic$ or photoprotect$)).tw.
+(photochemical adj2 damage$).tw.
+exp retinal degeneration/
+retinal neovascularization/
+choroidal neovascularization/
+exp macula lutea/
+maculopath$.tw.
+((macul$ or retina$ or choroid$) adj3 degener$).tw.
+((macul$ or retina$ or choroid$) adj3 neovasc$).tw.
+(AMD or ARMD or CNV).tw.
+or/1-12

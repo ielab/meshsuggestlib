@@ -1,0 +1,14 @@
+Thromboembolism/
+Venous Thromboembolism/
+Thrombosis/
+Venous Thrombosis/
+Upper Extremity Deep Vein Thrombosis/
+(thromboemboli$ or microthrombus or thrombus or thrombo$ or thrombilic or thrombotic).ti,ab.
+(DVT or VTE).ti,ab.
+Pulmonary Embolism/
+(pulmonary adj embol$).ti,ab.
+(pulmonary adj thrombo$).ti,ab.
+(lung adj embol$).ti,ab.
+(lung adj thrombo$).ti,ab.
+PE.ti,ab.
+or/1-13

@@ -1,0 +1,11 @@
+randomized controlled trial.pt.
+controlled clinical trial.pt.
+randomi#ed.ti,ab.
+randomly.ab.
+placebo.ab.
+trial.ab.
+groups.ab.
+(control* adj3 (trial or study)).ab,ti.
+((singl* or doubl* or tripl* or trebl*) adj3 (blind* or mask* or dummy)).mp.
+exp "SLEEP INITIATION AND MAINTENANCE DISORDERS"/
+or/1-10

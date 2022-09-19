@@ -1,0 +1,4 @@
+exp "Prostatitis"/
+prostatit*.ti,ab,kf.
+prostatodyn*.ti,ab,kf.
+or/1-3
