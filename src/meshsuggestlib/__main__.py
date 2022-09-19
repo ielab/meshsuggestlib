@@ -6,6 +6,7 @@ from transformers import (
     HfArgumentParser,
     TrainingArguments,
 )
+import pickle
 from glob import glob
 from torch.utils.data import DataLoader
 from meshsuggestlib.arguments import MeSHSuggestLibArguments
@@ -23,6 +24,10 @@ import gc
 import sys
 logger = logging.getLogger(__name__)
 
+def pickle_load(path):
+    with open(path, 'rb') as f:
+        reps, lookup = pickle.load(f)
+    return np.array(reps), lookup
 
 def write_ranking(topic, final_result, output):
     for rank, r in enumerate(final_result):
@@ -123,10 +128,13 @@ def main():
     input_clause_dict = {}
 
     date_dict = read_date(mesh_args.date_file)
+    original_queury_dict = {}
     for topic_path in topics_pathes:
         if not os.path.isdir(topic_path):
             continue
         topic = topic_path.split('/')[-1]
+        with open(topic_path+'/original_full_query') as f:
+            original_queury_dict[topic] = f.read().strip()
         clause_pathes = glob(topic_path+'/*')
         for clause_path in clause_pathes:
             if not os.path.isdir(clause_path):
@@ -135,6 +143,7 @@ def main():
             index = topic + '_' + clause_num
             keyword_file = clause_path + '/keywords'
             clause_no_mesh = clause_path + '/clause_no_mesh'
+
             if not os.path.exists(keyword_file):
                 raise Exception("keyword file for topic %s clause num %s does not exist", topic, str(clause_num))
             if not os.path.exists(clause_no_mesh):
@@ -155,17 +164,34 @@ def main():
 
     logger.info("Overall there are %s topic clauses read", str(len(input_keywords_dict)))
 
-    if method in pre_methods_base:
+    if method=="Original":
+        try:
+            output = open(mesh_args.output_file, 'w')
+        except:
+            raise Exception("can not create output file at Path %s", mesh_args.output_file)
+        for topic_id in original_queury_dict:
+            mesh_query = original_queury_dict[topic_id]
+            current_d = ('01/01/1946', '31/12/2018')
+            if topic_id in date_dict:
+                current_d = date_dict[topic_id]
+            final_result = submit_result(mesh_query, mesh_args.email, current_d)
+            logger.info("topic %s retrieve %s pubmed articles", topic_id, len(final_result))
+            write_ranking(topic_id, final_result, output)
+
+    elif method in pre_methods_base:
         a = 0 #need to add code here
 
-    if method in pre_methods_bert:
+    elif method in pre_methods_bert:
         mesh_dict, tokenizer, model, model_w2v = prepare_model(mesh_args.model_dir, mesh_file, mesh_args.tokenizer_name_or_path, mesh_args.cache_dir, mesh_args.semantic_model_path, mesh_args)
         candidate_dataset = EncodeDataset(mesh_file,
                                           tokenizer,
                                           max_len=mesh_args.p_max_len,
                                           cache_dir=mesh_args.cache_dir)
-        p_lookup, p_reps = encoding(candidate_dataset, model, tokenizer, mesh_args.p_max_len, hf_args, mesh_args)
-        retriever = BaseFaissIPRetriever(p_reps.float().numpy())
+        if mesh_args.mesh_encoding != None:
+            p_reps, p_lookup = pickle_load(mesh_args.mesh_encoding)
+        else:
+            p_lookup, p_reps = encoding(candidate_dataset, model, tokenizer, mesh_args.p_max_len, hf_args, mesh_args)
+        retriever = BaseFaissIPRetriever(p_reps)
 
         logger.info("Starts Retrieval")
 
@@ -194,20 +220,21 @@ def main():
 
         for topic_id in final_query_dict:
             mesh_query = " AND ".join(final_query_dict[topic_id])
-            current_d = ('01/01/1946', '31/12/2021')
+            print(mesh_query)
+            current_d = ('01/01/1946', '31/12/2018')
             if topic_id in date_dict:
                 current_d = date_dict[topic_id]
             final_result = submit_result(mesh_query, mesh_args.email, current_d)
             logger.info("topic %s retrieve %s pubmed articles", topic_id, len(final_result))
             write_ranking(topic_id, final_result, output)
-        if mesh_args.evaluate_run:
-            time.sleep(5)
-            if mesh_args.qrel_file != None:
-                evaluator = Evaluator(mesh_args.qrel_file, ["SetP", "SetR", "SetF"], mesh_args.output_file)
-                evaluator.compute_metrics()
-                sys.exit()
-            else:
-                raise Exception("Please put correct qrel file path")
+    if mesh_args.evaluate_run:
+        time.sleep(5)
+        if mesh_args.qrel_file != None:
+            evaluator = Evaluator(mesh_args.qrel_file, ["SetP", "SetR", "SetF"], mesh_args.output_file)
+            evaluator.compute_metrics()
+            sys.exit()
+        else:
+            raise Exception("Please put correct qrel file path")
 
 
 if __name__ == "__main__":

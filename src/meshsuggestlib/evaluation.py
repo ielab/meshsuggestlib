@@ -28,10 +28,9 @@ def _get_metrics(metrics):
 class Evaluator:
     def __init__(self, qrel_file, metrics, run_file):
         self.qrels = self._read_qrel(qrel_file)
-        print(len(self.qrels))
         self.metrics = _get_metrics(metrics)
         self.run = self.read_run(run_file)
-        print(len(self.run))
+
 
     def compute_metrics(self):
         #print(self.qrels)
@@ -64,8 +63,8 @@ class Evaluator:
                     raise ValueError("Wrong qrel format.")
                 if qid in removed_topics:
                     continue
-                if (qid not in qrels) and int(rel)==1:
+                if (qid not in qrels) and int(rel)!=0:
                     qrels[qid] = {}
-                if int(rel)==1:
+                if int(rel)!=0:
                     qrels[qid][docid] = int(rel)
         return qrels

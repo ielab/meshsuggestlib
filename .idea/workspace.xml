@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa5699c6-15a7-4919-be2b-79de687eed28" name="Changes" comment="">
+    <list default="true" id="983ae066-212a-4d76-a020-8fc72d9ef8ab" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/meshsuggestlib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/meshsuggestlib.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample_run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/sample_run.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/meshsuggestlib/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/meshsuggestlib/__main__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/meshsuggestlib/arguments.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/meshsuggestlib/arguments.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/meshsuggestlib/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/meshsuggestlib/evaluation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/meshsuggestlib/suggestion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/meshsuggestlib/suggestion.py" afterDir="false" />
     </list>
@@ -36,21 +38,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
-    "WebServerToolWindowPanel.toolwindow.show.date": "false",
-    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
-    "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "last_opened_file_path": "/Users/shuaiwang/workspace/2022s2PHD/SR_shuai/meshsuggestlib/data",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/shuaiwang/workspace/2022s2PHD/SR_shuai/meshsuggestlib/data&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data" />

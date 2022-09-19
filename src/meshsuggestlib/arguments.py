@@ -8,7 +8,7 @@ class MeSHSuggestLibArguments:
         default=None, metadata={"help": "Path to the folder with model."}
     )
     method: str = field(
-        default=None, metadata={"help": "retrieval method, can be Atomic-BERT, Semantic-BERT, Fragment-BERT, ATM, MetaMAP. UMLS or New_Method_Name"}
+        default=None, metadata={"help": "retrieval method, can be Atomic-BERT, Semantic-BERT, Fragment-BERT, ATM, MetaMAP, UMLS , Original or New_Method_Name"}
     )
 
     tokenizer_name_or_path: str = field(
@@ -19,6 +19,12 @@ class MeSHSuggestLibArguments:
         default="data/mesh.json", metadata={
             "help": "Used dataset, currently supported options are 'CLEF-2017', 'CLEF-2018', 'CLEF-2019-dta' and ', 'CLEF-2019-intervention' or dataset FOLDER-NAME"}
     )
+
+    mesh_encoding: str = field(
+        default=None, metadata={
+            "help": "Used dataset, currently supported options are 'CLEF-2017', 'CLEF-2018', 'CLEF-2019-dta' and ', 'CLEF-2019-intervention' or dataset FOLDER-NAME"}
+    )
+
 
     dataset: str = field(
         default=None, metadata={"help": "Used dataset, currently supported options are 'CLEF-2017', 'CLEF-2018', 'CLEF-2019-dta' and ', 'CLEF-2019-intervention' or dataset FOLDER-NAME"}

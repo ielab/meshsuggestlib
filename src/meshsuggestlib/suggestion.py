@@ -142,9 +142,15 @@ def search_queries_multiple(retriever, q_reps, lookup, interpolation_depth, dept
             normalised_score = (all_scores[i] - min_score) / diff_score
             overall_psg_indices[psg_indices[i]] += normalised_score
     sorted_dict = sorted(overall_psg_indices.items(), key=lambda x: x[1], reverse=True)
-    for sorted_item in sorted_dict[:depth]:
+    count = 0
+    prev = 0
+    for sorted_item in sorted_dict:
+        if sorted_item[1] != prev:
+            count+=1
+        if count>depth:
+            break
+        prev = sorted_item[1]
         returned_indices.append(sorted_item[0])
-
     return returned_indices
 
 
