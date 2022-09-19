@@ -1,9 +1,10 @@
 import xml.etree.ElementTree as ET
 from Bio import Entrez
 from tqdm import tqdm
+import math
 
 def generateQuery(no_mesh_clause, meshes):
-    if len(meshs) > 0:
+    if len(meshes) > 0:
         mesh_query = "[Mesh] OR ".join(meshes)
         new_query = "(" + mesh_query + "[Mesh] OR " + no_mesh_clause[1:]
     else:

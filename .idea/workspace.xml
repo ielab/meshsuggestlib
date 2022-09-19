@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa5699c6-15a7-4919-be2b-79de687eed28" name="Changes" comment="" />
+    <list default="true" id="fa5699c6-15a7-4919-be2b-79de687eed28" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/sample_run.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/meshsuggestlib/arguments.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/meshsuggestlib/arguments.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,11 +35,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "last_opened_file_path": "/Users/shuaiwang/workspace/2022s2PHD/SR_shuai/meshsuggestlib/data",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+>>>>>>> 9468ee04596a9fa86e4bd10470da6122c767b032
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data" />
@@ -45,11 +67,11 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/clef-tar-processed" />
       <recent name="$PROJECT_DIR$/Model" />
       <recent name="$PROJECT_DIR$/django" />
       <recent name="$PROJECT_DIR$/data" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/Suggester" />
     </key>
   </component>
   <component name="RunManager">
@@ -91,8 +113,12 @@
       <workItem from="1662938388646" duration="13491000" />
       <workItem from="1663486565236" duration="4813000" />
       <workItem from="1663503544603" duration="1000" />
+<<<<<<< HEAD
       <workItem from="1663503818931" duration="17944000" />
       <workItem from="1663567368613" duration="1628000" />
+=======
+      <workItem from="1663503818931" duration="28340000" />
+>>>>>>> 9468ee04596a9fa86e4bd10470da6122c767b032
     </task>
     <servers />
   </component>

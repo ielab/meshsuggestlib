@@ -7,10 +7,8 @@ from transformers import (
     TrainingArguments,
 )
 from glob import glob
-from meshsuggestlib.callbacks import get_reporting_integration_callbacks, CallbackHandler
 from torch.utils.data import DataLoader
 from meshsuggestlib.arguments import MeSHSuggestLibArguments
-from meshsuggestlib.modeling import DenseModel
 from meshsuggestlib.data import EncodeDataset
 from meshsuggestlib.retriever import BaseFaissIPRetriever
 from meshsuggestlib.evaluation import Evaluator
@@ -22,6 +20,7 @@ import torch
 from contextlib import nullcontext
 import numpy as np
 import gc
+import sys
 logger = logging.getLogger(__name__)
 
 
@@ -29,7 +28,17 @@ def write_ranking(topic, final_result, output):
     for rank, r in enumerate(final_result):
         output.write(f'{topic}\t{r}\t{rank + 1}\n')
 
-def encoding(dataset, model, tokenizer, max_length, hf_args, async_args, encode_is_qry=False):
+def read_date(date_file):
+    date_dict = {}
+    with open(date_file) as f:
+        for line in f:
+            topic, start_day, end_day = line.split()
+            new_start_day = start_day[6:8] + '/' + start_day[4:6] + '/' + start_day[0:4]
+            new_end_day = end_day[6:8] + '/' + end_day[4:6] + '/' + end_day[0:4]
+            date_dict[topic] = (new_start_day, new_end_day)
+    return date_dict
+
+def encoding(dataset, model, tokenizer, max_length, hf_args, mesh_args, encode_is_qry=False):
     encode_loader = DataLoader(
         dataset,
         batch_size=hf_args.per_device_eval_batch_size,
@@ -49,7 +58,7 @@ def encoding(dataset, model, tokenizer, max_length, hf_args, async_args, encode_
         lookup_indices.extend(batch_ids)
         with torch.cuda.amp.autocast() if hf_args.fp16 else nullcontext():
             with torch.no_grad():
-                batch.to(async_args.device)
+                batch.to(mesh_args.device)
                 if encode_is_qry:
                     q_reps = model.encode_query(batch)
                     encoded.append(q_reps.cpu())
@@ -85,9 +94,11 @@ def main():
     if mesh_args.evaluate_run:
         if os.path.exists(mesh_args.output_file):
             logger.info("Evaluation_parameters input is %s, qrel is %s", mesh_args.output_file, mesh_args.qrel_file)
-            if os.path.exists(mesh_args.qrel_file):
-                Evaluator(mesh_args.qrel_file, ["SetP", "SetR", "SetF(beta=1)", "SetF(beta=3)"], mesh_args.output_file)
-                sys.exit()
+            if mesh_args.qrel_file != None:
+                if os.path.exists(mesh_args.qrel_file):
+                    evaluator = Evaluator(mesh_args.qrel_file, ["SetP", "SetR", "SetF"], mesh_args.output_file)
+                    evaluator.compute_metrics()
+                    sys.exit()
             else:
                 raise Exception("Please put correct qrel file path")
     logger.info("HuggingFace parameters %s", hf_args)
@@ -96,7 +107,7 @@ def main():
     deploy_dataset = mesh_args.dataset
     method = mesh_args.method
 
-    #pre_datasets = ['clef-2017', 'clef-2018', 'clef-2019-dta', 'clef-2019-intervention']
+    pre_datasets = ['CLEF-2017', 'CLEF-2018', 'CLEF-2019-dta', 'CLEF-2019-intervention']
     pre_methods_base = ['ATM', 'MetaMAP', 'UMLS']
     pre_methods_bert = ['Atomic-BERT', 'Semantic-BERT', 'Fragment-BERT']
 
@@ -111,12 +122,17 @@ def main():
     input_keywords_dict = {}
     input_clause_dict = {}
 
+    date_dict = read_date(mesh_args.date_file)
     for topic_path in topics_pathes:
+        if not os.path.isdir(topic_path):
+            continue
         topic = topic_path.split('/')[-1]
         clause_pathes = glob(topic_path+'/*')
         for clause_path in clause_pathes:
-            index = topic_path + '_' + clause_path
+            if not os.path.isdir(clause_path):
+                continue
             clause_num = clause_path.split('/')[-1]
+            index = topic + '_' + clause_num
             keyword_file = clause_path + '/keywords'
             clause_no_mesh = clause_path + '/clause_no_mesh'
             if not os.path.exists(keyword_file):
@@ -137,11 +153,13 @@ def main():
             else:
                 raise Exception("no keyword existed for topic %s clause num %s", topic, str(clause_num))
 
+    logger.info("Overall there are %s topic clauses read", str(len(input_keywords_dict)))
+
     if method in pre_methods_base:
         a = 0 #need to add code here
 
     if method in pre_methods_bert:
-        mesh_dict, tokenizer, model, model_w2v = prepare_model(mesh_args.model_dir, mesh_file, 1, mesh_args.tokenizer_name_or_path, mesh_args.cache_dir, mesh_args.semantic_model_path)
+        mesh_dict, tokenizer, model, model_w2v = prepare_model(mesh_args.model_dir, mesh_file, 1, mesh_args.tokenizer_name_or_path, mesh_args.cache_dir, mesh_args.semantic_model_path, mesh_args)
         candidate_dataset = EncodeDataset(mesh_file,
                                           tokenizer,
                                           max_len=mesh_args.p_max_len,
@@ -150,34 +168,45 @@ def main():
         retriever = BaseFaissIPRetriever(p_reps.float().numpy())
 
         logger.info("Starts Retrieval")
-        try:
-            output = open(mesh_args.output_file, 'w')
-        except:
-            raise Exception("can not create output file at Path %s", mesh_args.output_file)
+
         final_query_dict = {}
         for topic_index in tqdm(input_keywords_dict):
             input_keywords = input_keywords_dict[topic_index]
-            no_mesh_clause = input_keywords[topic_index]
+            no_mesh_clause = input_clause_dict[topic_index]
             input_dict = {
                 "Keywords": input_keywords,
                 "Type": method,
             }
-            suggestion_results = suggest_mesh_terms(input_dict, model, tokenizer, retriever, p_lookup, mesh_dict, model_w2v, mesh_args.interpolation_depth, mesh_args.depth)["MeSH_Terms"]
+            suggestion_results = suggest_mesh_terms(input_dict, model, tokenizer, retriever, p_lookup, mesh_dict, model_w2v, mesh_args.interpolation_depth, mesh_args.depth, hf_args, mesh_args.device)
             suggested_mesh_terms = []
             for r in suggestion_results:
-                suggested_mesh_terms += r["MeSH_Terms"]
+                suggested_mesh_terms += list(r["MeSH_Terms"].values())
             suggested_mesh_terms = list(set(suggested_mesh_terms))
             new_query = combine_query(no_mesh_clause, suggested_mesh_terms)
             topic_parent = topic_index.split('_')[0]
             if topic_parent not in final_query_dict:
                 final_query_dict[topic_parent] = []
             final_query_dict[topic_parent].append(new_query)
-
+        try:
+            output = open(mesh_args.output_file, 'w')
+        except:
+            raise Exception("can not create output file at Path %s", mesh_args.output_file)
         for topic_id in final_query_dict:
             mesh_query = " AND ".join(final_query_dict[topic_id])
-            final_result = submit_result(mesh_query, mesh_args.email, date_info[topic_id])
+            current_d = ('01/01/1946', '31/12/2021')
+            if topic_id in date_dict:
+                current_d = date_dict[topic_id]
+            final_result = submit_result(mesh_query, mesh_args.email, current_d)
             logger.info("topic %s retrieve %s pubmed articles", topic_id, len(final_result))
             write_ranking(topic_id, final_result, output)
+        if mesh_args.evaluate_run:
+            if mesh_args.qrel_file != None:
+                evaluator = Evaluator(mesh_args.qrel_file, ["SetP", "SetR", "SetF"], mesh_args.output_file)
+                evaluator.compute_metrics()
+                sys.exit()
+            else:
+                raise Exception("Please put correct qrel file path")
+
 
 if __name__ == "__main__":
     main()

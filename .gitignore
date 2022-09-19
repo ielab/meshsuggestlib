@@ -1,2 +1,6 @@
 envs/
-.idea/
+model/
+cache/
+src/meshsuggestlib.egg-info
+src/meshsuggestlib/__pycache__/*
+.idea
