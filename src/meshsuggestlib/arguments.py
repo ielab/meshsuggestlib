@@ -65,11 +65,10 @@ class MeSHSuggestLibArguments:
     output_file: str = field(
         default=None, metadata={"help": "Path to the output file of query"}
     )
-    device: str = field(
+
+    email: str = field(
         default='email', metadata={"help": "The GPU device uses for encoding"}
     )
-
-
     device: str = field(
         default='cuda:0', metadata={"help": "The GPU device uses for encoding"}
     )

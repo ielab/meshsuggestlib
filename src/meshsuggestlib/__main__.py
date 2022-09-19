@@ -175,7 +175,8 @@ def main():
 
         for topic_id in final_query_dict:
             mesh_query = " AND ".join(final_query_dict[topic_id])
-            final_result = submit_result(mesh_query, mesh_args.email)
+            final_result = submit_result(mesh_query, mesh_args.email, date_info[topic_id])
+            logger.info("topic %s retrieve %s pubmed articles", topic_id, len(final_result))
             write_ranking(topic_id, final_result, output)
 
 if __name__ == "__main__":
