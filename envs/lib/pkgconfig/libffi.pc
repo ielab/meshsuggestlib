@@ -1,0 +1,11 @@
+prefix=/Users/shuaiwang/workspace/2022s2PHD/SR_shuai/meshsuggestlib/envs
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+toolexeclibdir=${libdir}
+includedir=/Users/shuaiwang/workspace/2022s2PHD/SR_shuai/meshsuggestlib/envs/include
+
+Name: libffi
+Description: Library supporting Foreign Function Interfaces
+Version: 3.3
+Libs: -L${toolexeclibdir} -lffi
+Cflags: -I${includedir}

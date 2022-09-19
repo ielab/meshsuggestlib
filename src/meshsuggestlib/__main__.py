@@ -6,14 +6,15 @@ from transformers import (
     HfArgumentParser,
     TrainingArguments,
 )
-from asyncval.callbacks import get_reporting_integration_callbacks, CallbackHandler
+from glob import glob
+from meshsuggestlib.callbacks import get_reporting_integration_callbacks, CallbackHandler
 from torch.utils.data import DataLoader
 from meshsuggestlib.arguments import MeSHSuggestLibArguments
-from asyncval.modeling import DenseModel
-from asyncval.data import EncodeDataset
-from asyncval.retriever import BaseFaissIPRetriever
-from asyncval.evaluation import Evaluator
-from asyncval.data import EncodeCollator
+from meshsuggestlib.modeling import DenseModel
+from meshsuggestlib.data import EncodeDataset
+from meshsuggestlib.retriever import BaseFaissIPRetriever
+from meshsuggestlib.evaluation import Evaluator
+from meshsuggestlib.data import EncodeCollator
 from tqdm import tqdm
 import torch
 from contextlib import nullcontext
@@ -81,23 +82,73 @@ def main():
         level=logging.INFO,
     )
 
-    parser = HfArgumentParser((AsyncvalArguments))
-    async_args, hf_args = parser.parse_args_into_dataclasses()
+    parser = HfArgumentParser((MeSHSuggestLibArguments, TrainingArguments))
+    mesh_args, hf_args = parser.parse_args_into_dataclasses()
 
-    # callbacks for loggers.
-    report_callbacks = get_reporting_integration_callbacks(hf_args.report_to)
-    callback_handler = CallbackHandler(report_callbacks)
-
+    if mesh_args.evaluate_run:
+        if os.path.exists(mesh_args.output_file):
+            logger.info("Evaluation_parameters input is %s, qrel is %s", mesh_args.output_file, mesh_args.qrel_file)
+            if os.path.exists(mesh_args.qrel_file):
+                Evaluator(mesh_args.qrel_file, ["SetP", "SetR", "SetF(beta=1)", "SetF(beta=3)"], mesh_args.output_file)
+                sys.exit()
+            else:
+                raise Exception("Please put correct qrel file path")
     logger.info("HuggingFace parameters %s", hf_args)
-    logger.info("Asyncval parameters %s", async_args)
+    logger.info("MeSHSuggestLib parameters %s", mesh_args)
 
     tokenizer = AutoTokenizer.from_pretrained(
-        async_args.tokenizer_name_or_path,
-        cache_dir=async_args.cache_dir,
-        use_fast=False,
+        mesh_args.tokenizer_name_or_path,
+        cache_dir=mesh_args.cache_dir,
+        use_fast=True,
     )
 
-    query_datasets = []
+    deploy_dataset = mesh_args.dataset
+    method = mesh_args.method
+
+    #pre_datasets = ['clef-2017', 'clef-2018', 'clef-2019-dta', 'clef-2019-intervention']
+    pre_methods_base = ['ATM', 'MetaMAP', 'UMLS']
+    pre_methods_bert = ['Atomic-BERT', 'Semantic-BERT', 'Fragment-BERT']
+
+    mesh_file = mesh_args.mesh_file
+
+    if deploy_dataset in pre_datasets:
+        data_parent_folder = 'data/clef-tar-processed/' + deploy_dataset + '/testing/*'
+    else:
+        data_parent_folder = 'data/' + deploy_dataset + '/*'
+    topics_pathes = glob(data_parent_folder)
+
+    input_keywords_dict = {}
+    input_clause_dict = {}
+
+    for topic_path in topics_pathes:
+        topic = topic_path.split('/')[-1]
+        clause_pathes = glob(topic_path+'/*')
+        for clause_path in clause_pathes:
+            index = topic_path + '_' + clause_path
+            clause_num = clause_path.split('/')[-1]
+            keyword_file = clause_path + '/keywords'
+            clause_no_mesh = clause_path + '/clause_no_mesh'
+            if not os.path.exists(keyword_file):
+                raise Exception("keyword file for topic %s clause num %s does not exist", topic, str(clause_num))
+            if not os.path.exists(clause_no_mesh):
+                raise Exception("original no mesh clause file for topic %s clause num %s does not exist", topic, str(clause_num))
+            with open(keyword_file, 'r') as f:
+                for l in f:
+
+
+
+    if method in pre_methods_base:
+        a = 0 #need to add code here
+
+    if method in pre_methods_bert:
+        model = DenseModel(
+            model_path=model_dir,
+            mesh_args=mesh_args,
+        ).eval()
+        model = model.to(mesh_args.device)
+        p_lookup, p_reps = encoding(candidate_dataset, model, tokenizer, async_args.p_max_len, hf_args, async_args)
+
+
     for query_file in async_args.query_files:
         query_dataset = EncodeDataset(query_file,
                                       tokenizer,
@@ -137,7 +188,6 @@ def main():
                 if ckpt_path in finished_ckpts:
                     continue
                 logger.info(f"Evaluating {ckpt_path}")
-                start_val = time.time()
 
                 model = DenseModel(
                     ckpt_path=ckpt_path,
@@ -164,39 +214,14 @@ def main():
                     all_scores_list.append(all_scores)
                     psg_indices_list.append(psg_indices)
 
-                log_metrics = {}
                 for i, (all_scores, psg_indices, q_lookup) in enumerate(zip(all_scores_list,
                                                                         psg_indices_list,
                                                                         q_lookup_list)):
-                    evaluations = evaluator.compute_metrics(all_scores, psg_indices, q_lookup)
-                    for measure, score in evaluations:
-                        log_metrics[f'query set {i}: {measure}'] = score
-
                     if async_args.write_run:
                         if not os.path.exists(hf_args.output_dir):
                             os.makedirs(hf_args.output_dir)
                         write_ranking(psg_indices, all_scores, q_lookup, os.path.join(hf_args.output_dir, f'set_{i}_{ckpt}.tsv'))
 
-                end_val = time.time()
-                val_time = (end_val - start_val)/60
-                logger.info("--- Finish validation in %.2f minutes ---" % val_time)
-
-                log_metrics['validation time (mins)'] = val_time
-                callback_handler.log(hf_args, log_metrics, len(finished_ckpts))
-                finished_ckpts.add(ckpt_path)
-
-                # clean memory after each validation
-                del p_reps, q_reps, retriever, model
-                torch.cuda.empty_cache()
-                gc.collect()
-
-                # breaking the validation loop if hitting the max number of validations
-                if async_args.max_num_valid is not None:
-                    if len(finished_ckpts) >= async_args.max_num_valid:
-                        hit_max = True
-                        break
-                logger.info(f"Listening to {async_args.ckpts_dir}")
-        time.sleep(5)
 
 
 if __name__ == "__main__":

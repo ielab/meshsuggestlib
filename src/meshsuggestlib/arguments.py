@@ -7,13 +7,21 @@ class MeSHSuggestLibArguments:
     model_dir: str = field(
         default=None, metadata={"help": "Path to the folder with model."}
     )
-
     method: str = field(
-        default=None, metadata={"help": "retrieval method, can be Atomic, Semantic, Fragment or New"}
+        default=None, metadata={"help": "retrieval method, can be Atomic-BERT, Semantic-BERT, Fragment-BERT, ATM, MetaMAP. UMLS or New_Method_Name"}
+    )
+
+    tokenizer_name_or_path: str = field(
+        default=None, metadata={"help": "Tokenizer"}
+    )
+
+    mesh_file: str = field(
+        default="data/mesh.jsonl", metadata={
+            "help": "Used dataset, currently supported options are 'CLEF-2017', 'CLEF-2018', 'CLEF-2019-dta' and ', 'CLEF-2019-intervention' or dataset FOLDER-NAME"}
     )
 
     dataset: str = field(
-        default=None, metadata={"help": "Used dataset, currently supported options are 'CLEF-2017', 'CLEF-2018', 'CLEF-2019-dta' and ', 'CLEF-2019-intervention'"}
+        default=None, metadata={"help": "Used dataset, currently supported options are 'CLEF-2017', 'CLEF-2018', 'CLEF-2019-dta' and ', 'CLEF-2019-intervention' or dataset FOLDER-NAME"}
     )
 
     cache_dir: str = field(
@@ -46,8 +54,8 @@ class MeSHSuggestLibArguments:
         default=True, metadata={"help": "Evaluate the methods or not"}
     )
 
-    result_run: bool = field(
-        default=True, metadata={"help": "Write the run file to disk or not"}
+    qrel_file: str = field(
+        default=None, metadata={"help": "Path to the output file of query"}
     )
 
     output_file: str = field(

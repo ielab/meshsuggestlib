@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: pytrec-eval-terrier
+Version: 0.5.4
+Summary: Provides Python bindings for popular Information Retrieval measures implemented within trec_eval.
+Home-page: https://github.com/cvangysel/pytrec_eval
+Download-URL: https://github.com/cvangysel/pytrec_eval/tarball/0.5
+Author: Christophe Van Gysel
+Author-email: cvangysel@uva.nl
+Keywords: trec_eval,information retrieval,evaluation,ranking
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: C++
+Classifier: Intended Audience :: Science/Research
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: Text Processing :: General
+Requires-Python: >=3
+License-File: LICENSE
+

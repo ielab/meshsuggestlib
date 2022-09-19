@@ -20,19 +20,28 @@ def _get_metrics(metrics):
 
 
 class Evaluator:
-    def __init__(self, qrel_file, metrics):
+    def __init__(self, qrel_file, metrics, run_file):
         self.qrels = self._read_qrel(qrel_file)
         self.metrics = _get_metrics(metrics)
+        self.run = self.readrun(run_file)
 
-    def compute_metrics(self, scores, indices, q_lookup):
-        run = {}
-        for qid, q_doc_scores, q_doc_indices in zip(q_lookup, scores, indices):
-            run[qid] = {}
-            for docid, score in zip(q_doc_indices, q_doc_scores):
-                run[qid][docid] = float(score)
-
-        results = ir_measures.calc_aggregate(self.metrics, self.qrels, run)
+    def compute_metrics(self):
+        results = ir_measures.calc_aggregate(self.metrics, self.qrels, self.run)
         return results.items()
+
+    def read_run(self, run_file):
+        run_results = {}
+        with open(run_file) as f:
+            for l in f:
+                try:
+                    qid, docid, score = l.strip().split('\t')
+                except ValueError:
+                    raise ValueError("Wrong run format.")
+            if qid not in run_results:
+                run_results[qid] = {}
+            run_results[qid][docid] = score
+        return run_results
+
 
     def _read_qrel(self, qrel_file):
         qrels = {}

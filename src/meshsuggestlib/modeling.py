@@ -1,7 +1,7 @@
 import torch
 from typing import Dict
 from torch import Tensor
-from asyncval.arguments import AsyncvalArguments
+from meshsuggestlib.arguments import MeSHSuggestLibArguments
 import logging
 logger = logging.getLogger(__name__)
 try:
@@ -14,29 +14,29 @@ except ModuleNotFoundError as err:
 
 
 class Encoder(torch.nn.Module):
-    def __init__(self, ckpt_path: str, async_args: AsyncvalArguments):
+    def __init__(self, model_path: str, mesh_args: MeSHSuggestLibArguments):
         super().__init__()
-        self.ckpt_path = ckpt_path
-        self.async_args = async_args
+        self.model_path = model_path
+        self.mesh_args = mesh_args
 
     @torch.no_grad()
     def encode_passage(self, psg: Dict[str, Tensor]) -> Tensor:
-        raise NotImplementedError("Please implement DenseModel class in '/asyncval/src/asyncval/modeling.py'")
+        raise NotImplementedError("Please implement DenseModel class in '/meshsuggestlib/src/meshsuggestlib/modeling.py'")
 
     @torch.no_grad()
     def encode_query(self, qry: Dict[str, Tensor]) -> Tensor:
-        raise NotImplementedError("Please implement DenseModel class in '/asyncval/src/asyncval/modeling.py'")
+        raise NotImplementedError("Please implement DenseModel class in '/meshsuggestlib/src/meshsuggestlib/modeling.py'")
 
 
 class DenseModel(Encoder):
     """
     For validating customized dense retriever checkpoints, please modify this class to meet your encoding requirements.
     """
-    def __init__(self, ckpt_path, async_args):
-        super(DenseModel, self).__init__(ckpt_path, async_args)
+    def __init__(self, model_path, mesh_args):
+        super(DenseModel, self).__init__(model_path, mesh_args)
         if HAS_TEVATRON:
-            self.model = DenseModelForInference.load(model_name_or_path=self.ckpt_path,
-                                                      cache_dir=self.async_args.cache_dir)
+            self.model = DenseModelForInference.load(model_name_or_path=self.model_path,
+                                                      cache_dir=self.mesh_args.cache_dir)
 
     def encode_passage(self, psg):
         if HAS_TEVATRON:
