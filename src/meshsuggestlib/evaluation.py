@@ -1,6 +1,6 @@
 import ir_measures
 import sys
-
+from tqdm import tqdm
 
 def _get_metrics(metrics):
     measures, errors = [], []
@@ -23,10 +23,12 @@ class Evaluator:
     def __init__(self, qrel_file, metrics, run_file):
         self.qrels = self._read_qrel(qrel_file)
         self.metrics = _get_metrics(metrics)
-        self.run = self.readrun(run_file)
+        self.run = self.read_run(run_file)
 
     def compute_metrics(self):
+        #print(self.qrels)
         results = ir_measures.calc_aggregate(self.metrics, self.qrels, self.run)
+        print(results.items())
         return results.items()
 
     def read_run(self, run_file):
@@ -37,9 +39,9 @@ class Evaluator:
                     qid, docid, score = l.strip().split('\t')
                 except ValueError:
                     raise ValueError("Wrong run format.")
-            if qid not in run_results:
-                run_results[qid] = {}
-            run_results[qid][docid] = score
+                if qid not in run_results:
+                    run_results[qid] = {}
+                run_results[qid][docid] = float(score)
         return run_results
 
 
@@ -48,11 +50,12 @@ class Evaluator:
         with open(qrel_file, 'r') as f:
             for l in f:
                 try:
-                    qid, _, docid, rel = l.strip().split('\t')
+                    qid, _, docid, rel = l.strip().split()
                 except ValueError:
                     raise ValueError("Wrong qrel format.")
 
                 if qid not in qrels:
-                    qrels[qid] = {}
-                qrels[qid][docid] = int(rel)
+                    if int(rel)==1:
+                        qrels[qid] = {}
+                        qrels[qid][docid] = int(rel)
         return qrels

@@ -2,25 +2,29 @@ from meshsuggestlib.retriever import BaseFaissIPRetriever
 from transformers import AutoConfig, AutoTokenizer
 from meshsuggestlib.modeling import DenseModel
 import os
+import torch
 from itertools import chain
 import json
 from gensim.models import KeyedVectors
 from gensim.utils import tokenize
 import numpy
+from contextlib import nullcontext
 import scipy
 import logging
+logger = logging.getLogger(__name__)
+from tqdm import tqdm
 
 
-def suggest_mesh_terms(input_dict, model, tokenizer, retriever, look_up, mesh_dict, model_w2v, interpolation_depth, depth):
+def suggest_mesh_terms(input_dict, model, tokenizer, retriever, look_up, mesh_dict, model_w2v, interpolation_depth, depth, hf_args, device):
     type = input_dict["Type"]
     keywords = input_dict["Keywords"]
     if len(keywords) > 0:
         return_list = []
         if len(keywords) == 1:
-            type = "Atomic"
+            type = "Atomic-BERT"
         if type == "Atomic-BERT":
             for keyword in keywords:
-                suggestion_uids = keyword_suggestion_method(keyword, model, tokenizer, retriever, look_up, interpolation_depth, depth)
+                suggestion_uids = keyword_suggestion_method(keyword, model, tokenizer, retriever, look_up, depth, hf_args, device)
                 mesh_terms = get_mesh_terms(suggestion_uids, mesh_dict)
                 new_dict = {
                     "Keywords": [keyword],
@@ -32,7 +36,7 @@ def suggest_mesh_terms(input_dict, model, tokenizer, retriever, look_up, mesh_di
         elif type == "Semantic-BERT":
             keyword_groups = seperate_keywords_group(keywords, model_w2v)
             for keywords in keyword_groups:
-                suggestion_uids = semantic_suggestion_method(keywords, model, tokenizer, retriever, look_up, interpolation_depth, depth)
+                suggestion_uids = semantic_suggestion_method(keywords, model, tokenizer, retriever, look_up, interpolation_depth, depth, hf_args, device)
                 mesh_terms = get_mesh_terms(suggestion_uids, mesh_dict)
                 new_dict = {
                     "Keywords": keywords,
@@ -42,7 +46,7 @@ def suggest_mesh_terms(input_dict, model, tokenizer, retriever, look_up, mesh_di
                 return_list.append(new_dict)
             return return_list
         elif type == "Fragment-BERT":
-            suggestion_uids = fragment_suggestion_method(keywords, model, tokenizer, retriever, look_up, interpolation_depth, depth)
+            suggestion_uids = fragment_suggestion_method(keywords, model, tokenizer, retriever, look_up, interpolation_depth, depth, hf_args, device)
             mesh_terms = get_mesh_terms(suggestion_uids, mesh_dict)
             new_dict = {
                 "Keywords": keywords,
@@ -62,14 +66,14 @@ def load_mesh_dict(path):
     mesh_dict = {}
     with open(path, 'r') as f:
         for line in tqdm(f):
-            item = json.load(line)
+            item = json.loads(line)
             uid = item['text_id']
             original_term = item['text']
             mesh_dict[uid] = original_term
     return mesh_dict
 
 
-def prepare_model(model_dir, mesh_dir, num_labels, tokenizer_path, cache_path, semantic_model_path):
+def prepare_model(model_dir, mesh_dir, num_labels, tokenizer_path, cache_path, semantic_model_path, mesh_args):
     os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
     # load mesh_dict
     logger.info("loading mesh terms from Path %s", mesh_dir)
@@ -79,15 +83,11 @@ def prepare_model(model_dir, mesh_dir, num_labels, tokenizer_path, cache_path, s
 
     logger.info("loading models from Path %s", model_dir)
 
-    config = AutoConfig.from_pretrained(
-        model_dir,
-        num_labels=num_labels,
-        cache_dir=cache_path,
+    model = DenseModel(
+        ckpt_path=model_dir,
+        mesh_args=mesh_args,
     )
-    model = DenseModel.load(
-        model_name_or_path=model_dir,
-        config=config,
-    ).eval()
+
     model = model.to(mesh_args.device)
 
     logger.info("loading tokenizer from %s", tokenizer_path)
@@ -203,7 +203,7 @@ def seperate_keywords_group(keywords, model_w2v):
     return keyword_groups
 
 
-def keyword_suggestion_method(keyword, model, tokenizer, retriever, look_up, depth):
+def keyword_suggestion_method(keyword, model, tokenizer, retriever, look_up, depth, hf_args, device):
     query = keyword.lower()
     query_tokenised = tokenizer.encode_plus(
         query,
@@ -215,12 +215,17 @@ def keyword_suggestion_method(keyword, model, tokenizer, retriever, look_up, dep
         return_attention_mask=True,
         return_tensors='pt'
     )
-    encoded = model(query_tokenised)
-    uids = search_queries(retriever, encoded.q_reps.detach().numpy(), look_up, depth)
+
+    with torch.cuda.amp.autocast() if hf_args.fp16 else nullcontext():
+        with torch.no_grad():
+            query_tokenised.to(device)
+            q_reps = model.encode_query(query_tokenised)
+            encoded = q_reps.cpu().detach().numpy()
+            uids = search_queries(retriever, encoded, look_up, depth)
     return uids[0]
 
 
-def semantic_suggestion_method(keywords, model, tokenizer, retriever, look_up, interpolation_depth, depth):
+def semantic_suggestion_method(keywords, model, tokenizer, retriever, look_up, interpolation_depth, depth, hf_args, device):
     encoded = []
     for keyword in keywords:
         query = keyword.lower()
@@ -234,7 +239,11 @@ def semantic_suggestion_method(keywords, model, tokenizer, retriever, look_up, i
             return_attention_mask=True,
             return_tensors='pt'
         )
-        encoded.append(model(query_tokenised).q_reps.detach().numpy())
+        with torch.cuda.amp.autocast() if hf_args.fp16 else nullcontext():
+            with torch.no_grad():
+                query_tokenised.to(device)
+                q_reps = model.encode_query(query_tokenised)
+                encoded.append(q_reps.cpu().detach().numpy())
     if len(encoded) > 1:
         uids = [search_queries_multiple(retriever, encoded, look_up, interpolation_depth, depth)]
     else:
@@ -243,7 +252,7 @@ def semantic_suggestion_method(keywords, model, tokenizer, retriever, look_up, i
     return uids[0]
 
 
-def fragment_suggestion_method(keywords, model, tokenizer, retriever, look_up, interpolation_depth, depth):
+def fragment_suggestion_method(keywords, model, tokenizer, retriever, look_up, interpolation_depth, depth, hf_args, device):
     encoded = []
     for keyword in keywords:
         query = keyword.lower()
@@ -257,7 +266,11 @@ def fragment_suggestion_method(keywords, model, tokenizer, retriever, look_up, i
             return_attention_mask=True,
             return_tensors='pt'
         )
-        encoded.append(model(query_tokenised).q_reps.detach().numpy())
+        with torch.cuda.amp.autocast() if hf_args.fp16 else nullcontext():
+            with torch.no_grad():
+                query_tokenised.to(device)
+                q_reps = model.encode_query(query_tokenised)
+                encoded.append(q_reps.cpu().detach().numpy())
 
     uids = [search_queries_multiple(retriever, encoded, look_up, interpolation_depth, depth)]
     return uids[0]

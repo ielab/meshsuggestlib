@@ -16,7 +16,7 @@ class MeSHSuggestLibArguments:
     )
 
     mesh_file: str = field(
-        default="data/mesh.jsonl", metadata={
+        default="data/mesh_sample.json", metadata={
             "help": "Used dataset, currently supported options are 'CLEF-2017', 'CLEF-2018', 'CLEF-2019-dta' and ', 'CLEF-2019-intervention' or dataset FOLDER-NAME"}
     )
 
@@ -40,7 +40,7 @@ class MeSHSuggestLibArguments:
         },
     )
 
-    m_max_len: int = field(
+    p_max_len: int = field(
         default=128,
         metadata={
             "help": "The maximum total input sequence length after tokenization for MeSH Terms. Sequences longer "
@@ -50,9 +50,9 @@ class MeSHSuggestLibArguments:
 
     retrieve_batch_size: int = field(default=64, metadata={"help": "Faiss retrieval batch size."})
 
-    depth: int = field(default=100, metadata={"help": "Final Suggestion depth."})
+    depth: int = field(default=1, metadata={"help": "Final Suggestion depth."})
 
-    interpolation_depth: int = field(default=100, metadata={"help": "Interpolation depth for"})
+    interpolation_depth: int = field(default=20, metadata={"help": "Interpolation depth for"})
 
     evaluate_run: bool = field(
         default=True, metadata={"help": "Evaluate the methods or not"}
@@ -64,6 +64,10 @@ class MeSHSuggestLibArguments:
 
     output_file: str = field(
         default=None, metadata={"help": "Path to the output file of query"}
+    )
+
+    date_file: str = field(
+        default="data/clef-tar-processed/combined_pubdates", metadata={"help": "Date Restriction for Submission PubMed Query"}
     )
 
     email: str = field(
