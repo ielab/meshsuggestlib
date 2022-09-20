@@ -227,14 +227,14 @@ def main():
             final_result = submit_result(mesh_query, mesh_args.email, current_d)
             logger.info("topic %s retrieve %s pubmed articles", topic_id, len(final_result))
             write_ranking(topic_id, final_result, output)
-    if mesh_args.evaluate_run:
-        time.sleep(10)
-        if mesh_args.qrel_file != None:
-            evaluator = Evaluator(mesh_args.qrel_file, ["SetP", "SetR", "SetF"], mesh_args.output_file)
-            evaluator.compute_metrics()
-            sys.exit()
-        else:
-            raise Exception("Please put correct qrel file path")
+    # if mesh_args.evaluate_run:
+    #     time.sleep(10)
+    #     if mesh_args.qrel_file != None:
+    #         evaluator = Evaluator(mesh_args.qrel_file, ["SetP", "SetR", "SetF"], mesh_args.output_file)
+    #         evaluator.compute_metrics()
+    #         sys.exit()
+    #     else:
+    #         raise Exception("Please put correct qrel file path")
 
 
 if __name__ == "__main__":
