@@ -14,7 +14,7 @@ from meshsuggestlib.data import EncodeDataset
 from meshsuggestlib.retriever import BaseFaissIPRetriever
 from meshsuggestlib.evaluation import Evaluator
 from meshsuggestlib.data import EncodeCollator
-from meshsuggestlib.suggestion import suggest_mesh_terms,prepare_model
+from meshsuggestlib.suggestion import NeuralSuggest
 from meshsuggestlib.submission import combine_query, submit_result
 from tqdm import tqdm
 import torch
@@ -114,7 +114,7 @@ def main():
 
     pre_datasets = ['CLEF-2017', 'CLEF-2018', 'CLEF-2019-dta', 'CLEF-2019-intervention']
     pre_methods_base = ['ATM', 'MetaMAP', 'UMLS']
-    pre_methods_bert = ['Atomic-BERT', 'Semantic-BERT', 'Fragment-BERT']
+    pre_methods_bert = ['Atomic-BERT', 'Semantic-BERT', 'Fragment-BERT', 'NEW']
 
     mesh_file = mesh_args.mesh_file
 
@@ -182,19 +182,19 @@ def main():
         a = 0 #need to add code here
 
     elif method in pre_methods_bert:
-        mesh_dict, tokenizer, model, model_w2v = prepare_model(mesh_args.model_dir, mesh_file, mesh_args.tokenizer_name_or_path, mesh_args.cache_dir, mesh_args.semantic_model_path, mesh_args)
-        candidate_dataset = EncodeDataset(mesh_file,
-                                          tokenizer,
-                                          max_len=mesh_args.p_max_len,
-                                          cache_dir=mesh_args.cache_dir)
+        NeuralPipeline = NeuralSuggest(mesh_args, hf_args)
         if mesh_args.mesh_encoding != None:
             p_reps, p_lookup = pickle_load(mesh_args.mesh_encoding)
         else:
-            p_lookup, p_reps = encoding(candidate_dataset, model, tokenizer, mesh_args.p_max_len, hf_args, mesh_args)
+            candidate_dataset = EncodeDataset(mesh_file,
+                                              NeuralPipeline.tokenizer,
+                                              max_len=mesh_args.p_max_len,
+                                              cache_dir=mesh_args.cache_dir)
+            p_lookup, p_reps = encoding(candidate_dataset, NeuralPipeline.model, NeuralPipeline.tokenizer, mesh_args.p_max_len, hf_args, mesh_args)
+
         retriever = BaseFaissIPRetriever(p_reps)
 
         logger.info("Starts Retrieval")
-
         final_query_dict = {}
         for topic_index in tqdm(input_keywords_dict):
             input_keywords = input_keywords_dict[topic_index]
@@ -203,7 +203,7 @@ def main():
                 "Keywords": input_keywords,
                 "Type": method,
             }
-            suggestion_results = suggest_mesh_terms(input_dict, model, tokenizer, retriever, p_lookup, mesh_dict, model_w2v, mesh_args.interpolation_depth, mesh_args.depth, hf_args, mesh_args.device)
+            suggestion_results = NeuralPipeline.suggest_mesh_terms(input_dict, retriever, p_lookup)
             suggested_mesh_terms = []
             for r in suggestion_results:
                 suggested_mesh_terms += list(r["MeSH_Terms"].values())
@@ -228,7 +228,7 @@ def main():
             logger.info("topic %s retrieve %s pubmed articles", topic_id, len(final_result))
             write_ranking(topic_id, final_result, output)
     if mesh_args.evaluate_run:
-        time.sleep(5)
+        time.sleep(10)
         if mesh_args.qrel_file != None:
             evaluator = Evaluator(mesh_args.qrel_file, ["SetP", "SetR", "SetF"], mesh_args.output_file)
             evaluator.compute_metrics()

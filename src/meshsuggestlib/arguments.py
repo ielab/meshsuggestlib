@@ -54,8 +54,6 @@ class MeSHSuggestLibArguments:
         },
     )
 
-    retrieve_batch_size: int = field(default=64, metadata={"help": "Faiss retrieval batch size."})
-
     depth: int = field(default=1, metadata={"help": "Final Suggestion depth."})
 
     interpolation_depth: int = field(default=20, metadata={"help": "Interpolation depth for"})
