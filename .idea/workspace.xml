@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="983ae066-212a-4d76-a020-8fc72d9ef8ab" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/result/f/ATM_2017.tsv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/result/f/ATM_2018.tsv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/result/f/MetaMap_2017.tsv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/result/f/MetaMap_2018.tsv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/result/f/UMLS_2017.tsv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/result/f/UMLS_2018.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample_run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/sample_run.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/meshsuggestlib/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/meshsuggestlib/__main__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/meshsuggestlib/suggestion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/meshsuggestlib/suggestion.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,28 +42,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/shuaiwang/workspace/2022s2PHD/SR_shuai/meshsuggestlib/data&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "last_opened_file_path": "/Users/shuaiwang/workspace/2022s2PHD/SR_shuai/meshsuggestlib/src/meshsuggestlib",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/data" />
       <recent name="$PROJECT_DIR$/src/meshsuggestlib" />
+      <recent name="$PROJECT_DIR$/result/f" />
+      <recent name="$PROJECT_DIR$/data" />
       <recent name="$PROJECT_DIR$/Suggester/Prediction_Code/Encoding" />
       <recent name="$PROJECT_DIR$/Suggester/Prediction_Code/input" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data/clef-tar-processed" />
@@ -93,7 +101,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fa5699c6-15a7-4919-be2b-79de687eed28" name="Changes" comment="" />
+      <changelist id="983ae066-212a-4d76-a020-8fc72d9ef8ab" name="Changes" comment="" />
       <created>1661591774635</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -105,6 +113,7 @@
       <workItem from="1663486565236" duration="4813000" />
       <workItem from="1663503544603" duration="1000" />
       <workItem from="1663503818931" duration="29822000" />
+      <workItem from="1663903638882" duration="1703000" />
     </task>
     <servers />
   </component>

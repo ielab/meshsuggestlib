@@ -14,7 +14,7 @@ from meshsuggestlib.data import EncodeDataset
 from meshsuggestlib.retriever import BaseFaissIPRetriever
 from meshsuggestlib.evaluation import Evaluator
 from meshsuggestlib.data import EncodeCollator
-from meshsuggestlib.suggestion import NeuralSuggest, get_mesh_terms, load_mesh_dict
+from meshsuggestlib.suggestion import NeuralSuggest, get_mesh_terms, load_mesh_dict, ATM_Suggest
 from meshsuggestlib.submission import combine_query, submit_result
 from tqdm import tqdm
 import torch
@@ -164,57 +164,56 @@ def main():
 
     logger.info("Overall there are %s topic clauses read", str(len(input_keywords_dict)))
 
+    final_query_dict = {}
     if method=="Original":
         try:
             output = open(mesh_args.output_file, 'w')
         except:
             raise Exception("can not create output file at Path %s", mesh_args.output_file)
         for topic_id in original_queury_dict:
-            mesh_query = original_queury_dict[topic_id]
-            current_d = ('01/01/1946', '31/12/2018')
-            if topic_id in date_dict:
-                current_d = date_dict[topic_id]
-            final_result = submit_result(mesh_query, mesh_args.email, current_d)
-            logger.info("topic %s retrieve %s pubmed articles", topic_id, len(final_result))
-            write_ranking(topic_id, final_result, output)
+            final_query_dict[topic_id] = [original_queury_dict[topic_id]]
 
     elif method in pre_methods_base:
         try:
             output = open(mesh_args.output_file, 'w')
         except:
             raise Exception("can not create output file at Path %s", mesh_args.output_file)
-        method_mesh_path = data_parent_folder[:-1] + method + '.res'
-        mesh_dict = load_mesh_dict(mesh_args.mesh_file)
-        method_mesh_dict = {}
-        with open(method_mesh_path) as f:
-            for line in f:
-                topic_id, _,mid,_,_,_ = line.split()
-                if topic_id in input_clause_dict:
-                    if topic_id not in method_mesh_dict:
-                        method_mesh_dict[topic_id] = []
-                    method_mesh_dict[topic_id].append(mid)
-        final_query_dict = {}
-        for topic_id in input_clause_dict:
-            topic_parent = topic_id.split('_')[0]
-            no_mesh_c = input_clause_dict[topic_id]
-            if topic_parent not in final_query_dict:
-                final_query_dict[topic_parent] = []
-            if topic_id in method_mesh_dict:
-                mesh_uids = list(set(method_mesh_dict[topic_id]))
-                mesh_terms_current = get_mesh_terms(mesh_uids, mesh_dict).values()
-                new_query = combine_query(no_mesh_c, mesh_terms_current)
-            else:
-                new_query = no_mesh_c
-            final_query_dict[topic_parent].append(new_query)
-        for topic_id in final_query_dict:
-            mesh_query = ' AND '.join(final_query_dict[topic_id])
-            print(mesh_query)
-            current_d = ('01/01/1946', '31/12/2018')
-            if topic_id in date_dict:
-                current_d = date_dict[topic_id]
-            final_result = submit_result(mesh_query, mesh_args.email, current_d)
-            logger.info("topic %s retrieve %s pubmed articles", topic_id, len(final_result))
-            write_ranking(topic_id, final_result, output)
+        if deploy_dataset not in pre_datasets:
+            atm_suggester = ATM_Suggest(mesh_args)
+            for topic_index in tqdm(input_keywords_dict):
+                topic_parent = topic_index.split('_')[0]
+                input_keywords = input_keywords_dict[topic_index]
+                no_mesh_clause = input_clause_dict[topic_index]
+                input_dict = {
+                    "Keywords": input_keywords,
+                    "Type": method,
+                }
+                result = atm_suggester.suggest(input_dict)['MeSH_Terms']
+                new_query = combine_query(no_mesh_clause, result)
+                final_query_dict[topic_parent].append(new_query)
+        else:
+            method_mesh_path = data_parent_folder[:-1] + method + '.res'
+            mesh_dict = load_mesh_dict(mesh_args.mesh_file)
+            method_mesh_dict = {}
+            with open(method_mesh_path) as f:
+                for line in f:
+                    topic_id, _,mid,_,_,_ = line.split()
+                    if topic_id in input_clause_dict:
+                        if topic_id not in method_mesh_dict:
+                            method_mesh_dict[topic_id] = []
+                        method_mesh_dict[topic_id].append(mid)
+            for topic_id in input_clause_dict:
+                topic_parent = topic_id.split('_')[0]
+                no_mesh_c = input_clause_dict[topic_id]
+                if topic_parent not in final_query_dict:
+                    final_query_dict[topic_parent] = []
+                if topic_id in method_mesh_dict:
+                    mesh_uids = list(set(method_mesh_dict[topic_id]))
+                    mesh_terms_current = get_mesh_terms(mesh_uids, mesh_dict).values()
+                    new_query = combine_query(no_mesh_c, mesh_terms_current)
+                else:
+                    new_query = no_mesh_c
+                final_query_dict[topic_parent].append(new_query)
     elif method in pre_methods_bert:
         NeuralPipeline = NeuralSuggest(mesh_args, hf_args)
         if mesh_args.mesh_encoding != None:
@@ -229,7 +228,6 @@ def main():
         retriever = BaseFaissIPRetriever(p_reps)
 
         logger.info("Starts Retrieval")
-        final_query_dict = {}
         for topic_index in tqdm(input_keywords_dict):
             input_keywords = input_keywords_dict[topic_index]
             no_mesh_clause = input_clause_dict[topic_index]
@@ -247,28 +245,21 @@ def main():
             if topic_parent not in final_query_dict:
                 final_query_dict[topic_parent] = []
             final_query_dict[topic_parent].append(new_query)
+
         try:
             output = open(mesh_args.output_file, 'w')
         except:
             raise Exception("can not create output file at Path %s", mesh_args.output_file)
 
-        for topic_id in final_query_dict:
-            mesh_query = " AND ".join(final_query_dict[topic_id])
-            print(mesh_query)
-            current_d = ('01/01/1946', '31/12/2018')
-            if topic_id in date_dict:
-                current_d = date_dict[topic_id]
-            final_result = submit_result(mesh_query, mesh_args.email, current_d)
-            logger.info("topic %s retrieve %s pubmed articles", topic_id, len(final_result))
-            write_ranking(topic_id, final_result, output)
-    # if mesh_args.evaluate_run:
-    #     time.sleep(10)
-    #     if mesh_args.qrel_file != None:
-    #         evaluator = Evaluator(mesh_args.qrel_file, ["SetP", "SetR", "SetF"], mesh_args.output_file)
-    #         evaluator.compute_metrics()
-    #         sys.exit()
-    #     else:
-    #         raise Exception("Please put correct qrel file path")
+    for topic_id in final_query_dict:
+        mesh_query = " AND ".join(final_query_dict[topic_id])
+        print(mesh_query)
+        current_d = ('01/01/1946', '31/12/2018')
+        if topic_id in date_dict:
+            current_d = date_dict[topic_id]
+        final_result = submit_result(mesh_query, mesh_args.email, current_d)
+        logger.info("topic %s retrieve %s pubmed articles", topic_id, len(final_result))
+        write_ranking(topic_id, final_result, output)
 
 
 if __name__ == "__main__":

@@ -16,10 +16,11 @@
 
 
 python3 -m meshsuggestlib \
---method ATM \
---output_dir model/ \
+--evaluate_run \
 --dataset CLEF-2018 \
---qrel_file /scratch/itee/uqswan37/meshsuggestlib/data/clef-tar-processed/CLEF-2018/testing/data.qrels \
---output_file result/ATM_2018.tsv
+--method MetaMAP \
+--output_dir model/ \
+--qrel_file data/clef-tar-processed/CLEF-2018/testing/data.qrels \
+--output_file result/MetaMap_2018.tsv
 
 

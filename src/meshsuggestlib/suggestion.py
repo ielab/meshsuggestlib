@@ -11,8 +11,8 @@ import scipy
 import logging
 logger = logging.getLogger(__name__)
 from tqdm import tqdm
-
-
+from abc import ABC, abstractmethod
+import requests
 
 def load_mesh_dict(path):
     mesh_dict = {}
@@ -27,8 +27,36 @@ def get_mesh_terms(uids, mesh_dict):
     mesh_terms = {index: mesh_dict[uid] for index, uid in enumerate(uids) if uid in mesh_dict}
     return mesh_terms
 
+class ATM_Suggest:
+    def __init__(self, mesh_args):
+        self.url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
+        self.key = mesh_args.atm_key
+
+    def suggest(self, input_dict):
+        terms = input_dict["Keywords"]
+        result = []
+        for term in terms:
+            mesh_for_single_term = {
+                "Keywords": [term],
+                "type": "ATM",
+                "MeSH_Terms": {}
+            }
+            url = f'{self.url}?db=pubmed&api_key={self.key}&retmode=json&term={term}'
+            response = requests.get(url)
+            content = json.loads(response.content)
+            translation_stack = content["esearchresult"]["translationstack"]
+            for item in translation_stack:
+                if type(item) is not str and item["field"] == "MeSH Terms":
+                    mesh = item['term']
+                    for char in ['*', '"', '[MeSH Terms]']:
+                        mesh = mesh.replace(char, "")
+                    mesh_for_single_term['MeSH_Terms'][len(mesh_for_single_term['MeSH_Terms'])] = mesh
+            result.append(mesh_for_single_term)
+        return result
+
+
 class NeuralSuggest:
-    def __init__(self, mesh_args, hf_args, encode=False):
+    def __init__(self, mesh_args, hf_args):
         self.mesh_args = mesh_args
         self.hf_args = hf_args
         self.mesh_dict, self.tokenizer, self.model, self.model_w2v = self.prepare_model(mesh_args.model_dir, mesh_args.mesh_file, mesh_args.tokenizer_name_or_path, mesh_args.cache_dir, mesh_args.semantic_model_path)
@@ -65,6 +93,7 @@ class NeuralSuggest:
 
     def user_defined_method(self, keywords, retriever, look_up):
         suggestion_uids = []
+        raise NotImplementedError()
         return suggestion_uids
 
     def suggest_mesh_terms(self, input_dict, retriever, look_up):
