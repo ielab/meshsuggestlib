@@ -34,7 +34,35 @@ To install our fine-tuned BERT checkpoint, install using:
 
 
 
-## To reproduce result on Pre-built MeSH Term Suggestion methotds. run:
+## To reproduce result on Pre-built MeSH Term Suggestion methods. run:
+
+```
+python -m meshsuggestlib
+--output_dir model/
+--model_dir model/checkpoint-80000/
+--method Semantic-BERT
+--dataset CLEF-2017
+--output_file out.tsv
+--email sample@gmail.com
+--interpolation_depth 20
+--depth 1
+```
+List of pre-built method option include:
+- Original
+- ATM
+- MetaMAP
+- UMLS
+- Atomic-BERT
+- Semantic-BERT
+- Fragment-BERT
+
+List of pre-defined dataset option include:
+- CLEF-2017
+- CLEF-2018
+- CLEF-2019-dta
+- CLEF-2019-intervention
+
+## To evaluate results, run
 
 ```
 python -m meshsuggestlib
