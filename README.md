@@ -62,25 +62,28 @@ Running the following sample code can output result using CLEF-2017 dataset usin
 
 ```
 python -m meshsuggestlib
---output_dir model/
---model_dir model/checkpoint-80000/
---method Semantic-BERT
---dataset CLEF-2017
---output_file result/out.tsv
---email sample@gmail.com
---interpolation_depth 20
---depth 1
+--output_dir model/                     #Unused rightnow, but required in training-arg
+--model_dir model/checkpoint-80000/     #Model checkpoint for inference
+--method Semantic-BERT                  #Method Name
+--dataset CLEF-2017                     #Dataset Name, either pre-defined or new dataset(see research section for how to build new dataset)
+--output_file result/out.tsv            #Result file name
+--email sample@gmail.com                #Email for pubmed E-utility submission
+--interpolation_depth 20                #Intermediate depth for interpolation
+--q_max_len 20                          #MeSH Term length after tokenized
+--p_max_len 20                          #Query Length after tokenized
+--date_file                             #Date restriction for each query
+--mesh_file                             #MeSH Term file, see default mesh term file format
+--depth 1                               #Final retrieval Depth
 ```
 
 ### Evaluation:
 
 ```
 python -m meshsuggestlib
---evaluate_run \
---dataset CLEF-2017 \
---output_dir model/
---qrel_file data/clef-tar-processed/CLEF-2017/testing/data.qrels \
---output_file result/out.tsv
+--output_dir model/                   #Unused rightnow, but required in training-arg
+--evaluate_run                        #Boolean option for evaluate
+--qrel_file data.qrels                #Qrel file for evaluation
+--output_file result/out.tsv            #suggestion output file for evaluation
 ```
 
 Preliminary Result to check:
@@ -118,6 +121,15 @@ To use new dataset in our library, build dataset structure as follows:
 
 Then to use new dataset, use ***--dataset DATASET_NAME*** during suggestion.
 
+### Different Model:
+
+Two parameter to change during inference, includes:
+
+```
+--model_dir                 #Model_checkpoint
+--tokenizer_name_or_path    #Model_tokenizer_path
+```
+
 ### New Search Function:
 
 To use new functions, modify *user_defined_method* function in [Suggestion.py](src/meshsuggestlib/suggestion.py) 
@@ -126,8 +138,15 @@ Then to use new Search Function, use ***--METHOD NEW*** during suggestion.
 
 
 
+## MeSH Term Suggestion Tool
+
+You can also try out our [MeSH Term Suggestion Tool](http://ielab-mesh-suggest.uqcloud.net/) Server for different Suggestion methods
 
 
+## Paper for this research:
 
+[MeSH Term Suggestion for Systematic Review Literature Search](https://dl.acm.org/doi/pdf/10.1145/3503516.3503530)
+
+[Automated MeSH Term Suggestion for Effective Query Formulation in Systematic Reviews Literature Search](https://arxiv.org/abs/2209.08687)
 
 
