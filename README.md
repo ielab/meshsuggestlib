@@ -36,6 +36,30 @@ To install our fine-tuned BERT checkpoint, install using:
 
 ## Reproduce:
 
+### Input Options:
+List of pre-built method option include:
+```
+- Original
+- ATM
+- MetaMAP
+- UMLS
+- Atomic-BERT
+- Semantic-BERT
+- Fragment-BERT
+```
+
+List of pre-defined dataset option include:
+```
+- CLEF-2017
+- CLEF-2018
+- CLEF-2019-dta
+- CLEF-2019-intervention
+```
+
+### Suggestion:
+
+Running the following sample code can output result using CLEF-2017 dataset using Semantic-BERT
+
 ```
 python -m meshsuggestlib
 --output_dir model/
@@ -48,7 +72,7 @@ python -m meshsuggestlib
 --depth 1
 ```
 
-## To evaluate results, run
+### Evaluation:
 
 ```
 python -m meshsuggestlib
@@ -58,21 +82,6 @@ python -m meshsuggestlib
 --qrel_file data/clef-tar-processed/CLEF-2017/testing/data.qrels \
 --output_file result/out.tsv
 ```
-
-List of pre-built method option include:
-- Original
-- ATM
-- MetaMAP
-- UMLS
-- Atomic-BERT
-- Semantic-BERT
-- Fragment-BERT
-
-List of pre-defined dataset option include:
-- CLEF-2017
-- CLEF-2018
-- CLEF-2019-dta
-- CLEF-2019-intervention
 
 Preliminary Result to check:
 
@@ -88,6 +97,34 @@ Preliminary Result to check:
 | Fragment-BERT | **0.0343**/**0.0325**/0.7415 | **0.0388**/**0.0690**/0.8034 | 0.0235/0.0364/0.8765             | **0.0224**/**0.0276**/0.7165 |
 
 From the preliminary result it's clear that the best performance almost always in Neural Suggestion Methods.
+
+## Research
+
+### New Dataset:
+To use new dataset in our library, build dataset structure as follows:
+
+    .
+    ├── ...
+    ├── New-DATASET                     # DATASET Folder Name
+    │   ├── TOPIC1                      # Topic Name
+    │   │     │── 1                     # Clause Number
+    │   │     │   │── clause_no_mesh    # MeSH Term removed Clause (one line)
+    │   │     │   └── keywords          # keyword in Clause (one keyword per line)
+    │   │     │── 2     
+    │   │     └── 3
+    │   ├── TOPIC2       
+    │   └── data.qrels                  # relevance judgement of query documents, format per line {topicid   0   docid   1}
+     ...
+
+Then to use new dataset, use ***--dataset DATASET_NAME*** during suggestion.
+
+### New Search Function:
+
+To use new functions, modify *user_defined_method* function in [Suggestion.py](src/meshsuggestlib/suggestion.py) 
+
+Then to use new Search Function, use ***--METHOD NEW*** during suggestion.
+
+
 
 
 
