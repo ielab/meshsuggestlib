@@ -4,6 +4,7 @@
     <list default="true" id="983ae066-212a-4d76-a020-8fc72d9ef8ab" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/sample_run.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,17 +45,17 @@
     "WebServerToolWindowPanel.toolwindow.show.date": "false",
     "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
     "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "last_opened_file_path": "/Users/shuaiwang/workspace/2022s2PHD/SR_shuai/meshsuggestlib/src/meshsuggestlib",
+    "last_opened_file_path": "/Users/shuaiwang/workspace/2022s2PHD/SR_shuai/meshsuggestlib/data/clef-tar-processed/CLEF-2019-dta",
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/clef-tar-processed/CLEF-2019-dta" />
       <recent name="$PROJECT_DIR$/src/meshsuggestlib" />
       <recent name="$PROJECT_DIR$/result/f" />
       <recent name="$PROJECT_DIR$/data" />
       <recent name="$PROJECT_DIR$/Suggester/Prediction_Code/Encoding" />
-      <recent name="$PROJECT_DIR$/Suggester/Prediction_Code/input" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data/clef-tar-processed" />
@@ -105,6 +106,7 @@
       <workItem from="1663503544603" duration="1000" />
       <workItem from="1663503818931" duration="29822000" />
       <workItem from="1663903638882" duration="5475000" />
+      <workItem from="1664096054277" duration="7934000" />
     </task>
     <servers />
   </component>

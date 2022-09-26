@@ -34,7 +34,7 @@ To install our fine-tuned BERT checkpoint, install using:
 
 
 
-## To reproduce result on Pre-built MeSH Term Suggestion methods. run:
+## Reproduce:
 
 ```
 python -m meshsuggestlib
@@ -42,11 +42,23 @@ python -m meshsuggestlib
 --model_dir model/checkpoint-80000/
 --method Semantic-BERT
 --dataset CLEF-2017
---output_file out.tsv
+--output_file result/out.tsv
 --email sample@gmail.com
 --interpolation_depth 20
 --depth 1
 ```
+
+## To evaluate results, run
+
+```
+python -m meshsuggestlib
+--evaluate_run \
+--dataset CLEF-2017 \
+--output_dir model/
+--qrel_file data/clef-tar-processed/CLEF-2017/testing/data.qrels \
+--output_file result/out.tsv
+```
+
 List of pre-built method option include:
 - Original
 - ATM
@@ -62,16 +74,23 @@ List of pre-defined dataset option include:
 - CLEF-2019-dta
 - CLEF-2019-intervention
 
-## To evaluate results, run
+Preliminary Result to check:
 
-```
-python -m meshsuggestlib
---output_dir model/
---model_dir model/checkpoint-80000/
---method Semantic-BERT
---dataset CLEF-2017
---output_file out.tsv
---email sample@gmail.com
---interpolation_depth 20
---depth 1
-```
+| Dataset       | CLEF-2017                    | CLEF-2018                    | CLEF-2019-dta                    | CLEF-2019-intervention       |
+|---------------|------------------------------|------------------------------|----------------------------------|------------------------------|
+| Method\Metric | Precision/F_1/Recall         | Precision/F_1/Recall         | Precision/F_1/Recall             | Precision/F_1/Recall         |
+| Original      | 0.0303/0.0323/0.7695         | 0.0226/0.0415/**0.8629**     | **0.0246**/**0.0453**/**0.8948** | 0.0166/0.0217/0.7450         |
+| ATM           | 0.0225/0.0215/0.7109         | 0.0306/0.0535/0.8224         | 0.0111/0.0207/0.8936             | 0.0155/0.0181/0.7087         |
+| MetaMAP       | 0.0323/0.0304/0.7487         | 0.0336/0.0590/0.8085         | 0.0137/0.0254/0.8774             | 0.0187/0.0211/0.6790         |
+| UMLS          | 0.0325/0.0300/0.7379         | 0.0325/0.0573/0.7937         | 0.0133/0.0249/0.8598             | 0.0169/0.0186/0.6861         |
+| Atomic-BERT   | 0.0252/0.0243/0.7778         | 0.0283/0.0479/0.8452         | 0.0096/0.0180/0.8850             | 0.0062/0.0111/**0.7586**     |
+| Semantic-BERT | 0.0255/0.0243/**0.7785**     | 0.0309/0.0526/0.8403         | 0.0108/0.0202/0.8810             | 0.0108/0.0181/0.7507         |
+| Fragment-BERT | **0.0343**/**0.0325**/0.7415 | **0.0388**/**0.0690**/0.8034 | 0.0235/0.0364/0.8765             | **0.0224**/**0.0276**/0.7165 |
+
+From the preliminary result it's clear that the best performance almost always in Neural Suggestion Methods.
+
+
+
+
+
+
