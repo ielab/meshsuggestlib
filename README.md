@@ -30,7 +30,9 @@ pip install -r requirements.txt
 
 ## Preparation
 To install our fine-tuned BERT checkpoint, install using:
-
+```
+wget https://drive.google.com/drive/folders/1VF5yeYgHnFtaspWGZNAsUIp-kQyHUzsI?usp=sharing
+```
 
 
 
