@@ -29,11 +29,13 @@ pip install -r requirements.txt
 
 
 ## Preparation
-To install our fine-tuned BERT checkpoint, install using:
+Download our fine-tuned model from [model_link](https://drive.google.com/drive/folders/1VF5yeYgHnFtaspWGZNAsUIp-kQyHUzsI?usp=sharing)
+
+Then put model insiede library as:
 ```
-Download Model from [model_link](https://drive.google.com/drive/folders/1VF5yeYgHnFtaspWGZNAsUIp-kQyHUzsI?usp=sharing)
-Then put model inside model folder as:
-model/checkpoint-80000 and model/PubMed-w2v.bin
+model/checkpoint-80000
+
+model/PubMed-w2v.bin
 ```
 
 
