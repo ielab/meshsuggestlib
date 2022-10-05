@@ -148,6 +148,8 @@ Then to use new Search Function, use ***--METHOD NEW*** during suggestion.
 
 You can also try out our [MeSH Term Suggestion Tool](http://ielab-mesh-suggest.uqcloud.net/) Server for different Suggestion methods
 
+Please make sure you use http to access the Web-tool
+
 
 ## Paper for this research:
 
