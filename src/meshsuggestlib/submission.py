@@ -8,7 +8,7 @@ def generateQuery(no_mesh_clause, meshes):
         mesh_query = "[Mesh] OR ".join(meshes)
         new_query = "(" + mesh_query + "[Mesh] OR " + no_mesh_clause[1:]
     else:
-        new_query = noMeshContent
+        new_query = no_mesh_clause
     return new_query
 
 def combine_query(no_mesh_clause, mesh_terms):

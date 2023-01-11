@@ -12,6 +12,7 @@ import logging
 logger = logging.getLogger(__name__)
 from tqdm import tqdm
 from abc import ABC, abstractmethod
+import subprocess
 import requests
 
 def load_mesh_dict(path):
@@ -54,6 +55,77 @@ class ATM_Suggest:
             result.append(mesh_for_single_term)
         return result
 
+class UMLS_MeSH_Suggestion:
+    def __init__(self):
+        self.base_url = "http://127.0.0.1:9200/umls/_search?pretty=true&q="
+
+    def suggest(self, input_dict):
+        terms = input_dict["Keywords"]
+        result = []
+
+        for term in terms:
+            umls_terms = set()
+            res = requests.get(self.base_url + term)
+            dict_set = json.loads(res.text)
+            words = dict_set["hits"]["hits"]
+            for word in words:
+                #score = word["_score"]
+                sources = word["_source"]["thesaurus"]
+                for source in sources:
+                    if "MRCONSO_STR" in source:
+                        type = source['MRCONSO_SAB']
+                        if type=="MSH":
+                            mesh_term = source["MRCONSO_STR"]
+                            umls_terms.add(mesh_term)
+            m_dict = {i:t for i, t in enumerate(umls_terms)}
+            mesh_for_single_term = {
+                "Keywords": [term],
+                "type": "UMLS",
+                "MeSH_Terms": m_dict
+            }
+
+            result.append(mesh_for_single_term)
+        return result
+
+class MetaMap_MeSH_Suggestion:
+    def __init__(self):
+        self.base_url = "http://127.0.0.1:9200/umls/_search?pretty=true&q="
+
+    def suggest(self, input_dict):
+        terms = input_dict["Keywords"]
+        result = []
+        for term in terms:
+            umls_terms = set()
+            metamap_get_terms = subprocess.Popen('echo "' + term + '" | public_mm/bin/metamap -I', shell=True, stdout=subprocess.PIPE).stdout
+            metamap_terms = metamap_get_terms.read().decode().split('\n')
+
+            for metamap_term in metamap_terms:
+                chunks = metamap_term.split()
+                for chunk in chunks:
+                    if (":" in chunk) and ("C" in chunk):
+                        term_id = chunk.split(":")[0]
+                        print(term_id)
+                        res = requests.get(self.base_url + "cui:" + term_id)
+                        print(res)
+                        dict_set = json.loads(res.text)
+                        words = dict_set["hits"]["hits"]
+                        for word in words:
+                            # score = word["_score"]
+                            sources = word["_source"]["thesaurus"]
+                            for source in sources:
+                                if "MRCONSO_STR" in source:
+                                    type = source['MRCONSO_SAB']
+                                    if type == "MSH":
+                                        mesh_term = source["MRCONSO_STR"]
+                                        umls_terms.add(mesh_term)
+            m_dict = {i: t for i, t in enumerate(umls_terms)}
+            mesh_for_single_term = {
+                "Keywords": [term],
+                "type": "ATM",
+                "MeSH_Terms": m_dict
+            }
+            result.append(mesh_for_single_term)
+        return result
 
 class NeuralSuggest:
     def __init__(self, mesh_args, hf_args):

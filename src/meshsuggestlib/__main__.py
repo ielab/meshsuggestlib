@@ -14,7 +14,7 @@ from meshsuggestlib.data import EncodeDataset
 from meshsuggestlib.retriever import BaseFaissIPRetriever
 from meshsuggestlib.evaluation import Evaluator
 from meshsuggestlib.data import EncodeCollator
-from meshsuggestlib.suggestion import NeuralSuggest, get_mesh_terms, load_mesh_dict, ATM_Suggest
+from meshsuggestlib.suggestion import NeuralSuggest, get_mesh_terms, load_mesh_dict, ATM_Suggest, MetaMap_MeSH_Suggestion, UMLS_MeSH_Suggestion
 from meshsuggestlib.submission import combine_query, submit_result
 from tqdm import tqdm
 import torch
@@ -101,7 +101,7 @@ def main():
             logger.info("Evaluation_parameters input is %s, qrel is %s", mesh_args.output_file, mesh_args.qrel_file)
             if mesh_args.qrel_file != None:
                 if os.path.exists(mesh_args.qrel_file):
-                    evaluator = Evaluator(mesh_args.qrel_file, ["SetP", "SetR", "SetF"], mesh_args.output_file)
+                    evaluator = Evaluator(mesh_args.qrel_file, ["SetP", "SetR", "SetF", "SetF(beta=3.0)"], mesh_args.output_file)
                     evaluator.compute_metrics()
                     sys.exit()
             else:
@@ -172,6 +172,18 @@ def main():
             raise Exception("can not create output file at Path %s", mesh_args.output_file)
         for topic_id in original_queury_dict:
             final_query_dict[topic_id] = [original_queury_dict[topic_id]]
+    elif method=="Removed":
+        try:
+            output = open(mesh_args.output_file, 'w')
+        except:
+            raise Exception("can not create output file at Path %s", mesh_args.output_file)
+        for topic_id in input_clause_dict:
+            topic_parent = topic_id.split('_')[0]
+            no_mesh_c = input_clause_dict[topic_id]
+            if topic_parent not in final_query_dict:
+                final_query_dict[topic_parent] = []
+            new_query = combine_query(no_mesh_c, [])
+            final_query_dict[topic_parent].append(new_query)
 
     elif method in pre_methods_base:
         try:
@@ -179,7 +191,13 @@ def main():
         except:
             raise Exception("can not create output file at Path %s", mesh_args.output_file)
         if deploy_dataset not in pre_datasets:
-            atm_suggester = ATM_Suggest(mesh_args)
+            if mesh_args.method.lower()=="atm":
+                suggester = ATM_Suggest(mesh_args)
+            elif mesh_args.method.lower()=="metamap":
+                suggester = MetaMap_MeSH_Suggestion()
+            elif mesh_args.method.lower() == "umls":
+                suggester = UMLS_MeSH_Suggestion()
+
             for topic_index in tqdm(input_keywords_dict):
                 topic_parent = topic_index.split('_')[0]
                 input_keywords = input_keywords_dict[topic_index]
@@ -188,7 +206,7 @@ def main():
                     "Keywords": input_keywords,
                     "Type": method,
                 }
-                result = atm_suggester.suggest(input_dict)['MeSH_Terms']
+                result = suggester.suggest(input_dict)['MeSH_Terms']
                 new_query = combine_query(no_mesh_clause, result)
                 final_query_dict[topic_parent].append(new_query)
         else:
