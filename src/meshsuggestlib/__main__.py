@@ -38,8 +38,8 @@ def read_date(date_file):
     with open(date_file) as f:
         for line in f:
             topic, start_day, end_day = line.split()
-            new_start_day = start_day[6:8] + '/' + start_day[4:6] + '/' + start_day[0:4]
-            new_end_day = end_day[6:8] + '/' + end_day[4:6] + '/' + end_day[0:4]
+            new_start_day = start_day[0:4] + '/' + start_day[4:6] + '/' + start_day[6:8]
+            new_end_day = end_day[0:4] + '/' + end_day[4:6] + '/' + end_day[6:8]
             date_dict[topic] = (new_start_day, new_end_day)
     return date_dict
 
@@ -272,7 +272,7 @@ def main():
     for topic_id in final_query_dict:
         mesh_query = " AND ".join(final_query_dict[topic_id])
         print(mesh_query)
-        current_d = ('01/01/1946', '31/12/2018')
+        current_d = ('1946/01/01', '2018/12/31')
         if topic_id in date_dict:
             current_d = date_dict[topic_id]
         final_result = submit_result(mesh_query, mesh_args.email, current_d)

@@ -2,6 +2,7 @@ import xml.etree.ElementTree as ET
 from Bio import Entrez
 from tqdm import tqdm
 import math
+import numpy as np
 
 def generateQuery(no_mesh_clause, meshes):
     if len(meshes) > 0:
@@ -22,22 +23,43 @@ def combine_query(no_mesh_clause, mesh_terms):
             new_query = '(' * (back_num - front_num) + new_query
     return new_query
 
-def submit_result(query, email, date_info):
-    min_date = date_info[0]
-    max_date = date_info[1]
-    handle = Entrez.esearch(db="pubmed", term=query, retmax=10, email=email, mindate=min_date,
-                            maxdate=max_date)
+
+def temporal_submission(date, query, email):
+    handle = Entrez.esearch(db="pubmed", term=query, retmax=10, email=email, mindate=date[0].replace('-', '/'),
+                            maxdate=date[1].replace('-', '/'))
     record = Entrez.read(handle)
-    results = []
     count = int(record["Count"])
-    times = math.ceil(count / 100000)
-    for index in tqdm(range(0, times)):
-        handle = Entrez.esearch(db="pubmed", term=query, retmax=100000, retstart=100000 * index,
-                                email=email, mindate=min_date,maxdate=max_date)
+    return count
+
+def divide_dates(mindate, maxdate, query, email):
+    original_chunks = [[mindate, maxdate]]
+    final_chunks = []
+    while len(original_chunks)>0:
+        current_date_range_count = temporal_submission(original_chunks[0], query, email)
+        if current_date_range_count > 10000:
+            chunk_mean = np.array([original_chunks[0][0], original_chunks[0][1]], dtype='datetime64').view('i8').mean().astype('datetime64')
+            chunk_first = [original_chunks[0][0], str(chunk_mean)]
+            chunk_last = [str(chunk_mean), original_chunks[0][1]]
+            original_chunks.pop(0)
+            original_chunks.append(chunk_first)
+            original_chunks.append(chunk_last)
+        else:
+            final_chunks.append(original_chunks[0])
+            original_chunks.pop(0)
+
+def submit_result(query, email, date_info):
+    min_date = date_info[0].replace('/', '-')
+    max_date = date_info[1].replace('/', '-')
+    date_chunks = divide_dates(min_date, max_date, query, email)
+    results = []
+    for date_chunk in date_chunks:
+        handle = Entrez.esearch(db="pubmed", term=query, retmax=10000, email=email, mindate=date_chunk[0].replace('-', '/'),
+                                maxdate=date_chunk[1].replace('-', '/'))
         record = Entrez.read(handle)
         result = record["IdList"]
         results += result
     return results
+
 
 
 
