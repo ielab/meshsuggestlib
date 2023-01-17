@@ -3,6 +3,7 @@ from Bio import Entrez
 from tqdm import tqdm
 import math
 import numpy as np
+import pandas
 
 def generateQuery(no_mesh_clause, meshes):
     if len(meshes) > 0:
@@ -37,7 +38,11 @@ def divide_dates(mindate, maxdate, query, email):
     while len(original_chunks)>0:
         current_date_range_count = temporal_submission(original_chunks[0], query, email)
         if current_date_range_count > 10000:
-            chunk_mean = np.array([original_chunks[0][0], original_chunks[0][1]], dtype='datetime64').view('i8').mean().astype('datetime64')
+            ts1 = pandas.Timestamp(original_chunks[0][0])
+
+            ts2 = pandas.Timestamp(original_chunks[0][1])
+            chunk_mean = ts1 + (ts2-ts1)/2
+            chunk_mean = str(chunk_mean)[:10]
             chunk_first = [original_chunks[0][0], str(chunk_mean)]
             chunk_last = [str(chunk_mean), original_chunks[0][1]]
             original_chunks.pop(0)
@@ -46,6 +51,8 @@ def divide_dates(mindate, maxdate, query, email):
         else:
             final_chunks.append(original_chunks[0])
             original_chunks.pop(0)
+
+    return final_chunks
 
 def submit_result(query, email, date_info):
     min_date = date_info[0].replace('/', '-')
