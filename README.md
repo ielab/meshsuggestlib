@@ -155,6 +155,7 @@ You can also try out our [MeSH Term Suggestion Tool](http://ielab-mesh-suggest.u
 
 Please make sure you use http to access the Web-tool
 
+As UQcloud is not very stable, alternatively, you can setup your own server locally following server repo at [MeSH_Suggester_Server] https://github.com/wshuai190/MeSH_Suggester_Server
 
 ## Paper for this research:
 
