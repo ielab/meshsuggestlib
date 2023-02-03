@@ -45,14 +45,18 @@ class ATM_Suggest:
             url = f'{self.url}?db=pubmed&api_key={self.key}&retmode=json&term={term}'
             response = requests.get(url)
             content = json.loads(response.content)
-            translation_stack = content["esearchresult"]["translationstack"]
+            translation_stack = content["esearchresult"]["translationset"]
+            if len(translation_stack)==0:
+                continue
             for item in translation_stack:
-                if type(item) is not str and item["field"] == "MeSH Terms":
-                    mesh = item['term']
-                    for char in ['*', '"', '[MeSH Terms]']:
-                        mesh = mesh.replace(char, "")
-                    mesh_for_single_term['MeSH_Terms'][len(mesh_for_single_term['MeSH_Terms'])] = mesh
-            result.append(mesh_for_single_term)
+                translated_terms = item['to'].split("OR")
+                for t in translated_terms:
+                    t = t.strip()
+                    if t.endswith("[MeSH Terms]"):
+                        for char in ['*', '"', '[MeSH Terms]', '"', '"']:
+                            mesh = t.replace(char, "")
+                        mesh_for_single_term['MeSH_Terms'][len(mesh_for_single_term['MeSH_Terms'])] = mesh
+                result.append(mesh_for_single_term)
         return result
 
 class UMLS_MeSH_Suggestion:

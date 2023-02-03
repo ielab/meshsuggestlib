@@ -4,6 +4,7 @@ from tqdm import tqdm
 import math
 import numpy as np
 import pandas
+from pandas import *
 
 def generateQuery(no_mesh_clause, meshes):
     if len(meshes) > 0:
@@ -26,45 +27,51 @@ def combine_query(no_mesh_clause, mesh_terms):
 
 
 def temporal_submission(date, query, email):
-    handle = Entrez.esearch(db="pubmed", term=query, retmax=10, email=email, mindate=date[0].replace('-', '/'),
-                            maxdate=date[1].replace('-', '/'))
-    record = Entrez.read(handle)
-    count = int(record["Count"])
-    return count
+    try:
+        handle = Entrez.esearch(db="pubmed", term=query, retmax=10000, email=email, mindate=date[0].replace('-', '/'),
+                                maxdate=date[1].replace('-', '/'))
+        record = Entrez.read(handle)
+        count = int(record["Count"])
+        id_list = record["IdList"]
+    except:
+        count = 0
+        id_list = []
+    return count, id_list
 
 def divide_dates(mindate, maxdate, query, email):
     original_chunks = [[mindate, maxdate]]
-    final_chunks = []
+    id_lists = []
+    #final_chunks = []
     while len(original_chunks)>0:
-        current_date_range_count = temporal_submission(original_chunks[0], query, email)
+        current_date_range_count, current_id_list = temporal_submission(original_chunks[0], query, email)
+        if current_date_range_count > 7000000:
+            break
         if current_date_range_count > 10000:
+            times = 3
+                #math.ceil(current_date_range_count/10000)
             ts1 = pandas.Timestamp(original_chunks[0][0])
-
             ts2 = pandas.Timestamp(original_chunks[0][1])
-            chunk_mean = ts1 + (ts2-ts1)/2
-            chunk_mean = str(chunk_mean)[:10]
-            chunk_first = [original_chunks[0][0], str(chunk_mean)]
-            chunk_last = [str(chunk_mean), original_chunks[0][1]]
-            original_chunks.pop(0)
-            original_chunks.append(chunk_first)
+            ading_date = (ts2-ts1)/times
+            previous_mean = original_chunks[0][0]
+            for index in range(1, times):
+                chunk_mean = ts1 + (index*ading_date)
+                chunk_mean = str(chunk_mean)[:10]
+                chunk_now = [previous_mean, str(chunk_mean)]
+                previous_mean = str(chunk_mean)
+                original_chunks.append(chunk_now)
+            chunk_last = [previous_mean, original_chunks[0][1]]
             original_chunks.append(chunk_last)
-        else:
-            final_chunks.append(original_chunks[0])
             original_chunks.pop(0)
-
-    return final_chunks
+        else:
+            id_lists.extend(current_id_list)
+            original_chunks.pop(0)
+            print(original_chunks)
+    return set(id_lists)
 
 def submit_result(query, email, date_info):
     min_date = date_info[0].replace('/', '-')
     max_date = date_info[1].replace('/', '-')
-    date_chunks = divide_dates(min_date, max_date, query, email)
-    results = []
-    for date_chunk in date_chunks:
-        handle = Entrez.esearch(db="pubmed", term=query, retmax=10000, email=email, mindate=date_chunk[0].replace('-', '/'),
-                                maxdate=date_chunk[1].replace('-', '/'))
-        record = Entrez.read(handle)
-        result = record["IdList"]
-        results += result
+    results = divide_dates(min_date, max_date, query, email)
     return results
 
 

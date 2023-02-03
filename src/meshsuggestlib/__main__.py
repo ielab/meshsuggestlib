@@ -130,6 +130,7 @@ def main():
     date_dict = read_date(mesh_args.date_file)
     original_queury_dict = {}
     for topic_path in topics_pathes:
+        print(topic_path)
         if not os.path.isdir(topic_path):
             continue
         topic = topic_path.split('/')[-1]
@@ -206,8 +207,12 @@ def main():
                     "Keywords": input_keywords,
                     "Type": method,
                 }
-                result = suggester.suggest(input_dict)['MeSH_Terms']
+                result = []
+                for a in suggester.suggest(input_dict):
+                    result += list(a["MeSH_Terms"].values())
                 new_query = combine_query(no_mesh_clause, result)
+                if topic_parent not in final_query_dict:
+                    final_query_dict[topic_parent] = []
                 final_query_dict[topic_parent].append(new_query)
         else:
             method_mesh_path = data_parent_folder[:-1] + method + '.res'
@@ -241,8 +246,13 @@ def main():
                                               NeuralPipeline.tokenizer,
                                               max_len=mesh_args.p_max_len,
                                               cache_dir=mesh_args.cache_dir)
+            print("Dataset tokenized")
             p_lookup, p_reps = encoding(candidate_dataset, NeuralPipeline.model, NeuralPipeline.tokenizer, mesh_args.p_max_len, hf_args, mesh_args)
 
+            with open("model/passage.pt", 'wb') as f:
+                pickle.dump((p_reps, p_lookup), f)
+
+            print("Dataset encoded")
         retriever = BaseFaissIPRetriever(p_reps)
 
         logger.info("Starts Retrieval")

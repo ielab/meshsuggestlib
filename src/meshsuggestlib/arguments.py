@@ -77,6 +77,10 @@ class MeSHSuggestLibArguments:
     email: str = field(
         default='email', metadata={"help": "The GPU device uses for encoding"}
     )
+    atm_key: str = field(
+        default='', metadata={"help": "Personal key for atm method"}
+    )
+
     device: str = field(
         default='cuda:0', metadata={"help": "The GPU device uses for encoding"}
     )
