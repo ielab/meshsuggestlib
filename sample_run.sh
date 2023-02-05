@@ -1,7 +1,7 @@
 python3 -m meshsuggestlib \
   --output_dir model/ \
   --model_dir model/checkpoint-80000/ \
-  --method A \
+  --method MetaMAP \
   --tokenizer_name_or_path dmis-lab/biobert-v1.1 \
   --dataset CLEF-2017 \
   --semantic_model_path model/PubMed-w2v.bin \
@@ -15,10 +15,7 @@ python3 -m meshsuggestlib \
 
 python3 -m meshsuggestlib \
   --output_dir model/ \
-  --model_dir model/checkpoint-80000/ \
-  --tokenizer_name_or_path dmis-lab/biobert-v1.1 \
-  --semantic_model_path model/PubMed-w2v.bin \
-  --method Atomic-BERT \
+  --method MetaMAP \
   --dataset clef-tar-processed/new_query \
   --cache_dir cache/ \
   --output_file result/new_query.tsv \
@@ -28,6 +25,8 @@ python3 -m meshsuggestlib \
   --interpolation_depth 20 \
   --depth 1 \
   --device cpu
+
+
 
 
 #python3 -m meshsuggestlib \

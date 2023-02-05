@@ -101,6 +101,7 @@ class MetaMap_MeSH_Suggestion:
         for term in terms:
             umls_terms = set()
             metamap_get_terms = subprocess.Popen('echo "' + term + '" | public_mm/bin/metamap -I', shell=True, stdout=subprocess.PIPE).stdout
+
             metamap_terms = metamap_get_terms.read().decode().split('\n')
 
             for metamap_term in metamap_terms:
@@ -108,10 +109,10 @@ class MetaMap_MeSH_Suggestion:
                 for chunk in chunks:
                     if (":" in chunk) and ("C" in chunk):
                         term_id = chunk.split(":")[0]
-                        print(term_id)
                         res = requests.get(self.base_url + "cui:" + term_id)
-                        print(res)
                         dict_set = json.loads(res.text)
+                        if "hits" not in dict_set:
+                            continue
                         words = dict_set["hits"]["hits"]
                         for word in words:
                             # score = word["_score"]

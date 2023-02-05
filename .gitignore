@@ -6,3 +6,4 @@ src/meshsuggestlib/__pycache__/*
 .idea
 result/*
 build
+public_mm

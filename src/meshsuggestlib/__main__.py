@@ -210,7 +210,7 @@ def main():
                 result = []
                 for a in suggester.suggest(input_dict):
                     result += list(a["MeSH_Terms"].values())
-                new_query = combine_query(no_mesh_clause, result)
+                new_query = combine_query(no_mesh_clause, list(set(result)))
                 if topic_parent not in final_query_dict:
                     final_query_dict[topic_parent] = []
                 final_query_dict[topic_parent].append(new_query)
