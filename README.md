@@ -41,6 +41,7 @@ model/PubMed-w2v.bin
 ## Use of UMLS and MetaMAP:
 
 To use umls or metamap method for suggestion, it requires building of elastic server for both methods. For UMLS, please follow instruction on [umls_link](https://github.com/ielab/meshsuggestlib/tree/main/data/umls); for MetaMAP, follow instruction on [metamap_link](https://lhncbc.nlm.nih.gov/ii/tools/MetaMap/documentation/Installation.html)
+Remember to put metamap' public_mm on the lib directory.
 
 
 
