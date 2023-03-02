@@ -12,7 +12,7 @@ class MeSHSuggestLibArguments:
     )
 
     tokenizer_name_or_path: str = field(
-        default=None, metadata={"help": "Tokenizer"}
+        default="", metadata={"help": "Tokenizer"}
     )
 
     mesh_file: str = field(
