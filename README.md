@@ -152,11 +152,17 @@ Then to use new Search Function, use ***--METHOD NEW*** during suggestion.
 
 ## MeSH Term Suggestion Tool
 
-You can also try out our [MeSH Term Suggestion Tool](http://ielab-mesh-suggest.uqcloud.net/) Server for different Suggestion methods
-
-Please make sure you use http to access the Web-tool
-
+(Not working anymore): You can also try out our [MeSH Term Suggestion Tool](http://ielab-mesh-suggest.uqcloud.net/) Server for different Suggestion methods
 As UQcloud is not very stable, alternatively, you can setup your own server locally following server repo at [MeSH_Suggester_Server] https://github.com/wshuai190/MeSH_Suggester_Server
+
+### Update!
+
+MeSH Suggester has been intergrated to [Tera](https://tera-tools.com/meshmate), you can try it here.
+
+
+
+
+
 
 ## Paper for this research:
 
