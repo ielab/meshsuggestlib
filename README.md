@@ -171,3 +171,32 @@ MeSH Suggester has been intergrated to [Tera](https://tera-tools.com/meshmate), 
 [Automated MeSH Term Suggestion for Effective Query Formulation in Systematic Reviews Literature Search](https://arxiv.org/abs/2209.08687)
 
 
+## Citing
+
+If you use the *Mesh Suggester* system in your research, please cite the following paper:
+
+```bibtex
+@inproceedings{wang2023mesh,
+  title={Mesh Suggester: A Library and System for Mesh Term Suggestion for Systematic Review Boolean Query Construction},
+  author={Wang, Shuai and Li, Hang and Zuccon, Guido},
+  booktitle={Proceedings of the Sixteenth ACM International Conference on Web Search and Data Mining},
+  pages={1176--1179},
+  year={2023}
+}
+```
+
+## License
+
+Shield: [![CC BY-NC-ND 4.0][cc-by-nc-nd-shield]][cc-by-nc-nd]
+
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-NoDerivs 4.0 International License][cc-by-nc-nd].
+
+[![CC BY-NC-ND 4.0][cc-by-nc-nd-image]][cc-by-nc-nd]
+
+[cc-by-nc-nd]: http://creativecommons.org/licenses/by-nc-nd/4.0/
+[cc-by-nc-nd-image]: https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png
+[cc-by-nc-nd-shield]: https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg
+
+
+[![License: CC BY-NC-ND 4.0](https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
